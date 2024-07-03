@@ -1,8 +1,7 @@
 package bg.softuni.Elevator.Registryregister.config;
 
-import bg.softuni.Elevator.Registryregister.model.user.ElevatorUserDetails;
 import bg.softuni.Elevator.Registryregister.repository.UserRepository;
-import bg.softuni.Elevator.Registryregister.service.impl.ElevatorUserDetailsService;
+import bg.softuni.Elevator.Registryregister.service.impl.UserHelperService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +23,7 @@ public class SecurityConfig {
                                         // all static resources to "common locations" (css, images, js) are available to anyone
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                         // some more resources for all users
-                                        .requestMatchers("/", "/users/login", "/users/register").permitAll()
+                                        .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
                                         // all other URL-s should be authenticated.
                                         .anyRequest()
                                         .authenticated()
@@ -34,13 +33,13 @@ public class SecurityConfig {
                                 // Where is our custom login form?
                                 .loginPage("/users/login")
                                 // what is the name of the username parameter in the Login POST request?
-                                .usernameParameter("email")
+                                .usernameParameter("username")
                                 // what is the name of the password parameter in the Login POST request?
                                 .passwordParameter("password")
                                 // What will happen if the login is successful
                                 .defaultSuccessUrl("/", true)
                                 // What will happen if the login fails
-                                .failureForwardUrl("/users/login-error")
+                                .failureUrl("/users/login-error")
                 )
                 .logout(
                         logout ->
@@ -55,10 +54,10 @@ public class SecurityConfig {
                 .build();
     }
 
-    @Bean
-    public ElevatorUserDetailsService userDetailsService(UserRepository userRepository) {
-        return new ElevatorUserDetailsService(userRepository);
-    }
+//    @Bean
+//    public UserHelperService userDetailsService(UserRepository userRepository) {
+//        return new UserHelperService(userRepository);
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

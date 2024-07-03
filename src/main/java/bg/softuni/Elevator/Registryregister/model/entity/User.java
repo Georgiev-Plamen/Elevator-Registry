@@ -1,13 +1,31 @@
-package bg.softuni.Elevator.Registryregister.model.dto;
+package bg.softuni.Elevator.Registryregister.model.entity;
 
-public class UserRegistrationDTO {
+import bg.softuni.Elevator.Registryregister.model.Role;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name="users")
+public class User extends BaseEntity{
+
+    @Column(unique = true)
     private String username;
+
+    @Column(unique = true)
     private String email;
+
     private String firstName;
     private String lastName;
-
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles;
+
+    public User() {
+        this.roles = new HashSet<>();
+    }
 
     public String getUsername() {
         return username;
@@ -47,5 +65,13 @@ public class UserRegistrationDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
