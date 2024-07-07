@@ -1,7 +1,7 @@
 package bg.softuni.Elevator.Registryregister.config;
 
 import bg.softuni.Elevator.Registryregister.repository.UserRepository;
-import bg.softuni.Elevator.Registryregister.service.impl.UserHelperService;
+import bg.softuni.Elevator.Registryregister.service.AppUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,10 +54,10 @@ public class SecurityConfig {
                 .build();
     }
 
-//    @Bean
-//    public UserHelperService userDetailsService(UserRepository userRepository) {
-//        return new UserHelperService(userRepository);
-//    }
+    @Bean
+    public AppUserDetailsService appUserDetailsService(UserRepository userRepository) {
+        return new AppUserDetailsService(userRepository);
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

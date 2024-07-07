@@ -12,13 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
     @GetMapping("/login")
-    public ModelAndView viewLogin() {
-        ModelAndView modelAndView = new ModelAndView("login");
-
-        modelAndView.addObject("loginData", new UserLoginDTO());
-
-        return modelAndView;
+    public String login(){
+        return "login";
     }
+
 
     @PostMapping("/login-error")
     public ModelAndView viewLoginError() {

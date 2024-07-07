@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+        <a href="users.html">User Management</a>
+    </div>
+    <div class="container">
+        <h1>User Management</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Alice</td>
+                    <td>alice@example.com</td>
+                    <td>
+                        <button onclick="editUser(1)">Edit</button>
+                        <button onclick="deleteUser(1)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Bob</td>
+                    <td>bob@example.com</td>
+                    <td>
+                        <button onclick="editUser(2)">Edit</button>
+                        <button onclick="deleteUser(2)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Charlie</td>
+                    <td>charlie@example.com</td>
+                    <td>
+                        <button onclick="editUser(3)">Edit</button>
+                        <button onclick="deleteUser(3)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function editUser(userId) {
+            // Implement the edit functionality here
+            alert('Edit user with ID: ' + userId);
+        }
+
+        function deleteUser(userId) {
+            // Implement the delete functionality here
+            alert('Delete user with ID: ' + userId);
+        }
+    </script>
+</body>
+</html>
