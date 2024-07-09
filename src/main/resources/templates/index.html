@@ -14,6 +14,7 @@
 
     <p sec:authorize="!isAuthenticated()"><a href="/users/register">Register</a></p>
     <p sec:authorize="!isAuthenticated()"><a href="/users/login">Login</a></p>
+    <p sec:authorize="isAuthenticated()"><a href="/users/all">Users management</a></p>
 
     <div class="btn" sec:authorize="isAuthenticated()">
             <form th:method="post"

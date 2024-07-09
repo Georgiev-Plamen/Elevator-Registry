@@ -2,9 +2,17 @@ package bg.softuni.Elevator.Registryregister.service.dto;
 
 public class UserProfileDto {
 
+    private Long id;
     private String username;
     private String email;
     private String fullName;
+    private String firstName;
+    private String lastName;
+
+
+    public Long getId() {
+        return id;
+    }
 
     public String getUsername() {
         return username;
@@ -28,5 +36,21 @@ public class UserProfileDto {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

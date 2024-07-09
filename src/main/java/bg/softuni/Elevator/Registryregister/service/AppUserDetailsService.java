@@ -47,4 +47,8 @@ public class AppUserDetailsService implements UserDetailsService {
                 "ROLE_" + role
         );
     }
+
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
 }
