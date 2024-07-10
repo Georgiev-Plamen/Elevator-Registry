@@ -16,7 +16,6 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Username</th>
             <th>First name</th>
             <th>Last name </th>
             <th>Email</th>
@@ -27,7 +26,6 @@
         <tr th:each="user : ${allUser}"
             th:object="${user}" class="container">
             <td><span th:text="*{id()}">Id</span></td>
-            <td><span th:text="*{username()}">Username</span></td>
             <td><span th:text="*{firstName()}">First name</span></td>
             <td><span th:text="*{lastName()}">Last name</span></td>
             <td><span th:text="*{email()}">Email</span></td>

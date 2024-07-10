@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <div class="navbar">
@@ -15,13 +15,14 @@
 </div>
 <div class="container">
     <h1>Edit User</h1>
-    <form action="" th:method="post">
+    <form th:object="${userDetails}" th:action="@{/users/editUser/{id}(id=*{id})}" th:method="PUT">
 
         <input type="hidden" name="id" id="userId" th:value="${userDetails.id}">
 
         <label for="username">Username:</label>
         <input type="text" id="username" name="username"
-               th:value="${userDetails.username}"required><br><br>
+               th:value="${userDetails.username}"
+               required><br><br>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email"
@@ -35,8 +36,8 @@
         <input type="text" id="lastName" name="lastName"
                th:value="${userDetails.lastName}" required><br><br>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
+<!--        <label for="password">Password:</label>-->
+<!--        <input type="password" id="password" name="password" required><br><br>-->
 
         <button type="submit">Save</button>
     </form>

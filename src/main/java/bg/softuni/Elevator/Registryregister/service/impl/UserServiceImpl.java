@@ -1,5 +1,6 @@
 package bg.softuni.Elevator.Registryregister.service.impl;
 
+import bg.softuni.Elevator.Registryregister.model.dto.UserEditDTO;
 import bg.softuni.Elevator.Registryregister.model.dto.UserRegistrationDTO;
 import bg.softuni.Elevator.Registryregister.model.entity.User;
 import bg.softuni.Elevator.Registryregister.repository.UserRepository;
@@ -72,4 +73,15 @@ public class UserServiceImpl implements UserService {
         return mappedEntity;
     }
 
+    @Override
+    public void editUser(Long id, UserEditDTO userEditDTO) {
+        User editUser = userRepository.findById(id).orElseThrow(null);
+
+        editUser.setFirstName(userEditDTO.getFirstName());
+        editUser.setLastName(userEditDTO.getLastName());
+        editUser.setEmail(userEditDTO.getEmail());
+        editUser.setUsername(userEditDTO.getUsername());
+
+        userRepository.save(editUser);
+    }
 }

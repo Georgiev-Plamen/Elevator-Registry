@@ -14,7 +14,10 @@
 
     <p sec:authorize="!isAuthenticated()"><a href="/users/register">Register</a></p>
     <p sec:authorize="!isAuthenticated()"><a href="/users/login">Login</a></p>
-    <p sec:authorize="isAuthenticated()"><a href="/users/all">Users management</a></p>
+    <p sec:authorize="isAuthenticated()"><a href="/users/all">Users management</a></p><br><br><br>
+
+    <p sec:authorize="isAuthenticated()"><a href="/registry/all">Elevator registry</a></p>
+    <p sec:authorize="isAuthenticated()"><a href="/registry/add">Add new elevator</a></p>
 
     <div class="btn" sec:authorize="isAuthenticated()">
             <form th:method="post"

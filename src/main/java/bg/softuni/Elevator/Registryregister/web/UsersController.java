@@ -1,5 +1,6 @@
 package bg.softuni.Elevator.Registryregister.web;
 
+import bg.softuni.Elevator.Registryregister.model.dto.UserEditDTO;
 import bg.softuni.Elevator.Registryregister.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,10 +33,18 @@ public class UsersController {
     }
 
     @GetMapping("/editUser/{id}")
-    public String editUser(@PathVariable("id") Long id,
-                           Model model) {
+    public String editUserView(@PathVariable("id") Long id,
+                               Model model) {
         model.addAttribute("userDetails", userService.getUserDetails(id));
 
         return "edit-user";
+    }
+
+    @PutMapping("/editUser/{id}")
+    public String editUser(@PathVariable("id") Long id, UserEditDTO userEditDTO) {
+
+        userService.editUser(id, userEditDTO);
+
+        return "redirect:/users/all";
     }
 }
