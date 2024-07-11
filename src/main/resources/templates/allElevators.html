@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="navbar">
+    <a href="/">Home</a>
+</div>
+<div>
+    <h1>Elevator Management</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Elevator type</th>
+            <th>Manufacturer name</th>
+            <th>Speed</th>
+            <th>Number of stops</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="elevator : ${allElevators}"
+            th:object="${elevator}" class="container">
+            <td><span th:text="*{getId()}">Id</span></td>
+            <td><span th:text="*{getType()}">Elevator type</span></td>
+            <td><span th:text="*{getManufacturer()}">Manufacturer name</span></td>
+            <td><span th:text="*{getSpeed()}">Speed</span></td>
+            <td><span th:text="*{getNumberOfStops()}">Number of stops</span></td>
+            <td>
+                <form th:method="delete"
+                      th:action="@{/elevator/{id}(id=${elevator.getId()})}" >
+                    <input type="hidden" name="id" th:value="delete">
+                    <button type="submit">Delete</button>
+                </form>
+
+                <form th:method="get"
+                      th:action="@{/elevator/editElevator/{id}(id=*{id})}">
+                    <button onclick="editElevator(1)" th:method="get" th:href="@{/elevator/editElevator/{id}(id=*{id})}">Edit</button>
+                </form>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

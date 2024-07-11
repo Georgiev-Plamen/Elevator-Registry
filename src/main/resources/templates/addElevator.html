@@ -16,7 +16,7 @@
 </div>
 <div class="container">
     <h1>Add Elevator</h1>
-    <form action="/addElevator" method="post">
+    <form th:action="@{/elevator/addElevator}" th:method="post">
         <label for="type">Elevator Type:</label>
         <select id="type" name="type" required>
             <option value="ПЕАС">ПЕАС</option>

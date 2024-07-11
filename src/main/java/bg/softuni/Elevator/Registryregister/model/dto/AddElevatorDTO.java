@@ -1,6 +1,7 @@
 package bg.softuni.Elevator.Registryregister.model.dto;
 
 import bg.softuni.Elevator.Registryregister.model.entity.ElevatorType;
+import org.springframework.security.core.userdetails.User;
 
 import java.time.LocalDate;
 
@@ -10,9 +11,10 @@ public class AddElevatorDTO {
     private String manufacturerNumber;
     private int yearOfManufacture;
     private int speed;
-    private int numberOfSops;
+    private int numberOfStops;
     private LocalDate damtnDate;
     private int damtnNumber;
+    private User author;
 
     public AddElevatorDTO() {
     }
@@ -57,12 +59,12 @@ public class AddElevatorDTO {
         this.speed = speed;
     }
 
-    public int getNumberOfSops() {
-        return numberOfSops;
+    public int getNumberOfStops() {
+        return numberOfStops;
     }
 
-    public void setNumberOfSops(int numberOfSops) {
-        this.numberOfSops = numberOfSops;
+    public void setNumberOfStops(int numberOfStops) {
+        this.numberOfStops = numberOfStops;
     }
 
     public LocalDate getDamtnDate() {
@@ -79,5 +81,13 @@ public class AddElevatorDTO {
 
     public void setDamtnNumber(int damtnNumber) {
         this.damtnNumber = damtnNumber;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

@@ -14,7 +14,7 @@ public class Elevator extends BaseEntity {
     private String manufacturerNumber;
     private int yearOfManufacture;
     private int speed;
-    private int numberOfSops;
+    private int numberOfStops;
     private LocalDate damtnDate;
     private int damtnNumber;
 
@@ -28,63 +28,81 @@ public class Elevator extends BaseEntity {
         return type;
     }
 
-    public void setType(ElevatorType type) {
+    public Elevator setType(ElevatorType type) {
         this.type = type;
+        return this;
     }
 
     public String getManufacturer() {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
+    public Elevator setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
+        return this;
     }
 
     public String getManufacturerNumber() {
         return manufacturerNumber;
     }
 
-    public void setManufacturerNumber(String manufacturerNumber) {
+    public Elevator setManufacturerNumber(String manufacturerNumber) {
         this.manufacturerNumber = manufacturerNumber;
+        return this;
     }
 
     public int getYearOfManufacture() {
         return yearOfManufacture;
+
     }
 
-    public void setYearOfManufacture(int yearOfManufacture) {
+    public Elevator setYearOfManufacture(int yearOfManufacture) {
         this.yearOfManufacture = yearOfManufacture;
+        return this;
     }
 
     public int getSpeed() {
         return speed;
     }
 
-    public void setSpeed(int speed) {
+    public Elevator setSpeed(int speed) {
         this.speed = speed;
+        return this;
     }
 
-    public int getNumberOfSops() {
-        return numberOfSops;
+    public int getNumberOfStops() {
+        return numberOfStops;
     }
 
-    public void setNumberOfSops(int numberOfSops) {
-        this.numberOfSops = numberOfSops;
+    public Elevator setNumberOfStops(int numberOfSops) {
+        this.numberOfStops = numberOfSops;
+        return this;
     }
 
     public LocalDate getDamtnDate() {
         return damtnDate;
     }
 
-    public void setDamtnDate(LocalDate damtnDate) {
+    public Elevator setDamtnDate(LocalDate damtnDate) {
         this.damtnDate = damtnDate;
+        return this;
     }
 
     public int getDamtnNumber() {
         return damtnNumber;
     }
 
-    public void setDamtnNumber(int damtnNumber) {
+    public Elevator setDamtnNumber(int damtnNumber) {
         this.damtnNumber = damtnNumber;
+        return this;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public Elevator setAuthor(User author) {
+        this.author = author;
+        return this;
     }
 }
