@@ -25,14 +25,14 @@
         <tbody>
         <tr th:each="elevator : ${allElevators}"
             th:object="${elevator}" class="container">
-            <td><span th:text="*{getId()}">Id</span></td>
-            <td><span th:text="*{getType()}">Elevator type</span></td>
-            <td><span th:text="*{getManufacturer()}">Manufacturer name</span></td>
-            <td><span th:text="*{getSpeed()}">Speed</span></td>
-            <td><span th:text="*{getNumberOfStops()}">Number of stops</span></td>
+            <td><span th:text="*{id()}">Id</span></td>
+            <td><span th:text="*{type()}">Elevator type</span></td>
+            <td><span th:text="*{manufacturer()}">Manufacturer name</span></td>
+            <td><span th:text="*{speed()}">Speed</span></td>
+            <td><span th:text="*{numberOfStops()}">Number of stops</span></td>
             <td>
                 <form th:method="delete"
-                      th:action="@{/elevator/{id}(id=${elevator.getId()})}" >
+                      th:action="@{/elevator/{id}(id=${elevator.id()})}" >
                     <input type="hidden" name="id" th:value="delete">
                     <button type="submit">Delete</button>
                 </form>

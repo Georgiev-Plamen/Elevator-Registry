@@ -38,7 +38,7 @@ public class ElevatorController {
     @DeleteMapping("/{id}")
     public String deleteElevator(@PathVariable("id") Long id) {
         elevatorService.deleteElevator(id);
-        return "redirect:/allElevator";
+        return "redirect:/elevator/allElevator";
     }
 
     @GetMapping("/editElevator")
