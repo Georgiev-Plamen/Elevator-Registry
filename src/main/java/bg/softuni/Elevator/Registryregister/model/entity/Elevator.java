@@ -12,7 +12,7 @@ public class Elevator extends BaseEntity {
     private ElevatorType type;
     private String manufacturer;
     private String manufacturerNumber;
-    private int yearOfManufacture;
+    private String yearOfManufacture;
     private int speed;
     private int numberOfStops;
     private LocalDate damtnDate;
@@ -51,12 +51,12 @@ public class Elevator extends BaseEntity {
         return this;
     }
 
-    public int getYearOfManufacture() {
+    public String getYearOfManufacture() {
         return yearOfManufacture;
 
     }
 
-    public Elevator setYearOfManufacture(int yearOfManufacture) {
+    public Elevator setYearOfManufacture(String yearOfManufacture) {
         this.yearOfManufacture = yearOfManufacture;
         return this;
     }

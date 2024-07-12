@@ -54,7 +54,16 @@ public class ElevatorServiceImpl implements ElevatorService {
 
     @Override
     public ElevatorDetailsDTO getElevatorDetails(Long id) {
-        return modelMapper.map(appUserDetailsService.getUserById(id), ElevatorDetailsDTO.class);
+        return modelMapper.map(elevatorRepository.getReferenceById(id), ElevatorDetailsDTO.class);
+    }
+
+    @Override
+    public void editElevator(Long id, ElevatorDetailsDTO elevatorDetailsDTO) {
+        Elevator elevator = elevatorRepository.getReferenceById(id);
+
+        elevator = modelMapper.map(elevatorDetailsDTO, Elevator.class);
+
+        elevatorRepository.save(elevator);
     }
 
     private static ElevatorListDTO toAllElevator (Elevator elevator) {

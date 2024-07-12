@@ -1,6 +1,7 @@
 package bg.softuni.Elevator.Registryregister.web;
 
 import bg.softuni.Elevator.Registryregister.model.dto.AddElevatorDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDetailsDTO;
 import bg.softuni.Elevator.Registryregister.service.ElevatorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,12 +42,20 @@ public class ElevatorController {
         return "redirect:/elevator/allElevator";
     }
 
-    @GetMapping("/editElevator")
+    @GetMapping("/editElevator/{id}")
     public String editElevator(@PathVariable("id") Long id,
                                Model model) {
         model.addAttribute("elevatorDetails", elevatorService.getElevatorDetails(id));
 
         return "editElevator";
+    }
+
+    @PutMapping("/editElevator/{id}")
+    public String editElevator(@PathVariable("id") Long id, ElevatorDetailsDTO elevatorDetailsDTO) {
+
+        elevatorService.editElevator(id, elevatorDetailsDTO);
+
+        return "redirect:/elevator/allElevators";
     }
 
 

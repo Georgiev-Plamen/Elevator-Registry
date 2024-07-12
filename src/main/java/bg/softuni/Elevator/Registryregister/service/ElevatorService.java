@@ -16,4 +16,6 @@ public interface ElevatorService {
 
     ElevatorDetailsDTO getElevatorDetails(Long id);
 
+    void editElevator(Long id, ElevatorDetailsDTO elevatorDetailsDTO);
+
 }

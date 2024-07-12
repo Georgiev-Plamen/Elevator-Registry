@@ -9,11 +9,11 @@ public class AddElevatorDTO {
     private ElevatorType type;
     private String manufacturer;
     private String manufacturerNumber;
-    private int yearOfManufacture;
+    private String yearOfManufacture;
     private int speed;
     private int numberOfStops;
     private LocalDate damtnDate;
-    private int damtnNumber;
+    private String damtnNumber;
     private User author;
 
     public AddElevatorDTO() {
@@ -43,11 +43,11 @@ public class AddElevatorDTO {
         this.manufacturerNumber = manufacturerNumber;
     }
 
-    public int getYearOfManufacture() {
+    public String getYearOfManufacture() {
         return yearOfManufacture;
     }
 
-    public void setYearOfManufacture(int yearOfManufacture) {
+    public void setYearOfManufacture(String yearOfManufacture) {
         this.yearOfManufacture = yearOfManufacture;
     }
 
@@ -75,11 +75,11 @@ public class AddElevatorDTO {
         this.damtnDate = damtnDate;
     }
 
-    public int getDamtnNumber() {
+    public String getDamtnNumber() {
         return damtnNumber;
     }
 
-    public void setDamtnNumber(int damtnNumber) {
+    public void setDamtnNumber(String damtnNumber) {
         this.damtnNumber = damtnNumber;
     }
 
