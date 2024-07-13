@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-<!--<div th:replace="fragments/commons::commons"></div>-->
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
+
 <div class="container">
     <h1>Welcome to Elevator Registry!</h1>
     <div sec:authorize="isAuthenticated()">Welcome : <span th:text="${userData}"></span></div>
