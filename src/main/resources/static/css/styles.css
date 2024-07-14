@@ -17,7 +17,7 @@ body {
     background-color: #b6b6b6;
     border-radius: 8px;
     overflow: hidden;
-    display: inline-block;
+    display: flex;
     width: 100%;
 }
 
@@ -37,6 +37,7 @@ body {
 .dropdown {
     display: inline-block;
     position: relative;
+    color: #f2f2f2
 }
 .dropdown .dropbtn {
     cursor: pointer;
@@ -56,7 +57,7 @@ body {
 
 .navbar a:hover, .dropdown:hover .dropbtn {
     background-color: #ddd;
-    color: black;
+    color: #fff;
 }
 
 .dropdown {
@@ -65,7 +66,7 @@ body {
 }
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px;
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
@@ -111,6 +112,7 @@ input {
 
 button {
     padding: 10px;
+    margin: 2px;
     font-size: 16px;
     background-color: #007BFF;
     color: #fff;

@@ -7,19 +7,17 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-<div class="navbar">
-    <a href="/">Home</a>
-</div>
+    <div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
 <div>
     <h1>Elevator Management</h1>
     <table>
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Elevator type</th>
-            <th>Manufacturer name</th>
-            <th>Speed</th>
-            <th>Number of stops</th>
+            <th th:text="#{registry_id}">Id</th>
+            <th th:text="#{registry_elevator_type}">Elevator type</th>
+            <th th:text="#{registry_manufacturer_name}">Manufacturer name</th>
+            <th th:text="#{registry_speed}">Speed</th>
+            <th th:text="#{registry_number_of_stops}">Number of stops</th>
         </tr>
         </thead>
         <tbody>

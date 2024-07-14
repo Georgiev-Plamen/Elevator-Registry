@@ -7,12 +7,7 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-<div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="register.html">Register</a>
-    <a href="login.html">Login</a>
-    <a href="users.html">User Management</a>
-</div>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
 <div class="container">
     <h1>Edit Elevator</h1>
     <form th:object="${elevatorDetails}" th:action="@{/elevator/editElevator/{id}(id=*{id})}" th:method="PUT">
@@ -20,9 +15,10 @@
         <input type="hidden" name="id" id="userId" th:value="*{id}">
 
         <label for="type">Elevator type:</label>
-        <input type="text" id="type" name="type"
-               th:value="*{type}"
-               required><br><br>
+        <select id="type" name="type" th:value="*{type}" required>
+            <option value="ПЕАС">ПЕАС</option>
+            <option value="ПХАС">ПХАС</option>
+        </select><br><br>
 
         <label for="manufacturer">Manufacturer:</label>
         <input type="text" id="manufacturer" name="manufacturer"
@@ -51,10 +47,9 @@
         <label for="damtnNumber">DAMTN Number:</label>
         <input type="text" id="damtnNumber" name="damtnNumber"
                th:value="*{damtnNumber}" required><br><br>
-        <!--        <label for="password">Password:</label>-->
-        <!--        <input type="password" id="password" name="password" required><br><br>-->
 
         <button type="submit">Save</button>
+        <button onclick="location.href='/elevator/allElevators'">Back</button>
     </form>
 </div>
 </body>

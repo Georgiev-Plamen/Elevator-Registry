@@ -4,12 +4,18 @@ import bg.softuni.Elevator.Registryregister.model.dto.AddElevatorDTO;
 import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDetailsDTO;
 import bg.softuni.Elevator.Registryregister.model.dto.ElevatorListDTO;
 import bg.softuni.Elevator.Registryregister.model.entity.Elevator;
+import bg.softuni.Elevator.Registryregister.model.entity.User;
+import bg.softuni.Elevator.Registryregister.model.user.AppUserDetails;
 import bg.softuni.Elevator.Registryregister.repository.ElevatorRepository;
+import bg.softuni.Elevator.Registryregister.repository.UserRepository;
 import bg.softuni.Elevator.Registryregister.service.AppUserDetailsService;
 import bg.softuni.Elevator.Registryregister.service.ElevatorService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 
 @Service
@@ -17,13 +23,12 @@ public class ElevatorServiceImpl implements ElevatorService {
 
     private final ElevatorRepository elevatorRepository;
     private final ModelMapper modelMapper;
+    private final UserRepository userRepository;
 
-    private final AppUserDetailsService appUserDetailsService;
-
-    public ElevatorServiceImpl(ElevatorRepository elevatorRepository, ModelMapper modelMapper, AppUserDetailsService appUserDetailsService) {
+    public ElevatorServiceImpl(ElevatorRepository elevatorRepository, ModelMapper modelMapper, UserRepository userRepository) {
         this.elevatorRepository = elevatorRepository;
         this.modelMapper = modelMapper;
-        this.appUserDetailsService = appUserDetailsService;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -33,6 +38,7 @@ public class ElevatorServiceImpl implements ElevatorService {
 
     private Elevator map(AddElevatorDTO addElevatorDTO) {
         Elevator mappedEntity = modelMapper.map(addElevatorDTO, Elevator.class);
+//        mappedEntity.setAuthor(userRepository.getReferenceById());
 
         //TODO:
         //        mappedEntity.setAuthor(appUserDetailsService.getUserById());
@@ -72,7 +78,8 @@ public class ElevatorServiceImpl implements ElevatorService {
                 elevator.getType(),
                 elevator.getManufacturer(),
                 elevator.getSpeed(),
-                elevator.getNumberOfStops()
+                elevator.getNumberOfStops(),
+                elevator.getAuthor()
         );
 
     }
