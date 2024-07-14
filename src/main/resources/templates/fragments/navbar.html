@@ -12,7 +12,7 @@
     <div th:fragment="navbar(activeLink)">
     <div class="container">
         <div class="navbar">
-            <a href="index.html" >Home</a>
+            <a href="/" >Home</a>
             <a  sec:authorize="!isAuthenticated()" href="/users/register" th:text="#{nav_bar_register}">Register</a>
             <a sec:authorize="!isAuthenticated()" href="/users/login" th:text="#{nav_bar_login}">>Login</a>
             <a sec:authorize="isAuthenticated()" href="/users/all" th:text="#{nav_bar_userControl}">User Management</a>

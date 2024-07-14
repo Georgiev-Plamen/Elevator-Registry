@@ -17,6 +17,7 @@ public class Elevator extends BaseEntity {
     private int numberOfStops;
     private LocalDate damtnDate;
     private int damtnNumber;
+    private LocalDate lastCheck;
 
     @ManyToOne
     private User author;
@@ -97,12 +98,20 @@ public class Elevator extends BaseEntity {
         return this;
     }
 
+
     public User getAuthor() {
         return author;
     }
 
     public Elevator setAuthor(User author) {
         this.author = author;
+        return this;
+    }
+
+    public LocalDate getLastCheck()  {return lastCheck;}
+
+    public Elevator setLastCheck(LocalDate lastCheck) {
+        this.lastCheck = lastCheck;
         return this;
     }
 }

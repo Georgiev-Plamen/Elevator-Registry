@@ -18,6 +18,16 @@ public class ElevatorDetailsDTO {
     private String damtnNumber;
     private User author;
 
+    public LocalDate getLastCheck() {
+        return lastCheck;
+    }
+
+    public void setLastCheck(LocalDate lastCheck) {
+        this.lastCheck = lastCheck;
+    }
+
+    private LocalDate lastCheck;
+
     public ElevatorDetailsDTO() {
     }
 

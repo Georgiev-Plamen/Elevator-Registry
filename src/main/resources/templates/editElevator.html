@@ -48,6 +48,10 @@
         <input type="text" id="damtnNumber" name="damtnNumber"
                th:value="*{damtnNumber}" required><br><br>
 
+        <label for="lastCheck">Last check:</label>
+        <input type="date" id="lastCheck" name="lastCheck"
+               th:value="*{lastCheck}" required><br><br>
+
         <button type="submit">Save</button>
         <button onclick="location.href='/elevator/allElevators'">Back</button>
     </form>

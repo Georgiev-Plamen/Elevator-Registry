@@ -14,6 +14,17 @@ public class AddElevatorDTO {
     private int numberOfStops;
     private LocalDate damtnDate;
     private String damtnNumber;
+
+    private LocalDate lastCheck;
+
+    public LocalDate getLastCheck() {
+        return lastCheck;
+    }
+
+    public void setLastCheck(LocalDate lastCheck) {
+        this.lastCheck = lastCheck;
+    }
+
     private User author;
 
     public AddElevatorDTO() {

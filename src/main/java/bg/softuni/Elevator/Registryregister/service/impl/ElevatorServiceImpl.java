@@ -79,7 +79,7 @@ public class ElevatorServiceImpl implements ElevatorService {
                 elevator.getManufacturer(),
                 elevator.getSpeed(),
                 elevator.getNumberOfStops(),
-                elevator.getAuthor()
+                elevator.getLastCheck()
         );
 
     }
