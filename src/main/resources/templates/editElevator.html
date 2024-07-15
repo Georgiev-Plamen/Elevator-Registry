@@ -52,10 +52,16 @@
         <input type="date" id="firstCheck" name="firstCheck"
                th:value="*{firstCheck}" required><br><br>
 
-<!--        <label for="author">Added by:</label>-->
+        <label for="author">Added by:</label>
 <!--        <input type="text" id="author" name="author"-->
-<!--               th:value="*{author.username}" required><br><br>-->
-
+<!--               th:value="*{author}" required><br><br>-->
+        <select id="author" name="author" th:field="*{author}">
+            <option value="">- Select user -</option>
+            <option th:each="user : ${allUser}"
+                    th:value="${user.username}"
+                    th:text="${user.username}"
+                    required>user</option>
+        </select>
 
         <button type="submit">Save</button>
         <button onclick="location.href='/elevator/allElevators'">Back</button>

@@ -3,6 +3,7 @@ package bg.softuni.Elevator.Registryregister.web;
 import bg.softuni.Elevator.Registryregister.model.dto.AddElevatorDTO;
 import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDetailsDTO;
 import bg.softuni.Elevator.Registryregister.service.ElevatorService;
+import bg.softuni.Elevator.Registryregister.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/elevator")
 public class ElevatorController {
     private final ElevatorService elevatorService;
+    private final UserService userService;
 
-    public ElevatorController(ElevatorService elevatorService) {
+    public ElevatorController(ElevatorService elevatorService, UserService userService) {
         this.elevatorService = elevatorService;
+        this.userService = userService;
     }
 
     @GetMapping("/allElevators")
@@ -48,6 +51,7 @@ public class ElevatorController {
     public String editElevator(@PathVariable("id") Long id,
                                Model model) {
         model.addAttribute("elevatorDetails", elevatorService.getElevatorDetails(id));
+        model.addAttribute("allUser", userService.getAllUsers());
 
         return "editElevator";
     }

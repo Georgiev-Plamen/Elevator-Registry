@@ -38,10 +38,7 @@ public class ElevatorServiceImpl implements ElevatorService {
     private Elevator map(AddElevatorDTO addElevatorDTO, UserDetails userDetails) {
         Elevator mappedEntity = modelMapper.map(addElevatorDTO, Elevator.class);
         mappedEntity.setAuthor(userRepository.findByUsername(userDetails.getUsername()).get());
-//        mappedEntity.setAuthor(userRepository.getReferenceById());
 
-        //TODO:
-        //        mappedEntity.setAuthor(appUserDetailsService.getUserById());
         return mappedEntity;
     }
 
@@ -63,11 +60,11 @@ public class ElevatorServiceImpl implements ElevatorService {
         return modelMapper.map(elevatorRepository.getReferenceById(id), ElevatorDetailsDTO.class);
     }
 
+
     @Override
     public void editElevator(Long id, ElevatorDetailsDTO elevatorDetailsDTO) {
         Elevator elevator = elevatorRepository.getReferenceById(id);
-
-        elevator = modelMapper.map(elevatorDetailsDTO, Elevator.class);
+        elevator.setAuthor(userRepository.findByUsername(elevatorDetailsDTO.getAuthor()).get());
 
         elevatorRepository.save(elevator);
     }
@@ -84,6 +81,5 @@ public class ElevatorServiceImpl implements ElevatorService {
                 elevator.getAuthor().getUsername()
         );
 
-    }
-
+        }
 }

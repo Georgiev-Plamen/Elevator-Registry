@@ -18,6 +18,7 @@ public class ElevatorDetailsDTO {
     private String damtnNumber;
 //    private User author;
     private LocalDate firstCheck;
+    private String author;
 
     public ElevatorDetailsDTO() {
     }
@@ -94,19 +95,19 @@ public class ElevatorDetailsDTO {
         this.damtnNumber = damtnNumber;
     }
 
-//    public User getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(User author) {
-//        this.author = author;
-//    }
-
     public LocalDate getFirstCheck() {
         return firstCheck;
     }
 
     public void setFirstCheck(LocalDate firstCheck) {
         this.firstCheck = firstCheck;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
