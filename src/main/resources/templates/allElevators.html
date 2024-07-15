@@ -18,6 +18,7 @@
             <th th:text="#{registry_manufacturer_name}">Manufacturer name</th>
             <th th:text="#{registry_speed}">Speed</th>
             <th th:text="#{registry_number_of_stops}">Number of stops</th>
+            <th th:text="#{registry_added_by}">Added by</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
             <td><span th:text="*{manufacturer()}">Manufacturer name</span></td>
             <td><span th:text="*{speed()}">Speed</span></td>
             <td><span th:text="*{numberOfStops()}">Number of stops</span></td>
+            <td><span th:text="*{author()}">Added by</span></td>
             <td>
                 <form th:method="delete"
                       th:action="@{/elevator/{id}(id=${elevator.id()})}" >

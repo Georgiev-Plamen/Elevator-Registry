@@ -1,6 +1,7 @@
 package bg.softuni.Elevator.Registryregister.model.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
 
 import java.time.LocalDate;
 
@@ -19,7 +20,7 @@ public class Elevator extends BaseEntity {
     private String damtnNumber;
     private LocalDate firstCheck;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User author;
 
     public Elevator() {

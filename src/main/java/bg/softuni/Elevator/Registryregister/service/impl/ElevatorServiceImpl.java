@@ -8,6 +8,7 @@ import bg.softuni.Elevator.Registryregister.repository.ElevatorRepository;
 import bg.softuni.Elevator.Registryregister.repository.UserRepository;
 import bg.softuni.Elevator.Registryregister.service.AppUserDetailsService;
 import bg.softuni.Elevator.Registryregister.service.ElevatorService;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -67,21 +68,11 @@ public class ElevatorServiceImpl implements ElevatorService {
         Elevator elevator = elevatorRepository.getReferenceById(id);
 
         elevator = modelMapper.map(elevatorDetailsDTO, Elevator.class);
-//        elevator.setType(elevatorDetailsDTO.getType());
-//        elevator.setManufacturer(elevatorDetailsDTO.getManufacturer());
-//        elevator.setManufacturer(elevatorDetailsDTO.getManufacturerNumber());
-//        elevator.setYearOfManufacture(elevatorDetailsDTO.getYearOfManufacture());
-//        elevator.setSpeed(elevatorDetailsDTO.getSpeed());
-//        elevator.setNumberOfStops(elevatorDetailsDTO.getNumberOfStops());
-//        elevator.setDamtnDate(elevatorDetailsDTO.getDamtnDate());
-//        elevator.setDamtnNumber(elevatorDetailsDTO.getDamtnNumber());
-//        elevator.setFirstCheck(elevatorDetailsDTO.getFirstCheck());
-
-//        elevator.setAuthor(userRepository.findByUsername(elevatorDetailsDTO.getAuthor().getUsername()).get());
 
         elevatorRepository.save(elevator);
     }
 
+    @Transactional
     private static ElevatorListDTO toAllElevator (Elevator elevator) {
         return new ElevatorListDTO(
                 elevator.getId(),
@@ -89,7 +80,8 @@ public class ElevatorServiceImpl implements ElevatorService {
                 elevator.getManufacturer(),
                 elevator.getSpeed(),
                 elevator.getNumberOfStops(),
-                elevator.getFirstCheck()
+                elevator.getFirstCheck(),
+                elevator.getAuthor().getUsername()
         );
 
     }
