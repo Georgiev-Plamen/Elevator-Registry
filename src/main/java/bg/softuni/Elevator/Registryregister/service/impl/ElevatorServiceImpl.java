@@ -4,18 +4,14 @@ import bg.softuni.Elevator.Registryregister.model.dto.AddElevatorDTO;
 import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDetailsDTO;
 import bg.softuni.Elevator.Registryregister.model.dto.ElevatorListDTO;
 import bg.softuni.Elevator.Registryregister.model.entity.Elevator;
-import bg.softuni.Elevator.Registryregister.model.entity.User;
-import bg.softuni.Elevator.Registryregister.model.user.AppUserDetails;
 import bg.softuni.Elevator.Registryregister.repository.ElevatorRepository;
 import bg.softuni.Elevator.Registryregister.repository.UserRepository;
 import bg.softuni.Elevator.Registryregister.service.AppUserDetailsService;
 import bg.softuni.Elevator.Registryregister.service.ElevatorService;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
 import java.util.List;
 
 @Service
@@ -24,20 +20,23 @@ public class ElevatorServiceImpl implements ElevatorService {
     private final ElevatorRepository elevatorRepository;
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
+    private final AppUserDetailsService appUserDetailsService;
 
-    public ElevatorServiceImpl(ElevatorRepository elevatorRepository, ModelMapper modelMapper, UserRepository userRepository) {
+    public ElevatorServiceImpl(ElevatorRepository elevatorRepository, ModelMapper modelMapper, UserRepository userRepository, AppUserDetailsService appUserDetailsService) {
         this.elevatorRepository = elevatorRepository;
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
+        this.appUserDetailsService = appUserDetailsService;
     }
 
     @Override
-    public void AddNewElevator(AddElevatorDTO addElevatorDTO) {
-        elevatorRepository.save(map(addElevatorDTO));
+    public void AddNewElevator(AddElevatorDTO addElevatorDTO, UserDetails userDetails) {
+        elevatorRepository.save(map(addElevatorDTO, userDetails));
     }
 
-    private Elevator map(AddElevatorDTO addElevatorDTO) {
+    private Elevator map(AddElevatorDTO addElevatorDTO, UserDetails userDetails) {
         Elevator mappedEntity = modelMapper.map(addElevatorDTO, Elevator.class);
+        mappedEntity.setAuthor(userRepository.findByUsername(userDetails.getUsername()).get());
 //        mappedEntity.setAuthor(userRepository.getReferenceById());
 
         //TODO:
@@ -68,6 +67,17 @@ public class ElevatorServiceImpl implements ElevatorService {
         Elevator elevator = elevatorRepository.getReferenceById(id);
 
         elevator = modelMapper.map(elevatorDetailsDTO, Elevator.class);
+//        elevator.setType(elevatorDetailsDTO.getType());
+//        elevator.setManufacturer(elevatorDetailsDTO.getManufacturer());
+//        elevator.setManufacturer(elevatorDetailsDTO.getManufacturerNumber());
+//        elevator.setYearOfManufacture(elevatorDetailsDTO.getYearOfManufacture());
+//        elevator.setSpeed(elevatorDetailsDTO.getSpeed());
+//        elevator.setNumberOfStops(elevatorDetailsDTO.getNumberOfStops());
+//        elevator.setDamtnDate(elevatorDetailsDTO.getDamtnDate());
+//        elevator.setDamtnNumber(elevatorDetailsDTO.getDamtnNumber());
+//        elevator.setFirstCheck(elevatorDetailsDTO.getFirstCheck());
+
+//        elevator.setAuthor(userRepository.findByUsername(elevatorDetailsDTO.getAuthor().getUsername()).get());
 
         elevatorRepository.save(elevator);
     }
@@ -79,7 +89,7 @@ public class ElevatorServiceImpl implements ElevatorService {
                 elevator.getManufacturer(),
                 elevator.getSpeed(),
                 elevator.getNumberOfStops(),
-                elevator.getLastCheck()
+                elevator.getFirstCheck()
         );
 
     }

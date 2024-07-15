@@ -3,6 +3,8 @@ package bg.softuni.Elevator.Registryregister.web;
 import bg.softuni.Elevator.Registryregister.model.dto.AddElevatorDTO;
 import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDetailsDTO;
 import bg.softuni.Elevator.Registryregister.service.ElevatorService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +33,8 @@ public class ElevatorController {
     }
 
     @PostMapping("/addElevator")
-    public String addElevator(AddElevatorDTO addElevatorDTO) {
-        elevatorService.AddNewElevator(addElevatorDTO);
+    public String addElevator(@AuthenticationPrincipal UserDetails userDetails, AddElevatorDTO addElevatorDTO) {
+        elevatorService.AddNewElevator(addElevatorDTO, userDetails);
         return "redirect:/elevator/allElevators";
     }
 

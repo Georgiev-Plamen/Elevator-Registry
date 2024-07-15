@@ -14,17 +14,7 @@ public class AddElevatorDTO {
     private int numberOfStops;
     private LocalDate damtnDate;
     private String damtnNumber;
-
-    private LocalDate lastCheck;
-
-    public LocalDate getLastCheck() {
-        return lastCheck;
-    }
-
-    public void setLastCheck(LocalDate lastCheck) {
-        this.lastCheck = lastCheck;
-    }
-
+    private LocalDate firstCheck;
     private User author;
 
     public AddElevatorDTO() {
@@ -92,6 +82,14 @@ public class AddElevatorDTO {
 
     public void setDamtnNumber(String damtnNumber) {
         this.damtnNumber = damtnNumber;
+    }
+
+    public LocalDate getFirstCheck() {
+        return firstCheck;
+    }
+
+    public void setFirstCheck(LocalDate firstCheck) {
+        this.firstCheck = firstCheck;
     }
 
     public User getAuthor() {

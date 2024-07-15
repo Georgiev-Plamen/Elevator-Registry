@@ -11,6 +11,6 @@ public record ElevatorListDTO (
         String manufacturer,
         int speed,
         int numberOfStops,
-        LocalDate lastCheck){
+        LocalDate firstCheck){
 
 }
