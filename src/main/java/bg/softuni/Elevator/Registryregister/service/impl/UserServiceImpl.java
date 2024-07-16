@@ -1,7 +1,7 @@
 package bg.softuni.Elevator.Registryregister.service.impl;
 
-import bg.softuni.Elevator.Registryregister.model.dto.UserEditDTO;
-import bg.softuni.Elevator.Registryregister.model.dto.UserRegistrationDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.UserDTOs.UserEditDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.UserDTOs.UserRegistrationDTO;
 import bg.softuni.Elevator.Registryregister.model.entity.User;
 import bg.softuni.Elevator.Registryregister.repository.UserRepository;
 import bg.softuni.Elevator.Registryregister.service.AppUserDetailsService;

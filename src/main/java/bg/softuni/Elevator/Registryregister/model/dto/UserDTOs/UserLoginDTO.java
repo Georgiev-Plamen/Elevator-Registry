@@ -1,4 +1,4 @@
-package bg.softuni.Elevator.Registryregister.model.dto;
+package bg.softuni.Elevator.Registryregister.model.dto.UserDTOs;
 
 public class UserLoginDTO {
     private String username;

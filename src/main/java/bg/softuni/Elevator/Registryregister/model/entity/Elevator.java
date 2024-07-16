@@ -1,7 +1,7 @@
 package bg.softuni.Elevator.Registryregister.model.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Fetch;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.time.LocalDate;
 
@@ -16,9 +16,13 @@ public class Elevator extends BaseEntity {
     private String yearOfManufacture;
     private int speed;
     private int numberOfStops;
-    private LocalDate damtnDate;
-    private String damtnNumber;
-    private LocalDate firstCheck;
+    private String city;
+    private String address;
+    private LocalDate registerDate;
+    @ManyToOne
+    private Customer owner;
+    @ManyToOne(targetEntity = Inspection.class)
+    private Inspection inspection;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private User author;
@@ -81,25 +85,6 @@ public class Elevator extends BaseEntity {
         return this;
     }
 
-    public LocalDate getDamtnDate() {
-        return damtnDate;
-    }
-
-    public Elevator setDamtnDate(LocalDate damtnDate) {
-        this.damtnDate = damtnDate;
-        return this;
-    }
-
-    public String getDamtnNumber() {
-        return damtnNumber;
-    }
-
-    public Elevator setDamtnNumber(String damtnNumber) {
-        this.damtnNumber = damtnNumber;
-        return this;
-    }
-
-
     public User getAuthor() {
         return author;
     }
@@ -109,10 +94,26 @@ public class Elevator extends BaseEntity {
         return this;
     }
 
-    public LocalDate getFirstCheck()  {return firstCheck;}
+    public String getCity() {
+        return city;
+    }
 
-    public Elevator setFirstCheck(LocalDate firstCheck) {
-        this.firstCheck = firstCheck;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public LocalDate getRegisterDate()  {return registerDate;}
+
+    public Elevator setRegisterDate(LocalDate firstCheck) {
+        this.registerDate = firstCheck;
         return this;
     }
 }

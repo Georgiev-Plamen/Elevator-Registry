@@ -1,14 +1,13 @@
 package bg.softuni.Elevator.Registryregister.service.impl;
 
-import bg.softuni.Elevator.Registryregister.model.dto.AddElevatorDTO;
-import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDetailsDTO;
-import bg.softuni.Elevator.Registryregister.model.dto.ElevatorListDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDTOs.AddElevatorDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDTOs.ElevatorDetailsDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDTOs.ElevatorListDTO;
 import bg.softuni.Elevator.Registryregister.model.entity.Elevator;
 import bg.softuni.Elevator.Registryregister.repository.ElevatorRepository;
 import bg.softuni.Elevator.Registryregister.repository.UserRepository;
 import bg.softuni.Elevator.Registryregister.service.AppUserDetailsService;
 import bg.softuni.Elevator.Registryregister.service.ElevatorService;
-import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -69,7 +68,14 @@ public class ElevatorServiceImpl implements ElevatorService {
         elevatorRepository.save(elevator);
     }
 
-    @Transactional
+    @Override
+    public String findAuthorOnElevator(ElevatorDetailsDTO elevatorDetailsDTO) {
+        Elevator elevator = elevatorRepository.findById(elevatorDetailsDTO.getId()).get();
+        String author = elevator.getAuthor().getUsername();
+
+        return author;
+    }
+
     private static ElevatorListDTO toAllElevator (Elevator elevator) {
         return new ElevatorListDTO(
                 elevator.getId(),
@@ -77,7 +83,7 @@ public class ElevatorServiceImpl implements ElevatorService {
                 elevator.getManufacturer(),
                 elevator.getSpeed(),
                 elevator.getNumberOfStops(),
-                elevator.getFirstCheck(),
+                elevator.getRegisterDate(),
                 elevator.getAuthor().getUsername()
         );
 

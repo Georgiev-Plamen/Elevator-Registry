@@ -1,7 +1,7 @@
 package bg.softuni.Elevator.Registryregister.web;
 
-import bg.softuni.Elevator.Registryregister.model.dto.AddElevatorDTO;
-import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDetailsDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDTOs.AddElevatorDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDTOs.ElevatorDetailsDTO;
 import bg.softuni.Elevator.Registryregister.service.ElevatorService;
 import bg.softuni.Elevator.Registryregister.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -51,6 +51,7 @@ public class ElevatorController {
     public String editElevator(@PathVariable("id") Long id,
                                Model model) {
         model.addAttribute("elevatorDetails", elevatorService.getElevatorDetails(id));
+        model.addAttribute("addedBy", elevatorService.findAuthorOnElevator(elevatorService.getElevatorDetails(id)));
         model.addAttribute("allUser", userService.getAllUsers());
 
         return "editElevator";

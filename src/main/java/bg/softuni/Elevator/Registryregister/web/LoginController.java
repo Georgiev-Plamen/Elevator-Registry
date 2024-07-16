@@ -1,6 +1,6 @@
 package bg.softuni.Elevator.Registryregister.web;
 
-import bg.softuni.Elevator.Registryregister.model.dto.UserLoginDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.UserDTOs.UserLoginDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

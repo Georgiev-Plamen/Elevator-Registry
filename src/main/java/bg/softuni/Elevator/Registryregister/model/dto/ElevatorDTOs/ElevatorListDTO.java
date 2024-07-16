@@ -1,4 +1,4 @@
-package bg.softuni.Elevator.Registryregister.model.dto;
+package bg.softuni.Elevator.Registryregister.model.dto.ElevatorDTOs;
 
 import bg.softuni.Elevator.Registryregister.model.entity.ElevatorType;
 

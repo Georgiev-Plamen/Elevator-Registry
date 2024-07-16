@@ -1,6 +1,6 @@
 package bg.softuni.Elevator.Registryregister.web;
 
-import bg.softuni.Elevator.Registryregister.model.dto.UserEditDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.UserDTOs.UserEditDTO;
 import bg.softuni.Elevator.Registryregister.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
