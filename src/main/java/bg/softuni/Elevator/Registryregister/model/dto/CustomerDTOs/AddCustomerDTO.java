@@ -1,15 +1,6 @@
-package bg.softuni.Elevator.Registryregister.model.entity;
+package bg.softuni.Elevator.Registryregister.model.dto.CustomerDTOs;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
-@Table(name="customers")
-public class Customer extends BaseEntity{
+public class AddCustomerDTO {
     private String customerName;
     private String customerVat;
     private String customerAddress;
@@ -17,13 +8,8 @@ public class Customer extends BaseEntity{
     private String telNumber;
     private String email;
 
-    @OneToMany(targetEntity = Elevator.class, mappedBy = "owner")
-    private List<Elevator> elevatorList;
-
-    public Customer() {
-        this.elevatorList = new ArrayList<>();
+    public AddCustomerDTO(String customerName, String customerVat, String customerAddress, String contactPerson, String telNumber, String email) {
     }
-
 
     public String getCustomerName() {
         return customerName;
@@ -71,13 +57,5 @@ public class Customer extends BaseEntity{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<Elevator> getElevatorList() {
-        return elevatorList;
-    }
-
-    public void setElevatorList(List<Elevator> elevatorList) {
-        this.elevatorList = elevatorList;
     }
 }

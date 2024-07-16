@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All customers</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
+<div class="container">
+    <h1>All customers</h1>
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{customer_name}">id</th>
+            <th th:text="#{customer_vat}">Elevator type</th>
+            <th th:text="#{customer_address}">Manufacturer name</th>
+            <th th:text="#{customer_contact_person}">Speed</th>
+            <th th:text="#{customer_tel}">Number of stops</th>
+            <th th:text="#{customer_email}">Added by</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${allCustomers}"
+            th:object="${customer}" class="container">
+            <td><span th:text="*{customerName()}">Id</span></td>
+            <td><span th:text="*{customerVat()}">Elevator type</span></td>
+            <td><span th:text="*{customerAddress()}">Manufacturer name</span></td>
+            <td><span th:text="*{contactPerson()}">Speed</span></td>
+            <td><span th:text="*{telNumber()}">Number of stops</span></td>
+            <td><span th:text="*{email()}">Added by</span></td>
+            <td>
+<!--                <form th:method="delete"-->
+<!--                      th:action="@{/customer/{id}(id=${customer.id()})}" >-->
+<!--                    <input type="hidden" name="id" th:value="delete">-->
+<!--                    <button type="submit">Delete</button>-->
+<!--                </form>-->
+
+<!--                <form th:method="get"-->
+<!--                      th:action="@{/customer/editCustomer/{id}(id=*{id})}">-->
+<!--                    <button onclick="editCustomer(1)" th:method="get" th:href="@{/customer/editCustomer/{id}(id=*{id})}">Edit</button>-->
+<!--                </form>-->
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
