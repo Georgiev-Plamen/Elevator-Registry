@@ -2,9 +2,9 @@ package bg.softuni.Elevator.Registryregister.model.dto.CustomerDTOs;
 
 public record CustomerListDTO(
         Long id,
-        String customerName,
-        String customerVat,
-        String customerAddress,
+        String name,
+        String vat,
+        String address,
         String contactPerson,
         String telNumber,
         String email

@@ -1,38 +1,38 @@
 package bg.softuni.Elevator.Registryregister.model.dto.CustomerDTOs;
 
 public class AddCustomerDTO {
-    private String customerName;
-    private String customerVat;
-    private String customerAddress;
+    private String name;
+    private String vat;
+    private String address;
     private String contactPerson;
     private String telNumber;
     private String email;
 
-    public AddCustomerDTO(String customerName, String customerVat, String customerAddress, String contactPerson, String telNumber, String email) {
+    public AddCustomerDTO(String name, String vat, String address, String contactPerson, String telNumber, String email) {
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getName() {
+        return name;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCustomerVat() {
-        return customerVat;
+    public String getVat() {
+        return vat;
     }
 
-    public void setCustomerVat(String customerVat) {
-        this.customerVat = customerVat;
+    public void setVat(String vat) {
+        this.vat = vat;
     }
 
-    public String getCustomerAddress() {
-        return customerAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getContactPerson() {

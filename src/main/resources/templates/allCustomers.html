@@ -24,23 +24,23 @@
         <tbody>
         <tr th:each="customer : ${allCustomers}"
             th:object="${customer}" class="container">
-            <td><span th:text="*{customerName()}">Id</span></td>
-            <td><span th:text="*{customerVat()}">Elevator type</span></td>
-            <td><span th:text="*{customerAddress()}">Manufacturer name</span></td>
+            <td><span th:text="*{name()}">Id</span></td>
+            <td><span th:text="*{vat()}">Elevator type</span></td>
+            <td><span th:text="*{address()}">Manufacturer name</span></td>
             <td><span th:text="*{contactPerson()}">Speed</span></td>
             <td><span th:text="*{telNumber()}">Number of stops</span></td>
             <td><span th:text="*{email()}">Added by</span></td>
             <td>
-<!--                <form th:method="delete"-->
-<!--                      th:action="@{/customer/{id}(id=${customer.id()})}" >-->
-<!--                    <input type="hidden" name="id" th:value="delete">-->
-<!--                    <button type="submit">Delete</button>-->
-<!--                </form>-->
+                <form th:method="delete"
+                      th:action="@{/customer/{id}(id=${customer.id()})}" >
+                    <input type="hidden" name="id" th:value="delete">
+                    <button type="submit">Delete</button>
+                </form>
 
-<!--                <form th:method="get"-->
-<!--                      th:action="@{/customer/editCustomer/{id}(id=*{id})}">-->
-<!--                    <button onclick="editCustomer(1)" th:method="get" th:href="@{/customer/editCustomer/{id}(id=*{id})}">Edit</button>-->
-<!--                </form>-->
+                <form th:method="get"
+                      th:action="@{/customer/editCustomer/{id}(id=*{id})}">
+                    <button onclick="editCustomer(1)" th:method="get" th:href="@{/customer/editCustomer/{id}(id=*{id})}">Edit</button>
+                </form>
 
             </td>
         </tr>

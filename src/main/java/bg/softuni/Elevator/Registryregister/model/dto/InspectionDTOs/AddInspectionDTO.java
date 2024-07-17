@@ -13,12 +13,11 @@ public class AddInspectionDTO {
 
     private List<Elevator> elvators;
     private User user;
-
     private LocalDate currentInspection;
     private LocalDate nextInspection;
     private String address;
     private Double price;
-    private Customer customer;
+    private Long customer;
     private InspectionsStatus status;
 
     public AddInspectionDTO() {
@@ -73,11 +72,11 @@ public class AddInspectionDTO {
         this.price = price;
     }
 
-    public Customer getCustomer() {
+    public Long getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(Long customer) {
         this.customer = customer;
     }
 

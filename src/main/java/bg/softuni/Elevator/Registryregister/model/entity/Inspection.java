@@ -17,7 +17,7 @@ public class Inspection extends BaseEntity{
         private LocalDate nextInspection;
         private String address;
         private Double price;
-        @ManyToOne
+        @ManyToOne(fetch = FetchType.EAGER)
         private Customer customer;
         @Enumerated(EnumType.STRING)
         private InspectionsStatus status;

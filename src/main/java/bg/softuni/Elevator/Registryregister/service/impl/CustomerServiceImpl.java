@@ -37,9 +37,9 @@ public class CustomerServiceImpl implements CustomerService {
     private static CustomerListDTO toAllCustomer (Customer customer) {
         return new CustomerListDTO(
                 customer.getId(),
-                customer.getCustomerName(),
-                customer.getCustomerVat(),
-                customer.getCustomerAddress(),
+                customer.getName(),
+                customer.getVat(),
+                customer.getAddress(),
                 customer.getContactPerson(),
                 customer.getTelNumber(),
                 customer.getEmail()

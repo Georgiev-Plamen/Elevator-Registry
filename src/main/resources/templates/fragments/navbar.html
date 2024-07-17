@@ -19,9 +19,10 @@
             <a sec:authorize="isAuthenticated()" href="/elevator/allElevators" th:text="#{nav_bar_allElevator}">Add Elevator</a>
             <a sec:authorize="isAuthenticated()" href="/elevator/addElevator" th:text="#{nav_bar_addElevator}">Add Elevator</a>
             <div sec:authorize="isAuthenticated()">
-                <form th:method="post"
+                <form class="text-white"
+                      th:method="post"
                       th:action="@{/users/logout}">
-                    <input class="navbar" type="submit" value="Logout"/>
+                    <input class="button" type="submit" value="Logout"/>
                 </form>
             </div>
             <div class="dropdown">
