@@ -4,9 +4,7 @@ import bg.softuni.Elevator.Registryregister.model.dto.CustomerDTOs.AddCustomerDT
 import bg.softuni.Elevator.Registryregister.service.CustomerService;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/customer")
@@ -34,5 +32,19 @@ public class CustomerController {
         model.addAttribute("allCustomers", customerService.getAllCustomers());
 
         return "allCustomers";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteCustomer(@PathVariable("id") Long id) {
+        customerService.deleteCustomer(id);
+        return "redirect:/customer/allCustomers";
+    }
+
+    @GetMapping("/editCustomer/{id}")
+    public String editCustomer(@PathVariable("id") Long id, Model model) {
+
+        model.addAttribute("customerDetails", customerService.getCustomerDetails(id));
+
+        return "editCustomer";
     }
 }

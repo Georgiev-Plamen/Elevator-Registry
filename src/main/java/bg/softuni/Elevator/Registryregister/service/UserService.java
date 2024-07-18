@@ -17,4 +17,6 @@ public interface UserService {
     UserProfileDto getUserDetails(Long id);
 
     void editUser(Long id, UserEditDTO userEditDTO);
+
+
 }

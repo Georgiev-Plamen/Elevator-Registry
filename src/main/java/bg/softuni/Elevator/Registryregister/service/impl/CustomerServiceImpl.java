@@ -1,6 +1,7 @@
 package bg.softuni.Elevator.Registryregister.service.impl;
 
 import bg.softuni.Elevator.Registryregister.model.dto.CustomerDTOs.AddCustomerDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.CustomerDTOs.CustomerDetailsDTO;
 import bg.softuni.Elevator.Registryregister.model.dto.CustomerDTOs.CustomerListDTO;
 import bg.softuni.Elevator.Registryregister.model.entity.Customer;
 import bg.softuni.Elevator.Registryregister.repository.CustomerRepository;
@@ -34,6 +35,18 @@ public class CustomerServiceImpl implements CustomerService {
                 .map(CustomerServiceImpl::toAllCustomer)
                 .toList();
     }
+
+    @Override
+    public void deleteCustomer(Long id) {
+        customerRepository.deleteById(id);
+    }
+
+    @Override
+    public CustomerDetailsDTO getCustomerDetails(Long id) {
+        return modelMapper.map(customerRepository.getReferenceById(id), CustomerDetailsDTO.class);
+    }
+
+
     private static CustomerListDTO toAllCustomer (Customer customer) {
         return new CustomerListDTO(
                 customer.getId(),
