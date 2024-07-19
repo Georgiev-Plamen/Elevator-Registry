@@ -1,8 +1,10 @@
 package bg.softuni.Elevator.Registryregister.service.impl;
 
 import bg.softuni.Elevator.Registryregister.model.dto.InspectionDTOs.AddInspectionDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.InspectionDTOs.InspectionDetailDTO;
 import bg.softuni.Elevator.Registryregister.model.dto.InspectionDTOs.InspectionListDTO;
 import bg.softuni.Elevator.Registryregister.model.entity.Inspection;
+import bg.softuni.Elevator.Registryregister.model.entity.InspectionsStatus;
 import bg.softuni.Elevator.Registryregister.repository.CustomerRepository;
 import bg.softuni.Elevator.Registryregister.repository.InspectionRepository;
 import bg.softuni.Elevator.Registryregister.repository.UserRepository;
@@ -39,7 +41,22 @@ public class InspectionServiceImp implements InspectionService {
 
     @Override
     public void addNewInspection(AddInspectionDTO addInspectionDTO, UserDetails userDetails) {
-        inspectionRepository.save(map(addInspectionDTO, userDetails));
+        Inspection inspection = map(addInspectionDTO, userDetails);
+        inspection.setStatus(InspectionsStatus.ЧАКА);
+
+        inspectionRepository.save(inspection);
+    }
+
+    @Override
+    public void markAsDone(Long id) {
+        Inspection inspection = inspectionRepository.findById(id).get();
+        inspection.setStatus(InspectionsStatus.ФИНАЛИЗИРАНА);
+        inspectionRepository.save(inspection);
+    }
+
+    @Override
+    public InspectionDetailDTO getInspectionDetails(Long id) {
+        return modelMapper.map(inspectionRepository.findById(id).get(), InspectionDetailDTO.class);
     }
 
     private Inspection map(AddInspectionDTO addInspectionDTO, UserDetails userDetails) {
@@ -56,8 +73,8 @@ public class InspectionServiceImp implements InspectionService {
                 inspection.getCustomer(),
                 inspection.getElevators(),
                 inspection.getAddress(),
-                inspection.getPrice()
-//                inspection.getStatus().toString()
+                inspection.getPrice(),
+                inspection.getStatus().toString()
         );
     }
 }

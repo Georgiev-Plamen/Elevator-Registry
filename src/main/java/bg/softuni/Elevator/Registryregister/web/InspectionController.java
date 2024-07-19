@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -39,9 +40,24 @@ public class InspectionController {
     }
     @PostMapping("/addInspection")
     public String addInspection (@AuthenticationPrincipal UserDetails userDetails, AddInspectionDTO addInspectionDTO ) {
-
         inspectionService.addNewInspection(addInspectionDTO, userDetails);
 
         return "redirect:/inspection/allInspections";
+    }
+
+    @PostMapping("/markAsDone/{id}")
+    public String markAsDone (@PathVariable("id") Long id) {
+
+        inspectionService.markAsDone(id);
+
+        return "redirect:/inspection/allInspections";
+    }
+
+    @GetMapping("/editInspection/{id}")
+    public String editInspection(@PathVariable("id") Long id, Model model) {
+
+        model.addAttribute("inspectionDetails", inspectionService.getInspectionDetails(id));
+
+        return "editInspection";
     }
 }

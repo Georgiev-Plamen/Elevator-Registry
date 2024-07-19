@@ -12,7 +12,8 @@ public record InspectionListDTO(
         Customer customer,
         List<Elevator> elevators,
         String address,
-        Double price
-//        String status
+        Double price,
+
+        String status
 ) {
 }

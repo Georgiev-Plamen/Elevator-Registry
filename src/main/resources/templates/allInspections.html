@@ -13,7 +13,7 @@
 <!--                <th th:text="#{inspection_elevator}">Elevator id</th>-->
                 <th th:text="#{inspection_address}">Address</th>
                 <th th:text="#{inspection_price}">Price</th>
-<!--                <th th:text="#{inspection_status}">Status</th>-->
+                <th th:text="#{inspection_status}">Status</th>
             </tr>
             </thead>
             <tbody>
@@ -25,18 +25,24 @@
 <!--                <td><span th:text="*{elevatorId()}">Elevator id</span></td>-->
                 <td><span th:text="*{address()}">Address</span></td>
                 <td><span th:text="*{price()}">Price</span></td>
-<!--                <td><span th:text="*{status()}">Status</span></td>-->
+                <td><span th:text="*{status()}">Status</span></td>
                 <td>
-<!--                    <form th:method="delete"-->
-<!--                          th:action="@{/inspection/{id}(id=${inspection.id()})}" >-->
-<!--                        <input type="hidden" name="id" th:value="delete">-->
-<!--                        <button type="submit">Delete</button>-->
-<!--                    </form>-->
+                    <form th:method="delete"
+                          th:action="@{/inspection/{id}(id=${inspection.id()})}" >
+                        <input type="hidden" name="id" th:value="delete">
+                        <button type="submit">Delete</button>
+                    </form>
 
-<!--                    <form th:method="get"-->
-<!--                          th:action="@{/inspection/editInspection/{id}(id=*{id})}">-->
-<!--                        <button onclick="editInspection(1)" th:method="get" th:href="@{/inspection/editInspection/{id}(id=*{id})}">Edit</button>-->
-<!--                    </form>-->
+                    <form th:method="get"
+                          th:action="@{/inspection/editInspection/{id}(id=*{id})}">
+                        <button onclick="editInspection(1)" th:method="get" th:href="@{/inspection/editInspection/{id}(id=*{id})}">Edit</button>
+                    </form>
+
+                    <form th:method="post"
+                          th:action="@{/inspection/markAsDone/{id}(id=${inspection.id()})}" >
+                        <input type="hidden" name="id" th:value="post">
+                        <button class="done" type="submit">Done</button>
+                    </form>
 
                 </td>
             </tr>
