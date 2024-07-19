@@ -18,10 +18,10 @@ public class Customer extends BaseEntity{
     private String email;
 
     @OneToMany(targetEntity = Elevator.class, mappedBy = "owner")
-    private List<Elevator> elevatorList;
+    private List<Elevator> elevators;
 
     public Customer() {
-        this.elevatorList = new ArrayList<>();
+        this.elevators = new ArrayList<>();
     }
 
 
@@ -73,11 +73,11 @@ public class Customer extends BaseEntity{
         this.email = email;
     }
 
-    public List<Elevator> getElevatorList() {
-        return elevatorList;
+    public List<Elevator> getElevators() {
+        return elevators;
     }
 
-    public void setElevatorList(List<Elevator> elevatorList) {
-        this.elevatorList = elevatorList;
+    public void setElevators(List<Elevator> elevators) {
+        this.elevators = elevators;
     }
 }

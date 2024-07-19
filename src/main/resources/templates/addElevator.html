@@ -17,6 +17,13 @@
             <option value="ПХАС">ПХАС</option>
         </select><br><br>
 
+        <select id="owner" name="owner">
+            <option th:each="customer : ${allCustomers}"
+                    th:value="${customer.id()}"
+                    th:text="${customer.name()}"
+                    required>owner</option>
+        </select>
+
         <label for="manufacturer">Manufacturer:</label>
         <input type="text" id="manufacturer" name="manufacturer" required><br><br>
 

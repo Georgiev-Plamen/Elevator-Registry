@@ -1,5 +1,6 @@
 package bg.softuni.Elevator.Registryregister.model.dto.ElevatorDTOs;
 
+import bg.softuni.Elevator.Registryregister.model.entity.Customer;
 import bg.softuni.Elevator.Registryregister.model.entity.ElevatorType;
 import org.springframework.security.core.userdetails.User;
 
@@ -7,6 +8,7 @@ import java.time.LocalDate;
 
 public class AddElevatorDTO {
     private ElevatorType type;
+    private Customer owner;
     private String manufacturer;
     private String manufacturerNumber;
     private String yearOfManufacture;
@@ -26,6 +28,14 @@ public class AddElevatorDTO {
 
     public void setType(ElevatorType type) {
         this.type = type;
+    }
+
+    public Customer getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Customer owner) {
+        this.owner = owner;
     }
 
     public String getManufacturer() {

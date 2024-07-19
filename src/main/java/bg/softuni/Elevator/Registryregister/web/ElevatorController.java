@@ -2,6 +2,7 @@ package bg.softuni.Elevator.Registryregister.web;
 
 import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDTOs.AddElevatorDTO;
 import bg.softuni.Elevator.Registryregister.model.dto.ElevatorDTOs.ElevatorDetailsDTO;
+import bg.softuni.Elevator.Registryregister.service.CustomerService;
 import bg.softuni.Elevator.Registryregister.service.ElevatorService;
 import bg.softuni.Elevator.Registryregister.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,15 +16,16 @@ import org.springframework.web.bind.annotation.*;
 public class ElevatorController {
     private final ElevatorService elevatorService;
     private final UserService userService;
+    private final CustomerService customerService;
 
-    public ElevatorController(ElevatorService elevatorService, UserService userService) {
+    public ElevatorController(ElevatorService elevatorService, UserService userService, CustomerService customerService) {
         this.elevatorService = elevatorService;
         this.userService = userService;
+        this.customerService = customerService;
     }
 
     @GetMapping("/allElevators")
     public String allElevatorView (Model model) {
-
         model.addAttribute("allElevators", elevatorService.getAllElevators());
 
         return "allElevators";
@@ -31,13 +33,16 @@ public class ElevatorController {
 
 
     @GetMapping("/addElevator")
-    public String addElevatorView() {
+    public String addElevatorView(Model model) {
+        model.addAttribute("allCustomers", customerService.getAllCustomers());
+
         return "addElevator";
     }
 
     @PostMapping("/addElevator")
     public String addElevator(@AuthenticationPrincipal UserDetails userDetails, AddElevatorDTO addElevatorDTO) {
         elevatorService.AddNewElevator(addElevatorDTO, userDetails);
+
         return "redirect:/elevator/allElevators";
     }
 

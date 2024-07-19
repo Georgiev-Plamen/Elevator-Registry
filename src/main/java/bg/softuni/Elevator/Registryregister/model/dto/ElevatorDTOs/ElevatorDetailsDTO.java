@@ -1,5 +1,6 @@
 package bg.softuni.Elevator.Registryregister.model.dto.ElevatorDTOs;
 
+import bg.softuni.Elevator.Registryregister.model.entity.Customer;
 import bg.softuni.Elevator.Registryregister.model.entity.ElevatorType;
 import bg.softuni.Elevator.Registryregister.model.entity.User;
 
@@ -8,6 +9,8 @@ import java.time.LocalDate;
 public class ElevatorDetailsDTO {
 
     private Long id;
+
+    private Customer owner;
     private ElevatorType type;
     private String manufacturer;
     private String manufacturerNumber;
@@ -28,6 +31,14 @@ public class ElevatorDetailsDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Customer getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Customer owner) {
+        this.owner = owner;
     }
 
     public ElevatorType getType() {

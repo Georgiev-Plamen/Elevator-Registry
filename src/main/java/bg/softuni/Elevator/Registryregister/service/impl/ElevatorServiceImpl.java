@@ -22,6 +22,7 @@ public class ElevatorServiceImpl implements ElevatorService {
     private final UserRepository userRepository;
     private final AppUserDetailsService appUserDetailsService;
 
+
     public ElevatorServiceImpl(ElevatorRepository elevatorRepository, ModelMapper modelMapper, UserRepository userRepository, AppUserDetailsService appUserDetailsService) {
         this.elevatorRepository = elevatorRepository;
         this.modelMapper = modelMapper;

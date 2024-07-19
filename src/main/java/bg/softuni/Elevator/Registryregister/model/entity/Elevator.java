@@ -116,4 +116,20 @@ public class Elevator extends BaseEntity {
         this.registerDate = firstCheck;
         return this;
     }
+
+    public Customer getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Customer owner) {
+        this.owner = owner;
+    }
+
+    public Inspection getInspection() {
+        return inspection;
+    }
+
+    public void setInspection(Inspection inspection) {
+        this.inspection = inspection;
+    }
 }
