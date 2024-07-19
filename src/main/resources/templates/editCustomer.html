@@ -11,16 +11,16 @@
 <div class="container">
     <h1>Edit Customer</h1>
 
-    <form th:object="${customerDetails}" th:action="@{/customer/editCustomer/{id}}" th:method="PUT">
+    <form th:object="${customerDetails}" th:action="@{/customer/editCustomer/{id}(id=*{id})}" th:method="PUT">
 
-<!--        <input type="hidden" name="id" id="id" th:value="*{id}">-->
+        <input type="hidden" name="id" id="id" th:value="*{id}">
 
         <label for="name">Company name:</label>
         <input type="text" id="name" name="name"
                th:value="*{name}" required>
         <label for="vat">Company VAT number:</label>
         <input type="text" id="vat" name="vat"
-               th:value="*{vat}"required>
+               th:value="*{vat}" required>
         <label for="address">Company Address:</label>
         <input type="text" id="address" name="address"
                th:value="*{address}" required>

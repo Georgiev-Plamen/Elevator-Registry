@@ -1,6 +1,7 @@
 package bg.softuni.Elevator.Registryregister.web;
 
 import bg.softuni.Elevator.Registryregister.model.dto.CustomerDTOs.AddCustomerDTO;
+import bg.softuni.Elevator.Registryregister.model.dto.CustomerDTOs.CustomerDetailsDTO;
 import bg.softuni.Elevator.Registryregister.service.CustomerService;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
@@ -46,5 +47,12 @@ public class CustomerController {
         model.addAttribute("customerDetails", customerService.getCustomerDetails(id));
 
         return "editCustomer";
+    }
+
+    @PutMapping("/editCustomer/{id}")
+    public String editCustomer(@PathVariable("id") Long id, CustomerDetailsDTO customerDetailsDTO) {
+        customerService.editCustomer(id, customerDetailsDTO);
+
+        return "redirect:/customer/allCustomers";
     }
 }

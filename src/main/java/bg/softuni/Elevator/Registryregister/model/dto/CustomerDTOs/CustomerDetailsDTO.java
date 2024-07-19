@@ -2,6 +2,8 @@ package bg.softuni.Elevator.Registryregister.model.dto.CustomerDTOs;
 
 public class CustomerDetailsDTO {
 
+    private Long id;
+
     private String name;
     private String vat;
     private String address;
@@ -10,6 +12,14 @@ public class CustomerDetailsDTO {
     private String email;
 
     public CustomerDetailsDTO() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

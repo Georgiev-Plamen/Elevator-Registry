@@ -46,6 +46,14 @@ public class CustomerServiceImpl implements CustomerService {
         return modelMapper.map(customerRepository.getReferenceById(id), CustomerDetailsDTO.class);
     }
 
+    @Override
+    public void editCustomer(Long id, CustomerDetailsDTO customerDetailsDTO) {
+        Customer customer = customerRepository.findById(id).get();
+        customer = modelMapper.map(customerDetailsDTO, Customer.class);
+
+        customerRepository.save(customer);
+    }
+
 
     private static CustomerListDTO toAllCustomer (Customer customer) {
         return new CustomerListDTO(

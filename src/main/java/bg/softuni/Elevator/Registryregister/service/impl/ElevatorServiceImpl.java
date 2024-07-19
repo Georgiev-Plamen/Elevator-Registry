@@ -63,6 +63,7 @@ public class ElevatorServiceImpl implements ElevatorService {
     @Override
     public void editElevator(Long id, ElevatorDetailsDTO elevatorDetailsDTO) {
         Elevator elevator = elevatorRepository.getReferenceById(id);
+        elevator = modelMapper.map(elevatorDetailsDTO, Elevator.class);
         elevator.setAuthor(userRepository.findByUsername(elevatorDetailsDTO.getAuthor()).get());
 
         elevatorRepository.save(elevator);

@@ -10,6 +10,7 @@
 <div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
 <div class="container">
     <h1>Edit Elevator</h1>
+
     <form th:object="${elevatorDetails}" th:action="@{/elevator/editElevator/{id}(id=*{id})}" th:method="PUT">
 
         <input type="hidden" name="id" id="userId" th:value="*{id}">
