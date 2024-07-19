@@ -41,6 +41,7 @@ public class ElevatorController {
 
     @PostMapping("/addElevator")
     public String addElevator(@AuthenticationPrincipal UserDetails userDetails, AddElevatorDTO addElevatorDTO) {
+
         elevatorService.AddNewElevator(addElevatorDTO, userDetails);
 
         return "redirect:/elevator/allElevators";
