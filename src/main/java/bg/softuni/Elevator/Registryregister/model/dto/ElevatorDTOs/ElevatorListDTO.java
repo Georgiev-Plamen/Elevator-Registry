@@ -8,6 +8,7 @@ public record ElevatorListDTO (
         Long id,
         ElevatorType type,
         String manufacturer,
+        String address,
         int speed,
         int numberOfStops,
         LocalDate firstCheck,

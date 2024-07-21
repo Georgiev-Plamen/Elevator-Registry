@@ -2,6 +2,7 @@ package bg.softuni.Elevator.Registryregister.web;
 
 import bg.softuni.Elevator.Registryregister.model.dto.InspectionDTOs.AddInspectionDTO;
 import bg.softuni.Elevator.Registryregister.service.CustomerService;
+import bg.softuni.Elevator.Registryregister.service.ElevatorService;
 import bg.softuni.Elevator.Registryregister.service.InspectionService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class InspectionController {
     private final InspectionService inspectionService;
     private final CustomerService customerService;
+    private final ElevatorService elevatorService;
 
-    public InspectionController(InspectionService inspectionService, CustomerService customerService) {
+    public InspectionController(InspectionService inspectionService, CustomerService customerService, ElevatorService elevatorService) {
         this.inspectionService = inspectionService;
         this.customerService = customerService;
+        this.elevatorService = elevatorService;
     }
 
     @GetMapping("/allInspections")
@@ -35,6 +38,7 @@ public class InspectionController {
     public String addInspection(Model model) {
 
         model.addAttribute("allCustomers", customerService.getAllCustomers());
+        model.addAttribute("allElevators", elevatorService.getAllElevators());
 
         return "addInspection";
     }

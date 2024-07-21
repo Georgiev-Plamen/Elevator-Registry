@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ElevatorRegistryregisterApplication {
+public class ElevatorRegisterApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ElevatorRegistryregisterApplication.class, args);
+		SpringApplication.run(ElevatorRegisterApplication.class, args);
 	}
 
 }

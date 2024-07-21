@@ -9,7 +9,6 @@ import java.time.LocalDate;
 public class ElevatorDetailsDTO {
 
     private Long id;
-
     private Customer owner;
     private ElevatorType type;
     private String manufacturer;

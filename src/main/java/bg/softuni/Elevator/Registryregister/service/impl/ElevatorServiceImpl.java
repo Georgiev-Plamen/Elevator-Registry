@@ -78,11 +78,21 @@ public class ElevatorServiceImpl implements ElevatorService {
         return author;
     }
 
+    @Override
+    public List<ElevatorListDTO> getElevatorsDetails() {
+        return elevatorRepository
+                .findAll()
+                .stream()
+                .map(ElevatorServiceImpl::toAllElevator)
+                .toList();
+    }
+
     private static ElevatorListDTO toAllElevator (Elevator elevator) {
         return new ElevatorListDTO(
                 elevator.getId(),
                 elevator.getType(),
                 elevator.getManufacturer(),
+                elevator.getAddress(),
                 elevator.getSpeed(),
                 elevator.getNumberOfStops(),
                 elevator.getRegisterDate(),

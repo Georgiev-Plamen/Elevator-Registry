@@ -21,4 +21,6 @@ public interface ElevatorService {
 
     String findAuthorOnElevator(ElevatorDetailsDTO elevatorDetailsDTO);
 
+    List <ElevatorListDTO> getElevatorsDetails();
+
 }

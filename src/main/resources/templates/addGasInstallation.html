@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Gas Installation</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
+<div class="container">
+    <h1>Add Gas Installation</h1>
+    <form th:action="@{/gas/addGasInstallation}" th:method="post">
+
+        <label for="damtnNumber">DAMTN Number:</label>
+        <input type="text" id="damtnNumber" name="damtnNumber" required><br><br>
+
+        <label for="damtnDate">DAMTN date:</label>
+        <input type="date" id="damtnDate" name="damtnDate" required><br><br>
+
+        <label for="registrationData">Registration date:</label>
+        <input type="date" id="registrationData" name="registrationData" required><br><br>
+
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type" required><br><br>
+
+        <label for="manufacturer">Manufacturer:</label>
+        <input type="text" id="manufacturer" name="manufacturer" required><br><br>
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required><br><br>
+
+        <label for="pressure">Pressure:</label>
+        <input type="text" id="pressure" name="pressure" required><br><br>
+
+        <label for="power">Power:</label>
+        <input type="text" id="power" name="power" required><br><br>
+
+        <select id="owner" name="owner">
+            <option th:each="customer : ${allCustomers}"
+                    th:value="${customer.id()}"
+                    th:text="${customer.name()}"
+                    required>owner</option>
+        </select>
+
+        <button type="submit">Add Gas Installation</button>
+    </form>
+</div>
+</body>
+</html>

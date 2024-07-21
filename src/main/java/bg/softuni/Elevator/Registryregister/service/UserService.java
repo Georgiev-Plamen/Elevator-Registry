@@ -6,6 +6,7 @@ import bg.softuni.Elevator.Registryregister.service.dto.UserInfoDTO;
 import bg.softuni.Elevator.Registryregister.service.dto.UserProfileDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
     void registerUser(UserRegistrationDTO userRegistrationDTO);

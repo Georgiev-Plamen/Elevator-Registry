@@ -28,6 +28,6 @@ spring:
       filter:
         enabled: true
 
-  GasInstallations:
+  gas:
       api:
         baseUrl: "http://localhost:8081"
