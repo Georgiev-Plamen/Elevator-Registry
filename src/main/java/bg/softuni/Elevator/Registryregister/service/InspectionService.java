@@ -15,4 +15,6 @@ public interface InspectionService {
     void markAsDone(Long id);
 
     InspectionDetailDTO getInspectionDetails(Long id);
+
+    void editInspection(Long id, AddInspectionDTO addInspectionDTO);
 }

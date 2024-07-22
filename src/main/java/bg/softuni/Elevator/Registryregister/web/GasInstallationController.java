@@ -35,13 +35,13 @@ public class GasInstallationController {
     public String editGasInstallation(@PathVariable("id") Long id, GasInstallationDTO gasInstallationDTO) {
         gasInstallationService.editGasInstallation(id, gasInstallationDTO);
 
-        return "redirect:/gas/allGasInstallation";
+        return "redirect:/gas/allGasInstallations";
     }
-    @GetMapping("/allGasInstallation")
+    @GetMapping("/allGasInstallations")
     public String allGasInstallations (Model model) {
         model.addAttribute("allGasInstallations", gasInstallationService.getAllGasInstallation());
 
-        return "allGasInstallation";
+        return "allGasInstallations";
     }
 
     @GetMapping("/addGasInstallation")
@@ -62,6 +62,6 @@ public class GasInstallationController {
     public String deleteGasInstallation(@PathVariable("id") Long id) {
         gasInstallationService.deleteGasInstallationById(id);
 
-        return "redirect:/gas/allGasInstallation";
+        return "redirect:/gas/allGasInstallations";
     }
 }

@@ -16,8 +16,11 @@
             <a  sec:authorize="!isAuthenticated()" href="/users/register" th:text="#{nav_bar_register}">Register</a>
             <a sec:authorize="!isAuthenticated()" href="/users/login" th:text="#{nav_bar_login}">>Login</a>
             <a sec:authorize="isAuthenticated()" href="/users/all" th:text="#{nav_bar_userControl}">User Management</a>
-            <a sec:authorize="isAuthenticated()" href="/elevator/allElevators" th:text="#{nav_bar_allElevator}">Add Elevator</a>
-            <a sec:authorize="isAuthenticated()" href="/elevator/addElevator" th:text="#{nav_bar_addElevator}">Add Elevator</a>
+            <a sec:authorize="isAuthenticated()" href="/elevator/allElevators" th:text="#{nav_bar_allElevator}">All Elevators</a>
+            <a sec:authorize="isAuthenticated()" href="/customer/allCustomers" th:text="#{nav_bar_allCustomers}">All Customers</a>
+            <a sec:authorize="isAuthenticated()" href="/gas/allGasInstallations" th:text="#{nav_bar_allGasInstallations}">All Gas Installations</a>
+            <a sec:authorize="isAuthenticated()" href="/inspection/allInspections" th:text="#{nav_bar_allInspections}">All Inspections</a>
+<!--            <a sec:authorize="isAuthenticated()" href="/elevator/addElevator" th:text="#{nav_bar_addElevator}">Add Elevator</a>-->
             <div sec:authorize="isAuthenticated()">
                 <form class="text-white"
                       th:method="post"

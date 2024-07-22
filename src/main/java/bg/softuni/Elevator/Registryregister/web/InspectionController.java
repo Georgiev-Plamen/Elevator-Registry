@@ -60,8 +60,18 @@ public class InspectionController {
     @GetMapping("/editInspection/{id}")
     public String editInspection(@PathVariable("id") Long id, Model model) {
 
+        model.addAttribute("allCustomers", customerService.getAllCustomers());
+        model.addAttribute("allElevators", elevatorService.getAllElevators());
         model.addAttribute("inspectionDetails", inspectionService.getInspectionDetails(id));
 
         return "editInspection";
+    }
+
+    @PostMapping("/editInspection/{id}")
+    public String editInspection(@PathVariable("id") Long id, AddInspectionDTO addInspectionDTO) {
+
+        inspectionService.editInspection(id, addInspectionDTO);
+
+        return "redirect:/inspection/allInspections";
     }
 }

@@ -56,7 +56,14 @@ public class InspectionServiceImp implements InspectionService {
 
     @Override
     public InspectionDetailDTO getInspectionDetails(Long id) {
-        return modelMapper.map(inspectionRepository.findById(id).get(), InspectionDetailDTO.class);
+        return modelMapper.map(inspectionRepository.getReferenceById(id), InspectionDetailDTO.class);
+    }
+
+    @Override
+    public void editInspection(Long id, AddInspectionDTO addInspectionDTO) {
+        Inspection inspection = inspectionRepository.findById(id).get();
+        inspection = modelMapper.map(addInspectionDTO, Inspection.class);
+        inspectionRepository.save(inspection);
     }
 
     private Inspection map(AddInspectionDTO addInspectionDTO, UserDetails userDetails) {

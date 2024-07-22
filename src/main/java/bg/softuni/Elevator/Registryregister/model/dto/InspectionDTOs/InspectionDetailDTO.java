@@ -5,6 +5,7 @@ import bg.softuni.Elevator.Registryregister.model.entity.InspectionsStatus;
 import bg.softuni.Elevator.Registryregister.model.entity.User;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class InspectionDetailDTO {
@@ -19,6 +20,7 @@ public class InspectionDetailDTO {
     private InspectionsStatus status;
 
     public InspectionDetailDTO() {
+        elvators = new ArrayList<>();
     }
 
     public List<Elevator> getElvators() {
