@@ -12,6 +12,6 @@ public record AddGasInstallationDTO (
         String model,
         String pressure,
         String power,
-        Long ownerId
+        Long customerId
 ) {
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Installation Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
+<div class="container">
+    <h1>Gas Installation Management</h1>
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{gas_id}">Id</th>
+            <th th:text="#{gas_damtnNumber}">DAMTN Number</th>
+            <th th:text="#{gas_registrationDate}">Registration date</th>
+            <th th:text="#{gas_type}">Installation type</th>
+            <th th:text="#{gas_manufacturer}">Manufacturer</th>
+            <th th:text="#{gas_model}">Model</th>
+            <th th:text="#{gas_pressure}">Presure</th>
+            <th th:text="#{gas_power}">Power</th>
+            <th th:text="#{gas_Owner}">Owner</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="gasInstallation : ${allGasInstallations}"
+            th:object="${gasInstallation}" class="container">
+            <td><span th:text="*{id()}">Id</span></td>
+            <td><span th:text="*{damtnNumber()}">DMTN number</span></td>
+            <td><span th:text="*{registrationData()}">Registration date</span></td>
+            <td><span th:text="*{type()}">Type</span></td>
+            <td><span th:text="*{manufacturer()}">Manufacturer</span></td>
+            <td><span th:text="*{model()}">Model</span></td>
+            <td><span th:text="*{pressure()}">Pressure</span></td>
+            <td><span th:text="*{power()}">Power</span></td>
+            <td><span th:text="*{ownerId()}">Owner</span></td>
+            <td>
+                <form th:method="delete"
+                      th:action="@{/gas/{id}(id=${gasInstallation.id()})}" >
+                    <input type="hidden" name="id" th:value="delete">
+                    <button type="submit">Delete</button>
+                </form>
+
+                <form th:method="get"
+                      th:action="@{/gas/editGasInstallation/{id}(id=*{id})}">
+                    <button onclick="editGasInstallation(1)" th:method="get" th:href="@{/gas/editGasInstallation/{id}(id=*{id})}">Edit</button>
+                </form>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

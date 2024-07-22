@@ -9,9 +9,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/gas")
@@ -25,6 +23,27 @@ public class GasInstallationController {
         this.customerService = customerService;
     }
 
+    @GetMapping("/editGasInstallation/{id}")
+    public String editGasInstallation(@PathVariable("id") Long id,
+                                      Model model) {
+        model.addAttribute("gasInstallationDetails", gasInstallationService.getGasInstallationDetails(id));
+
+        return "editGasInstallation";
+    }
+
+    @PutMapping("/editGasInstallation/{id}")
+    public String editGasInstallation(@PathVariable("id") Long id, GasInstallationDTO gasInstallationDTO) {
+        gasInstallationService.editGasInstallation(id, gasInstallationDTO);
+
+        return "redirect:/gas/allGasInstallation";
+    }
+    @GetMapping("/allGasInstallation")
+    public String allGasInstallations (Model model) {
+        model.addAttribute("allGasInstallations", gasInstallationService.getAllGasInstallation());
+
+        return "allGasInstallation";
+    }
+
     @GetMapping("/addGasInstallation")
         public String addGasInstallation (Model model) {
         model.addAttribute("allCustomers", customerService.getAllCustomers());
@@ -34,9 +53,15 @@ public class GasInstallationController {
 
     @PostMapping("/addGasInstallation")
     public String addGasInstallation(AddGasInstallationDTO addGasInstallationDTO) {
-
         gasInstallationService.addGasInstallation(addGasInstallationDTO);
 
         return "index";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteGasInstallation(@PathVariable("id") Long id) {
+        gasInstallationService.deleteGasInstallationById(id);
+
+        return "redirect:/gas/allGasInstallation";
     }
 }
