@@ -1,10 +1,10 @@
 package service.impl;
 
-import bg.softuni.Elevator.Registryregister.model.entity.User;
-import bg.softuni.Elevator.Registryregister.repository.UserRepository;
-import bg.softuni.Elevator.Registryregister.model.dto.UserDTOs.UserRegistrationDTO;
-import bg.softuni.Elevator.Registryregister.service.AppUserDetailsService;
-import bg.softuni.Elevator.Registryregister.service.impl.UserServiceImpl;
+import bg.softuni.PSIGAS.model.entity.User;
+import bg.softuni.PSIGAS.repository.UserRepository;
+import bg.softuni.PSIGAS.model.dto.UserDTOs.UserRegistrationDTO;
+import bg.softuni.PSIGAS.service.AppUserDetailsService;
+import bg.softuni.PSIGAS.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,36 +33,40 @@ public class UserServiceImplTest {
     @Mock
     private PasswordEncoder mockPasswordEncoder;
 
+    @Mock
+    private AppUserDetailsService mockAppUserDetails;
+
     @BeforeEach
     void setUp() {
 
         toTest = new UserServiceImpl(
                 mockUserRepository,
+                mockAppUserDetails,
                 new ModelMapper(),
-                mockPasswordEncoder;
+                mockPasswordEncoder
         );
 
     }
 
     @Test
     void testUserRegistration() {
-        // Arrange
 
         UserRegistrationDTO userRegistrationDTO =
                 new UserRegistrationDTO()
-                        .setFirstName("Plamen")
+                        .setUsername("gosho")
+                        .setEmail("gosho@gosho.com")
+                        .setFirstName("Gosho")
                         .setLastName("Georgiev")
-                        .setPassword("123123")
-                        .setEmail("plamen@plamen.com");
+                        .setPassword("123123");
 
         when(mockPasswordEncoder.encode(userRegistrationDTO.getPassword()))
                 .thenReturn(userRegistrationDTO.getPassword()+userRegistrationDTO.getPassword());
 
 
-        // ACT
+
         toTest.registerUser(userRegistrationDTO);
 
-        // Assert
+
         verify(mockUserRepository).save(userEntityCaptor.capture());
 
         User actualSavedEntity = userEntityCaptor.getValue();
