@@ -56,7 +56,7 @@ public class InspectionServiceImp implements InspectionService {
 
     @Override
     public InspectionDetailDTO getInspectionDetails(Long id) {
-        return modelMapper.map(inspectionRepository.getReferenceById(id), InspectionDetailDTO.class);
+        return modelMapper.map(inspectionRepository.findById(id).get(), InspectionDetailDTO.class);
     }
 
     @Override
@@ -66,9 +66,14 @@ public class InspectionServiceImp implements InspectionService {
         inspectionRepository.save(inspection);
     }
 
+    @Override
+    public void deleteInspection(Long id) {
+        inspectionRepository.deleteById(id);
+    }
+
     private Inspection map(AddInspectionDTO addInspectionDTO, UserDetails userDetails) {
         Inspection mappedInspection = modelMapper.map(addInspectionDTO, Inspection.class);
-        mappedInspection.setCustomer(customerRepository.getReferenceById(addInspectionDTO.getCustomer()));
+        mappedInspection.setCustomer(customerRepository.getReferenceById(addInspectionDTO.getCustomer().getId()));
         mappedInspection.setUser(userRepository.findByUsername(userDetails.getUsername()).get());
         return mappedInspection;
     }
@@ -76,7 +81,7 @@ public class InspectionServiceImp implements InspectionService {
     private static InspectionListDTO toAllInspection (Inspection inspection) {
         return new InspectionListDTO(
                 inspection.getId(),
-                inspection.getUser().getUsername(),
+                inspection.getUser(),
                 inspection.getCustomer(),
                 inspection.getElevators(),
                 inspection.getAddress(),

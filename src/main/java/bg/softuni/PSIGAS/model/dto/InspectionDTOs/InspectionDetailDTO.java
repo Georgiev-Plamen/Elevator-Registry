@@ -1,5 +1,6 @@
 package bg.softuni.PSIGAS.model.dto.InspectionDTOs;
 
+import bg.softuni.PSIGAS.model.entity.Customer;
 import bg.softuni.PSIGAS.model.entity.Elevator;
 import bg.softuni.PSIGAS.model.entity.InspectionsStatus;
 import bg.softuni.PSIGAS.model.entity.User;
@@ -9,27 +10,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InspectionDetailDTO {
-
-    private List<Elevator> elvators;
+    private Long id;
+//    private List<Elevator> elvators;
     private User user;
     private LocalDate currentInspection;
     private LocalDate nextInspection;
     private String address;
     private Double price;
-    private Long customer;
+    private Customer customer;
     private InspectionsStatus status;
 
-    public InspectionDetailDTO() {
-        elvators = new ArrayList<>();
+    public Long getId() {
+        return id;
     }
 
-    public List<Elevator> getElvators() {
-        return elvators;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setElvators(List<Elevator> elvators) {
-        this.elvators = elvators;
-    }
+//    public InspectionDetailDTO() {
+//        elvators = new ArrayList<>();
+//    }
+//
+//    public List<Elevator> getElvators() {
+//        return elvators;
+//    }
+//
+//    public void setElvators(List<Elevator> elvators) {
+//        this.elvators = elvators;
+//    }
 
     public User getUser() {
         return user;
@@ -71,11 +80,11 @@ public class InspectionDetailDTO {
         this.price = price;
     }
 
-    public Long getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Long customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 

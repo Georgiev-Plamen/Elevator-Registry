@@ -17,4 +17,6 @@ public interface InspectionService {
     InspectionDetailDTO getInspectionDetails(Long id);
 
     void editInspection(Long id, AddInspectionDTO addInspectionDTO);
+
+    void deleteInspection(Long id);
 }

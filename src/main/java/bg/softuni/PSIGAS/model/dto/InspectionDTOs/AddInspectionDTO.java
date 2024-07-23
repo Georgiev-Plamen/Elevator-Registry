@@ -1,5 +1,6 @@
 package bg.softuni.PSIGAS.model.dto.InspectionDTOs;
 
+import bg.softuni.PSIGAS.model.entity.Customer;
 import bg.softuni.PSIGAS.model.entity.Elevator;
 import bg.softuni.PSIGAS.model.entity.InspectionsStatus;
 import bg.softuni.PSIGAS.model.entity.User;
@@ -10,13 +11,14 @@ import java.util.List;
 
 public class AddInspectionDTO {
 
+    private Long id;
     private List<Elevator> elvators;
     private User user;
     private LocalDate currentInspection;
     private LocalDate nextInspection;
     private String address;
     private Double price;
-    private Long customer;
+    private Customer customer;
     private InspectionsStatus status;
 
     public AddInspectionDTO() {
@@ -29,6 +31,14 @@ public class AddInspectionDTO {
 
     public void setElvators(List<Elevator> elvators) {
         this.elvators = elvators;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -71,11 +81,11 @@ public class AddInspectionDTO {
         this.price = price;
     }
 
-    public Long getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Long customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 

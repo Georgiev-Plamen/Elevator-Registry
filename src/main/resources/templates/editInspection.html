@@ -11,15 +11,22 @@
 
 <div class="container">
     <h1>Edit Inspection</h1>
-    <form th:object="${inspectionDetails}" th:action="@{/inspection/editInspection/{id}(id=*{id})}" th:method="post">
+    <form th:object="${inspectionDetails}" th:action="@{/inspection/editInspection/{id}(id=*{id})}" th:method="PUT">
 
         <input type="hidden" name="id" id="id" th:value="*{id}">
 
+        <label for="user">User:</label>
+        <select id="user" name="user">
+            <option th:each="user : ${allUser}"
+                    th:value="${user.id()}"
+                    th:text="${user.username()}"
+                    required>user</option>
+        </select>
+
         <label for="customer">Customer:</label>
-<!--                TODO: show two time author-->
         <select id="customer" name="customer">
             <option th:each="customer : ${allCustomers}"
-                    th:value="${customer.id}"
+                    th:value="${customer.id()}"
                     th:text="${customer.name()}"
                     required>customer</option>
         </select>
@@ -27,17 +34,23 @@
         <label for="elevator">Elevator:</label>
         <select id="elevator" name="elevator">
             <option th:each="elevator : ${allElevators}"
-                    th:value="${elevator.id}"
+                    th:value="${elevator.id()}"
                     th:text="${elevator.address()}"
                     required>elevators</option>
         </select>
 
+        <label for="status">Status:</label>
+        <select id="status" name="status" th:value="*{status}" th:select="*{status}">
+            <option value="ЧАКА">ЧАКА</option>
+            <option value="ПРОЦЕС">ПРОЦЕС</option>
+            <option value="ФИНАЛИЗИРАНА">ФИНАЛИЗИРАНА</option>
+        </select>
 
         <label for="address">Address:</label>
-<!--        <input type="text" id="address" name="address" th:value="*{address}" required><br><br>-->
+        <input type="text" id="address" name="address" th:value="*{address}" required><br><br>
 
         <label for="price">Price:</label>
-<!--        <input type="number" id="price" name="price" th:value="*{price}" required><br><br>-->
+        <input type="number" id="price" name="price" th:value="*{price}" required><br><br>
 
         <button type="submit">Edit inspection</button>
     </form>

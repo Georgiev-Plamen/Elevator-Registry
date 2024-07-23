@@ -20,7 +20,7 @@
             <tr th:each="inspection : ${allInspections}"
                 th:object="${inspection}" class="container">
                 <td><span th:text="*{id()}">Id</span></td>
-                <td><span th:text="*{user()}">User</span></td>
+                <td><span th:text="*{user().username}">User</span></td>
                 <td><span th:text="*{customer().name}">Customer name</span></td>
 <!--                <td><span th:text="*{elevatorId()}">Elevator id</span></td>-->
                 <td><span th:text="*{address()}">Address</span></td>
