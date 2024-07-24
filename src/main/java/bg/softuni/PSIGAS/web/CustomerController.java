@@ -3,6 +3,7 @@ package bg.softuni.PSIGAS.web;
 import bg.softuni.PSIGAS.model.dto.CustomerDTOs.AddCustomerDTO;
 import bg.softuni.PSIGAS.model.dto.CustomerDTOs.CustomerDetailsDTO;
 import bg.softuni.PSIGAS.service.CustomerService;
+import bg.softuni.PSIGAS.service.ElevatorService;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/customer")
 public class CustomerController {
     private final CustomerService customerService;
+    private final ElevatorService elevatorService;
 
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerService customerService, ElevatorService elevatorService) {
         this.customerService = customerService;
+        this.elevatorService = elevatorService;
     }
 
     @GetMapping("/addCustomer")
@@ -54,5 +57,15 @@ public class CustomerController {
         customerService.editCustomer(id, customerDetailsDTO);
 
         return "redirect:/customer/allCustomers";
+    }
+
+    @GetMapping("/customerElevators/{id}")
+    public String allCustomerElevator(@PathVariable("id") Long id, Model model) {
+
+        model.addAttribute("customersElevators", elevatorService.getAllCustomerElevator(id));
+        model.addAttribute("customerDetails", customerService.getCustomerDetails(id));
+        //todo need to create view
+
+        return "customerElevators";
     }
 }

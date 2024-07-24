@@ -1,9 +1,11 @@
 package bg.softuni.PSIGAS.service.impl;
 
 import bg.softuni.PSIGAS.model.dto.ElevatorDTOs.AddElevatorDTO;
+import bg.softuni.PSIGAS.model.dto.ElevatorDTOs.CustomerElevatorDTO;
 import bg.softuni.PSIGAS.model.dto.ElevatorDTOs.ElevatorDetailsDTO;
 import bg.softuni.PSIGAS.model.dto.ElevatorDTOs.ElevatorListDTO;
 import bg.softuni.PSIGAS.model.entity.Elevator;
+import bg.softuni.PSIGAS.model.entity.ElevatorType;
 import bg.softuni.PSIGAS.repository.ElevatorRepository;
 import bg.softuni.PSIGAS.repository.UserRepository;
 import bg.softuni.PSIGAS.service.AppUserDetailsService;
@@ -85,6 +87,30 @@ public class ElevatorServiceImpl implements ElevatorService {
                 .stream()
                 .map(ElevatorServiceImpl::toAllElevator)
                 .toList();
+    }
+
+    @Override
+    public List<CustomerElevatorDTO> getAllCustomerElevator(Long id) {
+        return elevatorRepository
+                .findAllByOwnerId(id)
+                .stream()
+                .map(ElevatorServiceImpl::toAllCustomerElevators)
+                .toList();
+    }
+
+    private static CustomerElevatorDTO toAllCustomerElevators (Elevator elevator) {
+        return new CustomerElevatorDTO(
+                elevator.getId(),
+                elevator.getType(),
+                elevator.getManufacturer(),
+                elevator.getManufacturerNumber(),
+                elevator.getYearOfManufacture(),
+                elevator.getSpeed(),
+                elevator.getNumberOfStops(),
+                elevator.getCity(),
+                elevator.getAddress(),
+                elevator.getRegisterDate()
+        );
     }
 
     private static ElevatorListDTO toAllElevator (Elevator elevator) {

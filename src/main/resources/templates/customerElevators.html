@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers elevators</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
+<div class="container">
+    <h1>Customers elevators</h1>
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{customer_elevators_type}">Type</th>
+            <th th:text="#{customer_elevators_manufacturer}">manufacturer</th>
+            <th th:text="#{customer_elevators_manufacturerNumber}">Manufacturer number</th>
+            <th th:text="#{customer_elevators_yearOfManufacture}">Year of manufacture</th>
+            <th th:text="#{customer_elevators_speed}">Speed</th>
+            <th th:text="#{customer_elevators_numberOfStops}">Number of stops</th>
+            <th th:text="#{customer_elevators_city}">City</th>
+            <th th:text="#{customer_elevators_address}">Address</th>
+            <th th:text="#{customer_elevators_registerDate}">Register date</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customerElevator : ${customersElevators}"
+            th:object="${customerElevator}" class="container">
+            <td><span th:text="*{type()}">Type</span></td>
+            <td><span th:text="*{manufacturer()}">Manufacturer name</span></td>
+            <td><span th:text="*{manufacturerNumber()}">Manufacturer number</span></td>
+            <td><span th:text="*{yearOfManufacture()}">Year of Manufacture</span></td>
+            <td><span th:text="*{numberOfStops()}">Number of stops</span></td>
+            <td><span th:text="*{city()}">City</span></td>
+            <td><span th:text="*{address()}">Address</span></td>
+            <td><span th:text="*{registerDate()}">RegisterDate</span></td>
+            <td>
+
+<!--                <form th:method="get"-->
+<!--                      th:action="@{/customer/editCustomer/{id}(id=*{id})}">-->
+<!--                    <button onclick="editCustomer(1)" th:method="get" th:href="@{/customer/editCustomer/{id}(id=*{id})}">Edit</button>-->
+<!--                </form>-->
+
+<!--                <form th:method="get"-->
+<!--                      th:action="@{/customer/allCustomerElevator/{id}(id=*{id})}">-->
+<!--                    <button onclick="allCustomerElevator(1)" th:method="get" th:href="@{/customer/allCustomerElevator/{id}(id=*{id})}">Edit</button>-->
+<!--                </form>-->
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

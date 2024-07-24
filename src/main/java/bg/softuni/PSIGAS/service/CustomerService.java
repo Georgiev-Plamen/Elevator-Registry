@@ -15,6 +15,7 @@ public interface CustomerService {
     CustomerDetailsDTO getCustomerDetails(Long id);
 
     void editCustomer(Long id, CustomerDetailsDTO customerDetailsDTO);
+
 }
 
 

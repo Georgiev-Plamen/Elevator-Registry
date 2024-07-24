@@ -43,6 +43,11 @@
                     <button onclick="editCustomer(1)" th:method="get" th:href="@{/customer/editCustomer/{id}(id=*{id})}">Edit</button>
                 </form>
 
+                <form th:method="get"
+                      th:action="@{/customer/customerElevators/{id}(id=*{id})}">
+                    <button class="done" onclick="allCustomerElevator(1)" th:method="get" th:href="@{/customer/customerElevators/{id}(id=*{id})}">Elevators</button>
+                </form>
+
             </td>
         </tr>
         </tbody>

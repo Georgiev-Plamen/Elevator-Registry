@@ -40,7 +40,7 @@
         </select>
 
         <label for="status">Status:</label>
-        <select id="status" name="status" th:value="*{status}" th:select="*{status}">
+        <select id="status" name="status" th:value="*{status}" th:field="*{status}">
             <option value="ЧАКА">ЧАКА</option>
             <option value="ПРОЦЕС">ПРОЦЕС</option>
             <option value="ФИНАЛИЗИРАНА">ФИНАЛИЗИРАНА</option>

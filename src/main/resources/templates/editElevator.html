@@ -16,7 +16,7 @@
         <input type="hidden" name="id" id="userId" th:value="*{id}">
 
         <label for="type">Elevator type:</label>
-        <select id="type" name="type" th:value="*{type}" required>
+        <select id="type" name="type" th:value="*{type}" th:field="*{type}" required>
             <option value="ПЕАС">ПЕАС</option>
             <option value="ПХАС">ПХАС</option>
         </select><br><br>
