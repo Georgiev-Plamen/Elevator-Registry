@@ -15,6 +15,15 @@
 
         <input type="hidden" name="id" id="userId" th:value="*{id}">
 
+        <label for="owner">Customer:</label>
+        <select id="owner" name="owner">
+            <option th:each="customer : ${allCustomers}"
+                    th:value="${customer.id()}"
+                    th:text="${customer.name()}"
+                    th:field="${elevatorDetails.owner}"
+                    required>customer</option>
+        </select><br>
+
         <label for="type">Elevator type:</label>
         <select id="type" name="type" th:value="*{type}" th:field="*{type}" required>
             <option value="ПЕАС">ПЕАС</option>

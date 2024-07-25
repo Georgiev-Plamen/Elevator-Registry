@@ -1,9 +1,9 @@
 package service.impl;
 
-import bg.softuni.PSIGAS.model.entity.User;
-import bg.softuni.PSIGAS.model.user.AppUserDetails;
-import bg.softuni.PSIGAS.repository.UserRepository;
-import bg.softuni.PSIGAS.service.AppUserDetailsService;
+import bg.softuni.ElevatorRegister.model.entity.User;
+import bg.softuni.ElevatorRegister.model.user.AppUserDetails;
+import bg.softuni.ElevatorRegister.repository.UserRepository;
+import bg.softuni.ElevatorRegister.service.AppUserDetailsService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

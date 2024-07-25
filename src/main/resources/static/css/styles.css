@@ -8,7 +8,7 @@ body {
 .container {
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(141, 141, 141, 0.1);
     border-radius: 8px;
     text-align: center;
 }
@@ -35,7 +35,7 @@ body {
     color: black;
 }
 .dropdown {
-    display: inline-block;
+    display: flex;
     position: relative;
     color: #f2f2f2
 }
@@ -104,7 +104,7 @@ th {
 
 label {
     margin-bottom: 5px;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 input {

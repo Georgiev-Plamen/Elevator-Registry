@@ -1,10 +1,10 @@
 package service.impl;
 
-import bg.softuni.PSIGAS.model.entity.User;
-import bg.softuni.PSIGAS.repository.UserRepository;
-import bg.softuni.PSIGAS.model.dto.UserDTOs.UserRegistrationDTO;
-import bg.softuni.PSIGAS.service.AppUserDetailsService;
-import bg.softuni.PSIGAS.service.impl.UserServiceImpl;
+import bg.softuni.ElevatorRegister.model.entity.User;
+import bg.softuni.ElevatorRegister.repository.UserRepository;
+import bg.softuni.ElevatorRegister.model.dto.UserDTOs.UserRegistrationDTO;
+import bg.softuni.ElevatorRegister.service.AppUserDetailsService;
+import bg.softuni.ElevatorRegister.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

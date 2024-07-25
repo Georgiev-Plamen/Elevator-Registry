@@ -22,9 +22,12 @@
             <th th:text="#{customer_elevators_city}">City</th>
             <th th:text="#{customer_elevators_address}">Address</th>
             <th th:text="#{customer_elevators_registerDate}">Register date</th>
+            <th th:text="#{customer_elevators_add}">Add to inspection</th>
+
             <th></th>
         </tr>
         </thead>
+        <form id="addToInspection" th:action="@{/inspection/addToInspection/}" th:method="post">
         <tbody>
         <tr th:each="customerElevator : ${customersElevators}"
             th:object="${customerElevator}" class="container">
@@ -32,15 +35,19 @@
             <td><span th:text="*{manufacturer()}">Manufacturer name</span></td>
             <td><span th:text="*{manufacturerNumber()}">Manufacturer number</span></td>
             <td><span th:text="*{yearOfManufacture()}">Year of Manufacture</span></td>
+            <td><span th:text="*{speed()}">Speed</span></td>
             <td><span th:text="*{numberOfStops()}">Number of stops</span></td>
             <td><span th:text="*{city()}">City</span></td>
             <td><span th:text="*{address()}">Address</span></td>
             <td><span th:text="*{registerDate()}">RegisterDate</span></td>
             <td>
-
-<!--                <form th:method="get"-->
-<!--                      th:action="@{/customer/editCustomer/{id}(id=*{id})}">-->
-<!--                    <button onclick="editCustomer(1)" th:method="get" th:href="@{/customer/editCustomer/{id}(id=*{id})}">Edit</button>-->
+                <form id="addElevator" role="form" th:method="post" th:href="@{/inspection/addToInspection/}">
+                    <input type="checkbox"/>
+                    <input type="hidden" id="id" name="user" th:value="*{id()}" />
+                </form>
+<!--                <form th:method="POST"-->
+<!--                      th:action="@{/inspection/addToInspection/{id}(id=*{id})}">-->
+<!--                    <button onclick="addToInspection(1)" th:method="post" th:href="@{/gas/addToInspection/{id}(id=*{id})}">Add</button>-->
 <!--                </form>-->
 
 <!--                <form th:method="get"-->
@@ -51,6 +58,9 @@
             </td>
         </tr>
         </tbody>
+            <button type="submit">Create inspection</button>
+            <br>
+        </form>
     </table>
 </div>
 </body>

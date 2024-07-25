@@ -13,8 +13,6 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
-
-
-gasInsllation:
-  api:
-    baseUrl: "http://localhost:8081"
+  gasInstallation:
+    api:
+      baseUrl: "http://localhost:8081"
