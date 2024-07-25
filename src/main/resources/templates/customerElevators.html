@@ -27,7 +27,7 @@
             <th></th>
         </tr>
         </thead>
-        <form id="addToInspection" th:action="@{/inspection/addToInspection/}" th:method="post">
+        <form th:action="@{/inspection/addToInspection}" th:method="POST">
         <tbody>
         <tr th:each="customerElevator : ${customersElevators}"
             th:object="${customerElevator}" class="container">
@@ -41,10 +41,11 @@
             <td><span th:text="*{address()}">Address</span></td>
             <td><span th:text="*{registerDate()}">RegisterDate</span></td>
             <td>
-                <form id="addElevator" role="form" th:method="post" th:href="@{/inspection/addToInspection/}">
-                    <input type="checkbox"/>
-                    <input type="hidden" id="id" name="user" th:value="*{id()}" />
-                </form>
+
+
+                    <input type="checkbox" name="options" id="options" th:value="*{id()}" />
+<!--                    <input type="hidden" id="id" name="id" th:value="*{id()}" />-->
+
 <!--                <form th:method="POST"-->
 <!--                      th:action="@{/inspection/addToInspection/{id}(id=*{id})}">-->
 <!--                    <button onclick="addToInspection(1)" th:method="post" th:href="@{/gas/addToInspection/{id}(id=*{id})}">Add</button>-->

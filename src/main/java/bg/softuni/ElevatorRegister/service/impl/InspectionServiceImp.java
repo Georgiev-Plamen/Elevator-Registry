@@ -3,9 +3,9 @@ package bg.softuni.ElevatorRegister.service.impl;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.AddInspectionDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.InspectionDetailDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.InspectionListDTO;
-import bg.softuni.ElevatorRegister.model.entity.Elevator;
 import bg.softuni.ElevatorRegister.model.entity.Inspection;
 import bg.softuni.ElevatorRegister.model.entity.InspectionsStatus;
+import bg.softuni.ElevatorRegister.model.user.AppUserDetails;
 import bg.softuni.ElevatorRegister.repository.CustomerRepository;
 import bg.softuni.ElevatorRegister.repository.ElevatorRepository;
 import bg.softuni.ElevatorRegister.repository.InspectionRepository;
@@ -85,7 +85,10 @@ public class InspectionServiceImp implements InspectionService {
     @Override
     public void createInspection(List<Long> values) {
         Inspection inspection = new Inspection();
+//        inspection.setUser(userRepository.findByUsername(appUserDetails.getUsername()).get());
         inspection.setElevators(elevatorRepository.findAllById(values));
+
+
     }
 
     private Inspection map(AddInspectionDTO addInspectionDTO, UserDetails userDetails) {

@@ -87,11 +87,12 @@ public class InspectionController {
         return "redirect:/inspection/allInspections";
     }
 
-    @RequestMapping("/inspection/addToInspection/")
-    public ResponseEntity<Long> createInspection(@RequestParam("present") List<Long> values) {
+    @PostMapping("/addToInspection")
+    public String addToInspection (@RequestParam("options") List<String> values) {
 
-       inspectionService.createInspection(values);
+        List<Long> elevatorsID = values.stream().map(v -> Long.parseLong(v)).toList();
+       inspectionService.createInspection(elevatorsID);
 
-       return createInspection(values);
+       return "redirect:/inspection/allInspections";
     }
 }
