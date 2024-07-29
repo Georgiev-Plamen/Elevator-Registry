@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--    <script>-->
+<!--        function openCustomerPopup() {-->
+<!--            var popup = window.open("/inspection/selectCustomer", "Customer Popup", "width=600,height=400");-->
+<!--            popup.onbeforeunload = function() {-->
+<!--                var customerId = popup.document.getElementById("selectedCustomerId").value;-->
+<!--                if (customerId) {-->
+<!--                    document.getElementById("customerIdInput").value = customerId;-->
+<!--                }-->
+<!--            };-->
+<!--        }-->
+<!--    </script>-->
 </head>
 <body>
 <nav>
@@ -26,7 +38,8 @@
     <p sec:authorize="isAuthenticated()"><a href="/gas/addGasInstallation">Add new gas installation</a></p>
     <p sec:authorize="isAuthenticated()"><a href="/gas/allGasInstallations">All gas installation</a></p>
     <br>
-    <p sec:authorize="isAuthenticated()"><a href="/inspection/addInspection">Add inspection</a></p>
+    <p sec:authorize="isAuthenticated()"><a href="/inspection/selectCustomer">Add inspection</a></p>
+<!--    <button onclick="openCustomerPopup()">Select Add inspection</button>-->
     <p sec:authorize="isAuthenticated()"><a href="/inspection/allInspections">All inspections</a></p>
     <br>
     <p sec:authorize="isAuthenticated()"><a href="/elevator/addElevator">Add new elevator</a></p>

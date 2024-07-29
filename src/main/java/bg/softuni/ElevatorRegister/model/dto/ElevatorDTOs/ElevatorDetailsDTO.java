@@ -18,6 +18,8 @@ public class ElevatorDetailsDTO {
     private String city;
     private String address;
     private LocalDate registerDate;
+    private LocalDate lastInspection;
+    private LocalDate nextInspection;
     private String author;
 
     public ElevatorDetailsDTO() {
@@ -117,5 +119,21 @@ public class ElevatorDetailsDTO {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public LocalDate getLastInspection() {
+        return lastInspection;
+    }
+
+    public void setLastInspection(LocalDate lastInspection) {
+        this.lastInspection = lastInspection;
+    }
+
+    public LocalDate getNextInspection() {
+        return nextInspection;
+    }
+
+    public void setNextInspection(LocalDate nextInspection) {
+        this.nextInspection = nextInspection;
     }
 }

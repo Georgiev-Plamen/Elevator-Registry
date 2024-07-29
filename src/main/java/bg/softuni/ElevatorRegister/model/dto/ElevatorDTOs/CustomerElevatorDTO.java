@@ -15,6 +15,8 @@ public record CustomerElevatorDTO(
         int numberOfStops,
         String city,
         String address,
-        LocalDate registerDate
+        LocalDate registerDate,
+        LocalDate lastInspection,
+        LocalDate nextInspection
 ) {
 }

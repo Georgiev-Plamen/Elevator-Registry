@@ -14,10 +14,14 @@
         <thead>
         <tr>
             <th th:text="#{registry_id}">Id</th>
+            <th th:text="#{registry_owner}">Customer:</th>
             <th th:text="#{registry_elevator_type}">Elevator type</th>
             <th th:text="#{registry_manufacturer_name}">Manufacturer name</th>
             <th th:text="#{registry_speed}">Speed</th>
             <th th:text="#{registry_number_of_stops}">Number of stops</th>
+            <th th:text="#{registry_register_date}">Number of stops</th>
+            <th th:text="#{registry_last_inspection}">Number of stops</th>
+            <th th:text="#{registry_next_inspection}">Number of stops</th>
             <th th:text="#{registry_added_by}">Added by</th>
         </tr>
         </thead>
@@ -25,10 +29,14 @@
         <tr th:each="elevator : ${allElevators}"
             th:object="${elevator}" class="container">
             <td><span th:text="*{id()}">Id</span></td>
+            <td><span th:text="*{owner().getName()}">Id</span></td>
             <td><span th:text="*{type()}">Elevator type</span></td>
             <td><span th:text="*{manufacturer()}">Manufacturer name</span></td>
             <td><span th:text="*{speed()}">Speed</span></td>
             <td><span th:text="*{numberOfStops()}">Number of stops</span></td>
+            <td><span th:text="*{registerDate()}">Number of stops</span></td>
+            <td><span th:text="*{lastInspection()}">Number of stops</span></td>
+            <td><span th:text="*{nextInspection()}">Number of stops</span></td>
             <td><span th:text="*{author()}">Added by</span></td>
             <td>
                 <form th:method="delete"

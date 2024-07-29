@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Customer</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script>
+        function selectCustomer(customerId) {
+            var clientIdInput = document.createElement("input");
+            clientIdInput.type = "hidden";
+            clientIdInput.id = "selectedCustomerId";
+            clientIdInput.value = customerId;
+            document.body.appendChild(customerIdInput);
+            window.close();
+        }
+
+    </script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1>Select a customer</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Select</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="customer : ${allCustomer}"
+            th:object="${customer}" class="container">
+            <td><span th:text="*{id()}">Id</span></td>
+            <td><span th:text="*{name()}">Company name</span></td>
+            <td><span th:text="*{contactPerson()}">Contact person</span></td>
+            <td><span th:text="*{telNumber()}">Phone number</span></td>
+            <td><span th:text="*{email()}">Email</span></td>
+            <td>
+                <form th:method="get"
+                      th:action="@{/inspection/addInspection/{id}(id=*{id})}">
+                    <button onclick="addInspection(1)" th:method="get" th:href="@{/inspection/addInspection/{id}(id=*{id})}">Select</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

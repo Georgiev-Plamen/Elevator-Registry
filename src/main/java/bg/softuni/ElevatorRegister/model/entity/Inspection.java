@@ -13,8 +13,6 @@ public class Inspection extends BaseEntity{
         private List<Elevator> elevators;
         @ManyToOne
         private User user;
-        private LocalDate currentInspection;
-        private LocalDate nextInspection;
         private String address;
         private Double price;
         @ManyToOne(fetch = FetchType.EAGER)
@@ -36,22 +34,6 @@ public class Inspection extends BaseEntity{
 
         public void setUser(User user) {
                 this.user = user;
-        }
-
-        public LocalDate getCurrentInspection() {
-                return currentInspection;
-        }
-
-        public void setCurrentInspection(LocalDate currentInspection) {
-                this.currentInspection = currentInspection;
-        }
-
-        public LocalDate getNextInspection() {
-                return nextInspection;
-        }
-
-        public void setNextInspection(LocalDate nextInspection) {
-                this.nextInspection = nextInspection;
         }
 
         public String getAddress() {

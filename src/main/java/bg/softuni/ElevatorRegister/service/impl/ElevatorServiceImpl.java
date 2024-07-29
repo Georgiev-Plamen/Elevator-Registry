@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -37,7 +38,10 @@ public class ElevatorServiceImpl implements ElevatorService {
     }
 
     private Elevator map(AddElevatorDTO addElevatorDTO, UserDetails userDetails) {
+
         Elevator mappedEntity = modelMapper.map(addElevatorDTO, Elevator.class);
+        mappedEntity.setLastInspection(addElevatorDTO.getRegisterDate());
+        mappedEntity.setNextInspection(mappedEntity.getLastInspection().plusYears(1));
         mappedEntity.setAuthor(userRepository.findByUsername(userDetails.getUsername()).get());
 
         return mappedEntity;
@@ -108,19 +112,24 @@ public class ElevatorServiceImpl implements ElevatorService {
                 elevator.getNumberOfStops(),
                 elevator.getCity(),
                 elevator.getAddress(),
-                elevator.getRegisterDate()
+                elevator.getRegisterDate(),
+                elevator.getLastInspection(),
+                elevator.getNextInspection()
         );
     }
 
     private static ElevatorListDTO toAllElevator (Elevator elevator) {
         return new ElevatorListDTO(
                 elevator.getId(),
+                elevator.getOwner(),
                 elevator.getType(),
                 elevator.getManufacturer(),
                 elevator.getAddress(),
                 elevator.getSpeed(),
                 elevator.getNumberOfStops(),
                 elevator.getRegisterDate(),
+                elevator.getLastInspection(),
+                elevator.getNextInspection(),
                 elevator.getAuthor().getUsername()
         );
 

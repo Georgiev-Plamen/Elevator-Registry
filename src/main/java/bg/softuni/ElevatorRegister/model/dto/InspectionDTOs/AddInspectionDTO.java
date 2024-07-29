@@ -12,25 +12,33 @@ import java.util.List;
 public class AddInspectionDTO {
 
     private Long id;
-    private List<Elevator> elvators;
+    private List<Elevator> elevators;
     private User user;
-    private LocalDate currentInspection;
+    private LocalDate lastInspection;
     private LocalDate nextInspection;
     private String address;
     private Double price;
     private Customer customer;
     private InspectionsStatus status;
 
-    public AddInspectionDTO() {
-        this.elvators = new ArrayList<>();
+    public AddInspectionDTO(List<Elevator> elevators) {
+        this.elevators = new ArrayList<>();
     }
 
-    public List<Elevator> getElvators() {
-        return elvators;
+    public List<Elevator> getElevators() {
+        return elevators;
     }
 
-    public void setElvators(List<Elevator> elvators) {
-        this.elvators = elvators;
+    public void setElevators(List<Elevator> elevators) {
+        this.elevators = elevators;
+    }
+
+    public LocalDate getLastInspection() {
+        return lastInspection;
+    }
+
+    public void setLastInspection(LocalDate lastInspection) {
+        this.lastInspection = lastInspection;
     }
 
     public Long getId() {
@@ -47,14 +55,6 @@ public class AddInspectionDTO {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public LocalDate getCurrentInspection() {
-        return currentInspection;
-    }
-
-    public void setCurrentInspection(LocalDate currentInspection) {
-        this.currentInspection = currentInspection;
     }
 
     public LocalDate getNextInspection() {

@@ -5,29 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Inspection</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <script>
+        function updateInspectionDates() {
+            const elevatorsSelect = document.getElementById('elevators');
+            const selectedOption = elevatorsSelect.options[elevatorsSelect.selectedIndex];
+
+            const lastInspectionField = document.getElementById('lastInspection');
+            const lastInspectionDate = selectedOption.getAttribute('data-last-inspection');
+            lastInspectionField.value = lastInspectionDate ? lastInspectionDate : '';
+
+            const nextInspectionField = document.getElementById('nextInspection');
+            const nextInspectionDate = selectedOption.getAttribute('data-next-inspection');
+            nextInspectionField.value = nextInspectionDate ? nextInspectionDate : '';
+
+            const addressField = document.getElementById('address');
+            const address = selectedOption.getAttribute('data-address');
+            addressField.value = address ? address : '';
+        }
+    </script>
+
 </head>
 <body>
 <div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
 
 <div class="container">
     <h1>Add Inspection</h1>
-    <form th:action="@{/inspection/addInspection}" th:method="post">
+    <form th:action="@{/inspection/addInspection}" th:method="POST">
 
-        <label for="customer">Customer:</label>
-        <!--        TODO: show two time author-->
-        <select id="customer" name="customer">
-            <option th:each="customer : ${allCustomers}"
-                    th:value="${customer.id()}"
-                    th:text="${customer.name()}"
-                    required>customer</option>
-        </select>
+        <div>Customer : <span th:text="${customer.name}"></span></div><br>
+        <input type="hidden" name="customer" id="customer" th:value="${customer.id}">
 
-        <select id="elevators" name="elevators">
-            <option th:each="elevator : ${allElevators}"
+        <label for="elevators">Elevators:</label>
+        <select id="elevators" name="elevators" onchange="updateInspectionDates()">
+            <option selected>-== Chose elevator ==-</option>
+            <option th:each="elevator : ${customerElevators}"
                     th:value="${elevator.id()}"
-                    th:text="${elevator.address()}"
-                    required>customer</option>
+                    th:text="|${elevator.manufacturer()} - ${elevator.manufacturerNumber()} - ${elevator.address()}|"
+                    th:data-last-inspection="${elevator.lastInspection()}"
+                    th:data-next-inspection="${elevator.nextInspection()}"
+                    th:data-address="${elevator.address()}"
+                    required>elevator</option>
         </select>
+
+        <label for="lastInspection">Last inspection:</label>
+        <input type="date" id="lastInspection" name="lastInspection" required><br><br>
+
+        <label for="nextInspection">Next inspection:</label>
+        <input type="date" id="nextInspection" name="nextInspection" required><br><br>
 
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" required><br><br>

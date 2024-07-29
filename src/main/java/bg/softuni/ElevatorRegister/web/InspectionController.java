@@ -37,16 +37,18 @@ public class InspectionController {
         return "allInspections";
     }
 
-    @GetMapping("/addInspection")
-    public String addInspection(Model model) {
+    @GetMapping("/addInspection/{id}")
+    public String addInspection(Model model,
+                                @PathVariable("id") Long id) {
 
-        model.addAttribute("allCustomers", customerService.getAllCustomers());
-        model.addAttribute("allElevators", elevatorService.getAllElevators());
+        model.addAttribute("customer", customerService.getCustomerById(id));
+        model.addAttribute("customerElevators", elevatorService.getAllCustomerElevator(id));
 
         return "addInspection";
     }
     @PostMapping("/addInspection")
-    public String addInspection (@AuthenticationPrincipal UserDetails userDetails, AddInspectionDTO addInspectionDTO ) {
+    public String addInspection (@AuthenticationPrincipal UserDetails userDetails,
+                                 AddInspectionDTO addInspectionDTO) {
         inspectionService.addNewInspection(addInspectionDTO, userDetails);
 
         return "redirect:/inspection/allInspections";
@@ -87,12 +89,27 @@ public class InspectionController {
         return "redirect:/inspection/allInspections";
     }
 
-    @PostMapping("/addToInspection")
-    public String addToInspection (@RequestParam("options") List<String> values) {
+//    @PostMapping("/addToInspection")
+//    public String addToInspection (@RequestParam("options") List<String> values) {
+//
+//        List<Long> elevatorsID = values.stream().map(v -> Long.parseLong(v)).toList();
+//       inspectionService.createInspection(elevatorsID);
+//
+//       return "redirect:/inspection/allInspections";
+//    }
 
-        List<Long> elevatorsID = values.stream().map(v -> Long.parseLong(v)).toList();
-       inspectionService.createInspection(elevatorsID);
+    @GetMapping("/selectCustomer")
+    public String selectCustomer (
+            Model model) {
+        model.addAttribute("allCustomer", customerService.getAllCustomers());
 
-       return "redirect:/inspection/allInspections";
+        return "selectCustomer";
     }
+
+    @PostMapping("/selectCustomer")
+    public String selectCustomer (){
+
+        return "redirect:/addInspection";
+    }
+
 }

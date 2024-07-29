@@ -18,10 +18,10 @@ public class Elevator extends BaseEntity {
     private String city;
     private String address;
     private LocalDate registerDate;
+    private LocalDate lastInspection;
+    private LocalDate nextInspection;
     @ManyToOne
     private Customer owner;
-    @ManyToOne(targetEntity = Inspection.class)
-    private Inspection inspection;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private User author;
@@ -124,11 +124,19 @@ public class Elevator extends BaseEntity {
         this.owner = owner;
     }
 
-    public Inspection getInspection() {
-        return inspection;
+    public LocalDate getLastInspection() {
+        return lastInspection;
     }
 
-    public void setInspection(Inspection inspection) {
-        this.inspection = inspection;
+    public void setLastInspection(LocalDate lastInspection) {
+        this.lastInspection = lastInspection;
+    }
+
+    public LocalDate getNextInspection() {
+        return nextInspection;
+    }
+
+    public void setNextInspection(LocalDate nextInspection) {
+        this.nextInspection = nextInspection;
     }
 }

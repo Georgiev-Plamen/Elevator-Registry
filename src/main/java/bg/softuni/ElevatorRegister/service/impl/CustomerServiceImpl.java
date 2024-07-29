@@ -47,6 +47,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer getCustomerById(Long id) {
+        return customerRepository.findById(id).get();
+    }
+
+    @Override
     public void editCustomer(Long id, CustomerDetailsDTO customerDetailsDTO) {
         Customer customer = customerRepository.findById(id).get();
         customer = modelMapper.map(customerDetailsDTO, Customer.class);

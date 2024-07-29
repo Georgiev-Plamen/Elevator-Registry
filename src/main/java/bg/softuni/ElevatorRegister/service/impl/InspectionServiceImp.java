@@ -54,6 +54,8 @@ public class InspectionServiceImp implements InspectionService {
     @Override
     public void markAsDone(Long id) {
         Inspection inspection = inspectionRepository.findById(id).get();
+        inspection.getElevators().forEach(elevator -> elevator.setLastInspection(elevator.getNextInspection()));
+        inspection.getElevators().forEach(elevator -> elevator.setNextInspection(elevator.getNextInspection().plusYears(1)));
         inspection.setStatus(InspectionsStatus.ФИНАЛИЗИРАНА);
         inspectionRepository.save(inspection);
     }
