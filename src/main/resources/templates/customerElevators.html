@@ -27,9 +27,9 @@
             <th></th>
         </tr>
         </thead>
-        <form th:action="@{/inspection/addToInspection}" th:method="POST">
+        <form th:action="@{/inspection/createMultiInspection}" th:method="POST">
         <tbody>
-        <tr th:each="customerElevator : ${customersElevators}"
+        <tr th:each="customerElevator : ${customerElevators}"
             th:object="${customerElevator}" class="container">
             <td><span th:text="*{type()}">Type</span></td>
             <td><span th:text="*{manufacturer()}">Manufacturer name</span></td>

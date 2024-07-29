@@ -72,6 +72,13 @@ public class ElevatorController {
         return "redirect:/elevator/allElevators";
     }
 
+    @GetMapping("/next5Elevators")
+    public String next5Elevators(Model model) {
+
+        model.addAttribute("next5Elevators", elevatorService.getTop5ElevatorsByNextInspection());
+
+        return "/next5Elevators";
+    }
 
 
 }

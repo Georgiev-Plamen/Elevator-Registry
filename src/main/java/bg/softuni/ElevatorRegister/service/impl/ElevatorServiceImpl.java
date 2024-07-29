@@ -13,8 +13,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Service
 public class ElevatorServiceImpl implements ElevatorService {
@@ -23,14 +29,17 @@ public class ElevatorServiceImpl implements ElevatorService {
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
     private final AppUserDetailsService appUserDetailsService;
+    private final List<ElevatorListDTO> elevators;
 
 
-    public ElevatorServiceImpl(ElevatorRepository elevatorRepository, ModelMapper modelMapper, UserRepository userRepository, AppUserDetailsService appUserDetailsService) {
+    public ElevatorServiceImpl(ElevatorRepository elevatorRepository, ModelMapper modelMapper, UserRepository userRepository, AppUserDetailsService appUserDetailsService, List<Elevator> elevators) {
         this.elevatorRepository = elevatorRepository;
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.appUserDetailsService = appUserDetailsService;
+        this.elevators = new ArrayList<>();
     }
+
 
     @Override
     public void AddNewElevator(AddElevatorDTO addElevatorDTO, UserDetails userDetails) {
@@ -132,6 +141,26 @@ public class ElevatorServiceImpl implements ElevatorService {
                 elevator.getNextInspection(),
                 elevator.getAuthor().getUsername()
         );
+    }
 
-        }
+    public List<ElevatorListDTO> getTop5ElevatorsByNextInspection() {
+        return elevatorRepository.findAll().stream()
+                .sorted(Comparator.comparing(Elevator::getNextInspection))
+                .map(ElevatorServiceImpl::toAllElevator)
+                .limit(5)
+                .collect(Collectors.toList());
+    }
+
+    //TODO:
+    public void startScheduler() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+        scheduler.scheduleAtFixedRate(() -> {
+            List<ElevatorListDTO> top5Elevators = getTop5ElevatorsByNextInspection();
+            System.out.println("Top 5 Elevators by Next Inspection Date:");
+            top5Elevators.forEach(elevator ->
+                    System.out.println("ID: " + elevator.id() + ", Address: " + elevator.address() + ", Next Inspection: " + elevator.nextInspection())
+            );
+        }, 0, 1, TimeUnit.DAYS);
+    }
 }

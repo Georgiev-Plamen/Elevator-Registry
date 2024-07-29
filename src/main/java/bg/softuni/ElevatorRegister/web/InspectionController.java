@@ -89,14 +89,21 @@ public class InspectionController {
         return "redirect:/inspection/allInspections";
     }
 
-//    @PostMapping("/addToInspection")
-//    public String addToInspection (@RequestParam("options") List<String> values) {
-//
-//        List<Long> elevatorsID = values.stream().map(v -> Long.parseLong(v)).toList();
-//       inspectionService.createInspection(elevatorsID);
-//
-//       return "redirect:/inspection/allInspections";
-//    }
+    @GetMapping("/createMultiInspection/{id}")
+    public String createMultiInspection(@PathVariable("id") Long id, Model model) {
+
+        model.addAttribute("customerElevators", elevatorService.getAllCustomerElevator(id));
+
+        return "customerElevators";
+    }
+    @PostMapping("/createMultiInspection")
+    public String addToInspection (@RequestParam("options") List<String> values) {
+
+        List<Long> elevatorsID = values.stream().map(v -> Long.parseLong(v)).toList();
+       inspectionService.createInspection(elevatorsID);
+
+       return "redirect:/inspection/allInspections";
+    }
 
     @GetMapping("/selectCustomer")
     public String selectCustomer (

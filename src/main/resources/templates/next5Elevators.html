@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevators whose inspection date is closest ot today</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
+<div class="container">
+    <h1>Elevators whose inspection date is closest ot today</h1>
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{registry_id}">Id</th>
+            <th th:text="#{registry_owner}">Customer:</th>
+            <th th:text="#{registry_elevator_type}">Elevator type</th>
+            <th th:text="#{registry_manufacturer_name}">Manufacturer name</th>
+            <th th:text="#{registry_speed}">Speed</th>
+            <th th:text="#{registry_number_of_stops}">Number of stops</th>
+            <th th:text="#{registry_register_date}">Number of stops</th>
+            <th th:text="#{registry_last_inspection}">Number of stops</th>
+            <th th:text="#{registry_next_inspection}">Number of stops</th>
+            <th th:text="#{registry_added_by}">Added by</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="elevator : ${next5Elevators}"
+            th:object="${elevator}" class="container">
+            <td><span th:text="*{id()}">Id</span></td>
+            <td><span th:text="*{owner().getName()}">Id</span></td>
+            <td><span th:text="*{type()}">Elevator type</span></td>
+            <td><span th:text="*{manufacturer()}">Manufacturer name</span></td>
+            <td><span th:text="*{speed()}">Speed</span></td>
+            <td><span th:text="*{numberOfStops()}">Number of stops</span></td>
+            <td><span th:text="*{registerDate()}">Number of stops</span></td>
+            <td><span th:text="*{lastInspection()}">Number of stops</span></td>
+            <td><span th:text="*{nextInspection()}">Number of stops</span></td>
+            <td><span th:text="*{author()}">Added by</span></td>
+            <td>
+<!--                <form th:method="delete"-->
+<!--                      th:action="@{/elevator/{id}(id=${elevator.id()})}" >-->
+<!--                    <input type="hidden" name="id" th:value="delete">-->
+<!--                    <button type="submit">Delete</button>-->
+<!--                </form>-->
+
+<!--                <form th:method="get"-->
+<!--                      th:action="@{/elevator/editElevator/{id}(id=*{id})}">-->
+<!--                    <button onclick="editElevator(1)" th:method="get" th:href="@{/elevator/editElevator/{id}(id=*{id})}">Edit</button>-->
+<!--                </form>-->
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

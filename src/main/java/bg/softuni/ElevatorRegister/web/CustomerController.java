@@ -60,15 +60,15 @@ public class CustomerController {
         return "redirect:/customer/allCustomers";
     }
 
-    @GetMapping("/customerElevators/{id}")
-    public String allCustomerElevator(@PathVariable("id") Long id, Model model) {
-
-        model.addAttribute("customersElevators", elevatorService.getAllCustomerElevator(id));
-        model.addAttribute("customerDetails", customerService.getCustomerDetails(id));
-        //todo need to create view
-
-        return "customerElevators";
-    }
+//    @GetMapping("/customerElevators/{id}")
+//    public String allCustomerElevator(@PathVariable("id") Long id, Model model) {
+//
+//        model.addAttribute("customersElevators", elevatorService.getAllCustomerElevator(id));
+//        model.addAttribute("customerDetails", customerService.getCustomerDetails(id));
+//        //todo need to create view
+//
+//        return "customerElevators";
+//    }
 
 
 }
