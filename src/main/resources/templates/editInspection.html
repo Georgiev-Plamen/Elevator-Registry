@@ -23,21 +23,36 @@
                     required>user</option>
         </select>
 
-        <label for="customer">Customer:</label>
-        <select id="customer" name="customer">
-            <option th:each="customer : ${allCustomers}"
-                    th:value="${customer.id()}"
-                    th:text="${customer.name()}"
-                    required>customer</option>
-        </select>
+<!--        <label for="customer">Customer:</label>-->
+<!--        <select id="customer" name="customer">-->
+<!--            <option th:each="customer : ${allCustomers}"-->
+<!--                    th:value="${customer.id()}"-->
+<!--                    th:text="${customer.name()}"-->
+<!--                    required>customer</option>-->
+<!--        </select>-->
 
-        <label for="elevator">Elevator:</label>
-        <select id="elevator" name="elevator">
-            <option th:each="elevator : ${allElevators}"
-                    th:value="${elevator.id()}"
-                    th:text="${elevator.address()}"
-                    required>elevators</option>
-        </select>
+        <label for="customer">Customer:</label>
+        <input type="text" id="customer" name="customer" th:text="*{customer.name}" th:value="*{customer.id}" required><br><br>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Id:</th>
+                <th>Elevators address:</th>
+                <th>Elevators stops:</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="elevator : ${allElevators}"
+                th:object="${elevator}" class="container">
+                <td><span th:text="${elevator.id}">Id</span></td>
+                <td><span th:text="${elevator.address}">Address</span></td>
+                <td><span th:text="${elevator.numberOfStops}">Address</span></td>
+                </td>
+            </tr>
+            </tbody>
+        </table><br>
+
 
         <label for="status">Status:</label>
         <select id="status" name="status" th:value="*{status}" th:field="*{status}">

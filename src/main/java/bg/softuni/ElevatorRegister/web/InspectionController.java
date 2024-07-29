@@ -1,6 +1,7 @@
 package bg.softuni.ElevatorRegister.web;
 
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.AddInspectionDTO;
+import bg.softuni.ElevatorRegister.model.entity.Customer;
 import bg.softuni.ElevatorRegister.service.CustomerService;
 import bg.softuni.ElevatorRegister.service.ElevatorService;
 import bg.softuni.ElevatorRegister.service.InspectionService;
@@ -65,8 +66,8 @@ public class InspectionController {
     @GetMapping("/editInspection/{id}")
     public String editInspection(@PathVariable("id") Long id, Model model) {
 
-        model.addAttribute("allCustomers", customerService.getAllCustomers());
-        model.addAttribute("allElevators", elevatorService.getAllElevators());
+        model.addAttribute("customers", inspectionService.getInspectionDetails(id).getCustomer());
+        model.addAttribute("allElevators", inspectionService.getAllElevatorsOfInspection(id));
         model.addAttribute("allUser", userService.getAllUsers());
         model.addAttribute("inspectionDetails", inspectionService.getInspectionDetails(id));
 
@@ -93,14 +94,17 @@ public class InspectionController {
     public String createMultiInspection(@PathVariable("id") Long id, Model model) {
 
         model.addAttribute("customerElevators", elevatorService.getAllCustomerElevator(id));
+        model.addAttribute("customer", customerService.getCustomerById(id));
 
         return "customerElevators";
     }
     @PostMapping("/createMultiInspection")
-    public String addToInspection (@RequestParam("options") List<String> values) {
+    public String addToInspection (@RequestParam("options") List<String> values,
+                                   @AuthenticationPrincipal UserDetails userDetails,
+                                   Long customer) {
 
         List<Long> elevatorsID = values.stream().map(v -> Long.parseLong(v)).toList();
-       inspectionService.createInspection(elevatorsID);
+       inspectionService.createMultiplyInspection(elevatorsID, userDetails, customer);
 
        return "redirect:/inspection/allInspections";
     }

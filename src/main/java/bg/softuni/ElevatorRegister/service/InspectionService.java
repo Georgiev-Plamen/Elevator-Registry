@@ -1,5 +1,7 @@
 package bg.softuni.ElevatorRegister.service;
 
+import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.ElevatorDetailsDTO;
+import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.ElevatorListDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.AddInspectionDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.InspectionDetailDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.InspectionListDTO;
@@ -21,6 +23,7 @@ public interface InspectionService {
     void deleteInspection(Long id);
 
     void addToInspection(Long id);
+    List<ElevatorDetailsDTO> getAllElevatorsOfInspection(Long id);
 
-    void createInspection(List<Long> values);
+    void createMultiplyInspection(List<Long> values, UserDetails userDetails, Long customerId);
 }

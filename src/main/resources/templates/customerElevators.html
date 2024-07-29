@@ -43,8 +43,10 @@
             <td>
 
 
-                    <input type="checkbox" name="options" id="options" th:value="*{id()}" />
-<!--                    <input type="hidden" id="id" name="id" th:value="*{id()}" />-->
+                <input type="checkbox" name="options" id="options" th:value="*{id()}" />
+
+                <input type="hidden" id="customer" name="customer" th:value="${customer.id}" />
+
 
 <!--                <form th:method="POST"-->
 <!--                      th:action="@{/inspection/addToInspection/{id}(id=*{id})}">-->

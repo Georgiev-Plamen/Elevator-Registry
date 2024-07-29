@@ -1,8 +1,11 @@
 package bg.softuni.ElevatorRegister.service.impl;
 
+import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.ElevatorDetailsDTO;
+import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.ElevatorListDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.AddInspectionDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.InspectionDetailDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.InspectionListDTO;
+import bg.softuni.ElevatorRegister.model.entity.Elevator;
 import bg.softuni.ElevatorRegister.model.entity.Inspection;
 import bg.softuni.ElevatorRegister.model.entity.InspectionsStatus;
 import bg.softuni.ElevatorRegister.model.user.AppUserDetails;
@@ -16,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class InspectionServiceImp implements InspectionService {
@@ -85,12 +89,23 @@ public class InspectionServiceImp implements InspectionService {
     }
 
     @Override
-    public void createInspection(List<Long> values) {
+    public List<ElevatorDetailsDTO> getAllElevatorsOfInspection(Long id) {
+        return inspectionRepository.getReferenceById(id)
+                .getElevators()
+                .stream()
+                .map(elevator -> modelMapper.map(elevator, ElevatorDetailsDTO.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void createMultiplyInspection(List<Long> values, UserDetails userDetails, Long customerId) {
         Inspection inspection = new Inspection();
-//        inspection.setUser(userRepository.findByUsername(appUserDetails.getUsername()).get());
+        inspection.setUser(userRepository.findByUsername(userDetails.getUsername()).get());
+        inspection.setCustomer(customerRepository.getReferenceById(customerId));
         inspection.setElevators(elevatorRepository.findAllById(values));
-
-
+        inspection.setAddress("Multi addresses");
+        inspection.setStatus(InspectionsStatus.ЧАКА);
+        inspectionRepository.save(inspection);
     }
 
     private Inspection map(AddInspectionDTO addInspectionDTO, UserDetails userDetails) {
