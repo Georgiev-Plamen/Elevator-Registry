@@ -1,14 +1,17 @@
 package bg.softuni.ElevatorRegister.model.dto.InspectionDTOs;
 
 import bg.softuni.ElevatorRegister.model.entity.Customer;
+import bg.softuni.ElevatorRegister.model.entity.Elevator;
 import bg.softuni.ElevatorRegister.model.entity.InspectionsStatus;
 import bg.softuni.ElevatorRegister.model.entity.User;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InspectionDetailDTO {
     private Long id;
-//    private List<Elevator> elvators;
+    private List<Elevator> elevators;
     private User user;
     private LocalDate currentInspection;
     private LocalDate nextInspection;
@@ -26,16 +29,16 @@ public class InspectionDetailDTO {
     }
 
 //    public InspectionDetailDTO() {
-//        elvators = new ArrayList<>();
+//        elevators = new ArrayList<>();
 //    }
-//
-//    public List<Elevator> getElvators() {
-//        return elvators;
-//    }
-//
-//    public void setElvators(List<Elevator> elvators) {
-//        this.elvators = elvators;
-//    }
+
+    public List<Elevator> getElevators() {
+        return elevators;
+    }
+
+    public void setElevators(List<Elevator> elevators) {
+        this.elevators = elevators;
+    }
 
     public User getUser() {
         return user;

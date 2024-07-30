@@ -16,23 +16,12 @@
         <input type="hidden" name="id" id="id" th:value="*{id}">
 
         <label for="user">User:</label>
-        <select id="user" name="user">
-            <option th:each="user : ${allUser}"
-                    th:value="${user.id()}"
-                    th:text="${user.username()}"
-                    required>user</option>
-        </select>
-
-<!--        <label for="customer">Customer:</label>-->
-<!--        <select id="customer" name="customer">-->
-<!--            <option th:each="customer : ${allCustomers}"-->
-<!--                    th:value="${customer.id()}"-->
-<!--                    th:text="${customer.name()}"-->
-<!--                    required>customer</option>-->
-<!--        </select>-->
+        <p><span name="user" th:text="*{user.username}" th:value="*{user.id}">User</span>
+            <input type="hidden" name="user" id="user" th:value="*{user.id}"></p><br><br>
 
         <label for="customer">Customer:</label>
-        <input type="text" id="customer" name="customer" th:text="*{customer.name}" th:value="*{customer.id}" required><br><br>
+        <p><span name="customer" th:text="*{customer.name}" th:value="*{customer.id}">customer</span>
+            <input type="hidden" name="customer" id="customer" th:value="*{customer.id}"></p><br><br></p><br><br>
 
         <table>
             <thead>
@@ -42,17 +31,18 @@
                 <th>Elevators stops:</th>
             </tr>
             </thead>
+
             <tbody>
-            <tr th:each="elevator : ${allElevators}"
-                th:object="${elevator}" class="container">
+            <tr th:each="elevator, iterStat : *{elevators}" class="container">
+                <input type="hidden" th:field="*{elevators[__${iterStat.index}__].id}" th:value="${elevator.id}">
+                <input type="hidden" th:field="*{elevators[__${iterStat.index}__].address}" th:value="${elevator.address}">
+                <input type="hidden" th:field="*{elevators[__${iterStat.index}__].numberOfStops}" th:value="${elevator.numberOfStops}">
                 <td><span th:text="${elevator.id}">Id</span></td>
                 <td><span th:text="${elevator.address}">Address</span></td>
-                <td><span th:text="${elevator.numberOfStops}">Address</span></td>
-                </td>
+                <td><span th:text="${elevator.numberOfStops}">Number of Stops</span></td>
             </tr>
             </tbody>
         </table><br>
-
 
         <label for="status">Status:</label>
         <select id="status" name="status" th:value="*{status}" th:field="*{status}">

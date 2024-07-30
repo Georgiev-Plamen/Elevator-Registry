@@ -66,8 +66,8 @@ public class InspectionController {
     @GetMapping("/editInspection/{id}")
     public String editInspection(@PathVariable("id") Long id, Model model) {
 
-        model.addAttribute("customers", inspectionService.getInspectionDetails(id).getCustomer());
-        model.addAttribute("allElevators", inspectionService.getAllElevatorsOfInspection(id));
+//        model.addAttribute("customers", inspectionService.getInspectionDetails(id).getCustomer());
+//        model.addAttribute("allElevators", inspectionService.getAllElevatorsOfInspection(id));
         model.addAttribute("allUser", userService.getAllUsers());
         model.addAttribute("inspectionDetails", inspectionService.getInspectionDetails(id));
 
@@ -75,7 +75,8 @@ public class InspectionController {
     }
 
     @PutMapping("/editInspection/{id}")
-    public String editInspection(@PathVariable("id") Long id, AddInspectionDTO addInspectionDTO) {
+    public String editInspection(@PathVariable("id") Long id,
+                                 @ModelAttribute AddInspectionDTO addInspectionDTO) {
 
         inspectionService.editInspection(id, addInspectionDTO);
 
