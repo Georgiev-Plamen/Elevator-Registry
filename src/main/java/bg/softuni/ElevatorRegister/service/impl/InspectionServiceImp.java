@@ -82,13 +82,6 @@ public class InspectionServiceImp implements InspectionService {
     }
 
     @Override
-    public void addToInspection(Long id) {
-//        Inspection inspection = new Inspection();
-//        Elevator elevator = elevatorRepository.getReferenceById(id);
-//        inspection.setElevators(List.of(elevator));
-    }
-
-    @Override
     public List<ElevatorDetailsDTO> getAllElevatorsOfInspection(Long id) {
         return inspectionRepository.getReferenceById(id)
                 .getElevators()

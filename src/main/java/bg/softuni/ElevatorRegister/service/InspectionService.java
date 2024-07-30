@@ -22,7 +22,6 @@ public interface InspectionService {
 
     void deleteInspection(Long id);
 
-    void addToInspection(Long id);
     List<ElevatorDetailsDTO> getAllElevatorsOfInspection(Long id);
 
     void createMultiplyInspection(List<Long> values, UserDetails userDetails, Long customerId);

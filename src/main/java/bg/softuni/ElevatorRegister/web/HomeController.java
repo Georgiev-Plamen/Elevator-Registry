@@ -10,20 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-//    @GetMapping("/")
-//    public ModelAndView home() {
-//        ModelAndView modelAndView = new ModelAndView("index");
-//
-//        modelAndView.addObject("profileData", userService.getProfileData());
-//
-//        return modelAndView;
-//    }
-
-//    @ModelAttribute("userData")
-//    public UserLoginDTO userLoginDTO() {
-//        return new UserLoginDTO();
-//    }
-
     @GetMapping("/")
     public String index(@AuthenticationPrincipal UserDetails userDetails,
                         Model model) {

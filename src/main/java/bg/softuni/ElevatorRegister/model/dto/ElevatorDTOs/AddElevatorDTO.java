@@ -120,4 +120,11 @@ public class AddElevatorDTO {
         this.lastInspection = lastInspection;
     }
 
+    public LocalDate getNextInspection() {
+        return nextInspection;
+    }
+
+    public void setNextInspection(LocalDate nextInspection) {
+        this.nextInspection = nextInspection;
+    }
 }

@@ -21,7 +21,7 @@ public class AddInspectionDTO {
     private Customer customer;
     private InspectionsStatus status;
 
-    public AddInspectionDTO(List<Elevator> elevators) {
+    public AddInspectionDTO() {
         this.elevators = new ArrayList<>();
     }
 
