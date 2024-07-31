@@ -1,11 +1,26 @@
 package bg.softuni.ElevatorRegister.model.dto.UserDTOs;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public class UserRegistrationDTO {
 
+    @NotEmpty
+    @Size(min=4, max=20)
     private String username;
+    @NotEmpty
+    @Email
     private String email;
+    @NotEmpty
+    @Size(min=3, max=20)
     private String firstName;
+
+    @NotEmpty
+    @Size(min=4, max=20)
     private String lastName;
+
+    @NotEmpty
     private String password;
 
     public String getUsername() {

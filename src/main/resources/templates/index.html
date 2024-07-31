@@ -26,7 +26,8 @@
 
 <div class="container">
     <h1 th:text="#{index_welcome}">Welcome to Elevator Registry!</h1>
-    <div sec:authorize="isAuthenticated()">Welcome : <span th:text="${userData}"></span></div>
+<!--    <div sec:authorize="isAuthenticated()">Welcome : <span th:text="${userData}"></span></div>-->
+    <div>Welcome : <span th:text="${userData}"></span></div>
 
     <p sec:authorize="!isAuthenticated()"><a href="/users/register" th:text="#{index_registry}">Register</a></p>
     <p sec:authorize="!isAuthenticated()"><a href="/users/login" th:text="#{index_login}">Login</a></p>
