@@ -9,7 +9,12 @@ import java.util.List;
 @Table(name="inspections")
 public class Inspection extends BaseEntity{
 
-        @OneToMany
+        @ManyToMany
+        @JoinTable(
+                name = "inspection_elevator",
+                joinColumns = @JoinColumn(name = "inspection_id"),
+                inverseJoinColumns = @JoinColumn(name = "elevator_id")
+        )
         private List<Elevator> elevators;
         @ManyToOne
         private User user;

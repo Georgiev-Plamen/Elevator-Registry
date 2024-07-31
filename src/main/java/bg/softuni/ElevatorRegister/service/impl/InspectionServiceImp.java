@@ -66,7 +66,6 @@ public class InspectionServiceImp implements InspectionService {
         inspection.getElevators().forEach(elevator -> elevator.setLastInspection(elevator.getNextInspection()));
         inspection.getElevators().forEach(elevator -> elevator.setNextInspection(elevator.getNextInspection().plusYears(1)));
         inspection.setStatus(InspectionsStatus.ФИНАЛИЗИРАНА);
-//        inspection.setInspectionDate(LocalDate.now());
         inspectionRepository.save(inspection);
     }
 
@@ -103,6 +102,7 @@ public class InspectionServiceImp implements InspectionService {
         inspection.setCustomer(customerRepository.getReferenceById(customerId));
         inspection.setElevators(elevatorRepository.findAllById(values));
         inspection.setAddress("Multi addresses");
+        inspection.setInspectionDate(LocalDate.now());
         inspection.setStatus(InspectionsStatus.ЧАКА);
         inspectionRepository.save(inspection);
     }
