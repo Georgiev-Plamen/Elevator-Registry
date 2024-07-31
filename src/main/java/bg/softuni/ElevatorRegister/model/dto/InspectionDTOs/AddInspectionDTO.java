@@ -21,6 +21,8 @@ public class AddInspectionDTO {
     private Customer customer;
     private InspectionsStatus status;
 
+    private LocalDate inspectionDate;
+
     public AddInspectionDTO() {
         this.elevators = new ArrayList<>();
     }
@@ -95,5 +97,13 @@ public class AddInspectionDTO {
 
     public void setStatus(InspectionsStatus status) {
         this.status = status;
+    }
+
+    public LocalDate getInspectionDate() {
+        return inspectionDate;
+    }
+
+    public void setInspectionDate(LocalDate inspectionDate) {
+        this.inspectionDate = inspectionDate;
     }
 }

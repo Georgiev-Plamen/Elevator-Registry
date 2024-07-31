@@ -10,6 +10,7 @@ import bg.softuni.ElevatorRegister.repository.UserRepository;
 import bg.softuni.ElevatorRegister.service.AppUserDetailsService;
 import bg.softuni.ElevatorRegister.service.ElevatorService;
 import org.modelmapper.ModelMapper;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -151,16 +152,4 @@ public class ElevatorServiceImpl implements ElevatorService {
                 .collect(Collectors.toList());
     }
 
-    //TODO:
-    public void startScheduler() {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-
-        scheduler.scheduleAtFixedRate(() -> {
-            List<ElevatorListDTO> top5Elevators = getTop5ElevatorsByNextInspection();
-            System.out.println("Top 5 Elevators by Next Inspection Date:");
-            top5Elevators.forEach(elevator ->
-                    System.out.println("ID: " + elevator.id() + ", Address: " + elevator.address() + ", Next Inspection: " + elevator.nextInspection())
-            );
-        }, 0, 1, TimeUnit.DAYS);
-    }
 }

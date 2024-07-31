@@ -15,10 +15,15 @@ import bg.softuni.ElevatorRegister.repository.InspectionRepository;
 import bg.softuni.ElevatorRegister.repository.UserRepository;
 import bg.softuni.ElevatorRegister.service.InspectionService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,6 +66,7 @@ public class InspectionServiceImp implements InspectionService {
         inspection.getElevators().forEach(elevator -> elevator.setLastInspection(elevator.getNextInspection()));
         inspection.getElevators().forEach(elevator -> elevator.setNextInspection(elevator.getNextInspection().plusYears(1)));
         inspection.setStatus(InspectionsStatus.ФИНАЛИЗИРАНА);
+//        inspection.setInspectionDate(LocalDate.now());
         inspectionRepository.save(inspection);
     }
 
@@ -99,6 +105,22 @@ public class InspectionServiceImp implements InspectionService {
         inspection.setAddress("Multi addresses");
         inspection.setStatus(InspectionsStatus.ЧАКА);
         inspectionRepository.save(inspection);
+    }
+
+    @Override
+    @Scheduled(cron = "0 0 2 * * *")
+    //Starts once of day
+    public void deleteInspectionAfter5years() {
+        LocalDate dateThreshold = LocalDate.now().minusYears(5);
+
+        List<Inspection> oldInspections = inspectionRepository.findAll().stream()
+                .filter(inspection -> inspection.getInspectionDate().isBefore(dateThreshold))
+                .collect(Collectors.toList());
+
+        for (Inspection inspection : oldInspections) {
+            inspectionRepository.delete(inspection);
+            System.out.println("Delete inspection with date: " + inspection.getInspectionDate());
+        }
     }
 
     private Inspection map(AddInspectionDTO addInspectionDTO, UserDetails userDetails) {

@@ -25,4 +25,6 @@ public interface InspectionService {
     List<ElevatorDetailsDTO> getAllElevatorsOfInspection(Long id);
 
     void createMultiplyInspection(List<Long> values, UserDetails userDetails, Long customerId);
+
+    void deleteInspectionAfter5years();
 }

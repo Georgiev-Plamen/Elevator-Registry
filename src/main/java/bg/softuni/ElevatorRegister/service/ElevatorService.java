@@ -27,6 +27,5 @@ public interface ElevatorService {
 
     List<CustomerElevatorDTO> getAllCustomerElevator(Long id);
 
-    List<ElevatorListDTO> getTop5ElevatorsByNextInspection();
 
 }

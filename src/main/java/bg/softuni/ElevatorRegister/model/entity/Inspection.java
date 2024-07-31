@@ -15,6 +15,7 @@ public class Inspection extends BaseEntity{
         private User user;
         private String address;
         private Double price;
+        private LocalDate inspectionDate;
         @ManyToOne(fetch = FetchType.EAGER)
         private Customer customer;
         @Enumerated(EnumType.STRING)
@@ -66,5 +67,13 @@ public class Inspection extends BaseEntity{
 
         public void setStatus(InspectionsStatus status) {
                 this.status = status;
+        }
+
+        public LocalDate getInspectionDate() {
+                return inspectionDate;
+        }
+
+        public void setInspectionDate(LocalDate inspectionDate) {
+                this.inspectionDate = inspectionDate;
         }
 }
