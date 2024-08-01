@@ -31,7 +31,8 @@
 
     <p sec:authorize="!isAuthenticated()"><a href="/users/register" th:text="#{index_registry}">Register</a></p>
     <p sec:authorize="!isAuthenticated()"><a href="/users/login" th:text="#{index_login}">Login</a></p>
-    <p sec:authorize="isAuthenticated()"><a href="/users/all">Users management</a></p><br><br><br>
+<!--    <p sec:authorize="isAuthenticated()"><a href="/users/all">Users management</a></p><br><br><br>-->
+    <p sec:authorize="hasRole('ADMIN')"><a href="/users/all">Users management</a></p><br><br><br>
 
     <p sec:authorize="isAuthenticated()"><a href="/customer/addCustomer">Add new customer</a></p>
     <p sec:authorize="isAuthenticated()"><a href="/customer/allCustomers">All customers</a></p>

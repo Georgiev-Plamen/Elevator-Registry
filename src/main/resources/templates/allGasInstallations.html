@@ -37,7 +37,7 @@
             <td><span th:text="*{power()}">Power</span></td>
             <td><span th:text="*{ownerId()}">Owner</span></td>
             <td>
-                <form th:method="delete"
+                <form sec:authorize="hasRole('ADMIN')" th:method="delete"
                       th:action="@{/gas/{id}(id=${gasInstallation.id()})}" >
                     <input type="hidden" name="id" th:value="delete">
                     <button type="submit">Delete</button>

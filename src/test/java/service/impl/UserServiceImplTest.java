@@ -1,6 +1,9 @@
 package service.impl;
 
+import bg.softuni.ElevatorRegister.model.entity.Role;
 import bg.softuni.ElevatorRegister.model.entity.User;
+import bg.softuni.ElevatorRegister.model.entity.UserRoleEnum;
+import bg.softuni.ElevatorRegister.repository.RoleRepository;
 import bg.softuni.ElevatorRegister.repository.UserRepository;
 import bg.softuni.ElevatorRegister.model.dto.UserDTOs.UserRegistrationDTO;
 import bg.softuni.ElevatorRegister.service.AppUserDetailsService;
@@ -19,9 +22,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.util.AssertionErrors.assertNotNull;
+import static org.springframework.test.util.AssertionErrors.assertTrue;
+import static org.testng.AssertJUnit.assertFalse;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
@@ -38,6 +45,9 @@ public class UserServiceImplTest {
     private PasswordEncoder mockPasswordEncoder;
 
     @Mock
+    private RoleRepository mockRoleRepository;
+
+    @Mock
     private AppUserDetailsService mockAppUserDetails;
 
     @BeforeEach
@@ -47,40 +57,51 @@ public class UserServiceImplTest {
                 mockUserRepository,
                 mockAppUserDetails,
                 new ModelMapper(),
-                mockPasswordEncoder
+                mockPasswordEncoder,
+                mockRoleRepository
         );
-
     }
 
     @Test
     void testUserRegistration() {
-
-        UserRegistrationDTO userRegistrationDTO =
-                new UserRegistrationDTO()
-                        .setUsername("gosho")
-                        .setEmail("gosho@gosho.com")
-                        .setFirstName("Gosho")
-                        .setLastName("Georgiev")
-                        .setPassword("123123");
+        // Arrange
+        UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO()
+                .setUsername("gosho")
+                .setEmail("gosho@gosho.com")
+                .setFirstName("Gosho")
+                .setLastName("Georgiev")
+                .setPassword("123123")
+                .setConfirmPassword("123123");
 
         when(mockPasswordEncoder.encode(userRegistrationDTO.getPassword()))
-                .thenReturn(userRegistrationDTO.getPassword()+userRegistrationDTO.getPassword());
+                .thenReturn(userRegistrationDTO.getPassword() + userRegistrationDTO.getPassword());
 
+        when(mockUserRepository.findByEmail(userRegistrationDTO.getEmail()))
+                .thenReturn(Optional.empty());
+        when(mockUserRepository.findByUsername(userRegistrationDTO.getUsername()))
+                .thenReturn(Optional.empty());
 
+        Role userRole = new Role();
+        userRole.setName(UserRoleEnum.USER);
+        when(mockRoleRepository.findByName(UserRoleEnum.USER)).thenReturn(Optional.of(userRole));
 
+        // Act
         toTest.registerUser(userRegistrationDTO);
 
-
+        // Assert
         verify(mockUserRepository).save(userEntityCaptor.capture());
 
         User actualSavedEntity = userEntityCaptor.getValue();
 
-        Assertions.assertNotNull(actualSavedEntity);
+//        assertNotNull(actualSavedEntity);
         assertEquals(userRegistrationDTO.getFirstName(), actualSavedEntity.getFirstName());
         assertEquals(userRegistrationDTO.getLastName(), actualSavedEntity.getLastName());
-        assertEquals(userRegistrationDTO.getPassword() + userRegistrationDTO.getPassword(),
-                actualSavedEntity.getPassword());
+        assertEquals(userRegistrationDTO.getPassword() + userRegistrationDTO.getPassword(), actualSavedEntity.getPassword());
         assertEquals(userRegistrationDTO.getEmail(), actualSavedEntity.getEmail());
+
+        // Verify the user role is set correctly
+        List<Role> roles = actualSavedEntity.getRoles();  // Updated to getRoles()
+        assertFalse(roles.isEmpty());
     }
 
     @Test

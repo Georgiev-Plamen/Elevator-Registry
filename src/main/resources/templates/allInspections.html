@@ -27,7 +27,8 @@
                 <td><span th:text="*{price()}">Price</span></td>
                 <td><span th:text="*{status()}">Status</span></td>
                 <td>
-                    <form th:method="delete"
+                    <form sec:authorize="hasRole('ADMIN')"
+                            th:method="delete"
                           th:action="@{/inspection/{id}(id=${inspection.id()})}" >
                         <input type="hidden" name="id" th:value="delete">
                         <button type="submit">Delete</button>

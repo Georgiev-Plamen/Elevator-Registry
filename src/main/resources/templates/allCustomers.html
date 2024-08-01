@@ -32,7 +32,7 @@
             <td><span th:text="*{telNumber()}">Number of stops</span></td>
             <td><span th:text="*{email()}">Added by</span></td>
             <td>
-                <form th:method="delete"
+                <form sec:authorize="hasRole('ADMIN')" th:method="delete"
                       th:action="@{/customer/{id}(id=${customer.id()})}" >
                     <input type="hidden" name="id" th:value="delete">
                     <button type="submit">Delete</button>

@@ -37,11 +37,14 @@ public class RegistrationControllerIT {
     @Test
     void testRegistration() throws Exception {
 
+        userRepository.deleteAll();
+
         mockMvc.perform(post("/users/register")
                         .param("email", "gosho@gosho.com")
                         .param("firstName", "Gosho")
                         .param("lastName", "Georgiev")
                         .param("password", "123123")
+                        .param("confirmPassword", "123123")
                         .param("username", "gosho")
                         .with(csrf())
                 ).andExpect(status().is3xxRedirection())
@@ -57,5 +60,7 @@ public class RegistrationControllerIT {
         Assertions.assertEquals("Georgiev", user.getLastName());
 
         Assertions.assertTrue(passwordEncoder.matches("123123", user.getPassword()));
+
+        userRepository.deleteAll();
     }
 }

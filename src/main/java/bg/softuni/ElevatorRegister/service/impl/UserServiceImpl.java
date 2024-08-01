@@ -2,7 +2,10 @@ package bg.softuni.ElevatorRegister.service.impl;
 
 import bg.softuni.ElevatorRegister.model.dto.UserDTOs.UserEditDTO;
 import bg.softuni.ElevatorRegister.model.dto.UserDTOs.UserRegistrationDTO;
+import bg.softuni.ElevatorRegister.model.entity.Role;
 import bg.softuni.ElevatorRegister.model.entity.User;
+import bg.softuni.ElevatorRegister.model.entity.UserRoleEnum;
+import bg.softuni.ElevatorRegister.repository.RoleRepository;
 import bg.softuni.ElevatorRegister.repository.UserRepository;
 import bg.softuni.ElevatorRegister.service.AppUserDetailsService;
 import bg.softuni.ElevatorRegister.service.UserService;
@@ -12,7 +15,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,17 +25,39 @@ public class UserServiceImpl implements UserService {
     private final AppUserDetailsService appUserDetailsService;
     private final ModelMapper modelMapper;
     private final PasswordEncoder encoder;
+    private final RoleRepository roleRepository;
 
-    public UserServiceImpl(UserRepository userRepository, AppUserDetailsService appUserDetailsService, ModelMapper modelMapper, PasswordEncoder encoder) {
+    public UserServiceImpl(UserRepository userRepository, AppUserDetailsService appUserDetailsService, ModelMapper modelMapper, PasswordEncoder encoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.appUserDetailsService = appUserDetailsService;
         this.modelMapper = modelMapper;
         this.encoder = encoder;
+        this.roleRepository = roleRepository;
     }
 
     @Override
     public void registerUser(UserRegistrationDTO userRegistrationDTO) {
-        userRepository.save(map(userRegistrationDTO));
+
+        Optional<User> optionalUserByEmail = userRepository.findByEmail(userRegistrationDTO.getEmail());
+        Optional<User> optionalUserByUsername = userRepository.findByUsername(userRegistrationDTO.getUsername());
+
+        if (optionalUserByEmail.isPresent() || optionalUserByUsername.isPresent()) {
+            return;
+        }
+
+        if (!userRegistrationDTO.getPassword().equals(userRegistrationDTO.getConfirmPassword())) {
+            return;
+        }
+
+        User user = map(userRegistrationDTO);
+
+        Optional<Role> optionalRoles = roleRepository.findByName(UserRoleEnum.USER);
+        List<Role> roles = new ArrayList<>();
+
+        roles.add(optionalRoles.get());
+        user.setRole(roles);
+
+        userRepository.save(user);
     }
 
     @Override

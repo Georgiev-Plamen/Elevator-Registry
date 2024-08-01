@@ -22,7 +22,11 @@ public class User extends BaseEntity{
             joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private List<Role> roles = new ArrayList<>();
+    private List<Role> roles;
+
+    public User() {
+        this.roles = new ArrayList<>();
+    }
 
     public String getUsername() {
         return username;
