@@ -18,19 +18,19 @@ public class AppConfig {
         return new ModelMapper();
     }
 
-    @Bean
-    public DataSourceInitializer dataSourceInitializer(DataSource dataSource,
-                                                       RoleRepository userRoleRepository,
-                                                       ResourceLoader resourceLoader) {
-        DataSourceInitializer initializer = new DataSourceInitializer();
-        initializer.setDataSource(dataSource);
-
-        if (userRoleRepository.count() == 0) {
-            ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-            populator.addScript(resourceLoader.getResource("classpath:data.sql"));
-            initializer.setDatabasePopulator(populator);
-        }
-
-        return initializer;
-    }
+//    @Bean
+//    public DataSourceInitializer dataSourceInitializer(DataSource dataSource,
+//                                                       RoleRepository userRoleRepository,
+//                                                       ResourceLoader resourceLoader) {
+//        DataSourceInitializer initializer = new DataSourceInitializer();
+//        initializer.setDataSource(dataSource);
+//
+//        if (userRoleRepository.count() == 0) {
+//            ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+//            populator.addScript(resourceLoader.getResource("classpath:data.sql"));
+//            initializer.setDatabasePopulator(populator);
+//        }
+//
+//        return initializer;
+//    }
 }

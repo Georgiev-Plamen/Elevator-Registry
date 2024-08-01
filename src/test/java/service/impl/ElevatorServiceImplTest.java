@@ -16,11 +16,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -171,57 +169,4 @@ public class ElevatorServiceImplTest {
 
         assertEquals(expectedUsername, result);
     }
-
-//    @Test
-//    void testGetElevatorsDetails() {
-//
-//        Elevator elevator1 = new Elevator();
-//        elevator1.setId(1L);
-//        elevator1.setManufacturer("Manufacturer1");
-//        elevator1.setAddress("Address1");
-//        elevator1.setSpeed(1);
-//        elevator1.setNumberOfStops(10);
-//        elevator1.setRegisterDate(LocalDate.of(2020, 1, 1));
-//        elevator1.setLastInspection(LocalDate.of(2023, 1, 1));
-//        elevator1.setNextInspection(LocalDate.of(2024, 1, 1));
-//
-//        Elevator elevator2 = new Elevator();
-//        elevator2.setId(2L);
-//        elevator2.setManufacturer("Manufacturer2");
-//        elevator2.setAddress("Address2");
-//        elevator2.setSpeed(2);
-//        elevator2.setNumberOfStops(20);
-//        elevator2.setRegisterDate(LocalDate.of(2021, 2, 2));
-//        elevator2.setLastInspection(LocalDate.of(2023, 2, 2));
-//        elevator2.setNextInspection(LocalDate.of(2025, 2, 2));
-//
-//        List<Elevator> elevators = Arrays.asList(elevator1, elevator2);
-//        when(mockElevatorRepository.findAll()).thenReturn(elevators);
-//
-//        // When
-//        List<ElevatorListDTO> result = elevatorService.getElevatorsDetails();
-//
-//        // Then
-//        assertEquals(2, result.size());
-//
-//        ElevatorListDTO dto1 = result.get(0);
-//        assertEquals(1L, dto1.id());
-//        assertEquals("Manufacturer1", dto1.manufacturer());
-//        assertEquals("Address1", dto1.address());
-//        assertEquals(1, dto1.speed());
-//        assertEquals(10, dto1.numberOfStops());
-//        assertEquals(LocalDate.of(2020, 1, 1), dto1.registerDate());
-//        assertEquals(LocalDate.of(2023, 1, 1), dto1.lastInspection());
-//        assertEquals(LocalDate.of(2024, 1, 1), dto1.nextInspection());
-//
-//        ElevatorListDTO dto2 = result.get(1);
-//        assertEquals(2L, dto2.id());
-//        assertEquals("Manufacturer2", dto2.manufacturer());
-//        assertEquals("Address2", dto2.address());
-//        assertEquals(2, dto2.speed());
-//        assertEquals(20, dto2.numberOfStops());
-//        assertEquals(LocalDate.of(2021, 2, 2), dto2.registerDate());
-//        assertEquals(LocalDate.of(2023, 2, 2), dto2.lastInspection());
-//        assertEquals(LocalDate.of(2025, 2, 2), dto2.nextInspection());
-//    }
 }

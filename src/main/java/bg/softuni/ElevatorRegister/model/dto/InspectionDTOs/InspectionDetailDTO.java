@@ -6,14 +6,13 @@ import bg.softuni.ElevatorRegister.model.entity.InspectionsStatus;
 import bg.softuni.ElevatorRegister.model.entity.User;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class InspectionDetailDTO {
     private Long id;
     private List<Elevator> elevators;
     private User user;
-    private LocalDate currentInspection;
+    private LocalDate lastInspection;
     private LocalDate nextInspection;
     private String address;
     private Double price;
@@ -48,12 +47,12 @@ public class InspectionDetailDTO {
         this.user = user;
     }
 
-    public LocalDate getCurrentInspection() {
-        return currentInspection;
+    public LocalDate getLastInspection() {
+        return lastInspection;
     }
 
-    public void setCurrentInspection(LocalDate currentInspection) {
-        this.currentInspection = currentInspection;
+    public void setLastInspection(LocalDate lastInspection) {
+        this.lastInspection = lastInspection;
     }
 
     public LocalDate getNextInspection() {

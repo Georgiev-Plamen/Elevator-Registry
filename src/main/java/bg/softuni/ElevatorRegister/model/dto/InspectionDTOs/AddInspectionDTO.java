@@ -106,4 +106,6 @@ public class AddInspectionDTO {
     public void setInspectionDate(LocalDate inspectionDate) {
         this.inspectionDate = inspectionDate;
     }
+
+
 }
