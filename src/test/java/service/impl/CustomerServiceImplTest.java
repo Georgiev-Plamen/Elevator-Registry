@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class CustomerServiceImplTest {
     @Mock
-    private CustomerRepository customerRepository; // Mock the CustomerRepository
+    private CustomerRepository customerRepository;
 
     @InjectMocks
     private CustomerServiceImpl customerService;

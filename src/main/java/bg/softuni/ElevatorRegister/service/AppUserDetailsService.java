@@ -35,7 +35,7 @@ public class AppUserDetailsService implements UserDetailsService {
         return new AppUserDetails(
                 user.getUsername(),
                 user.getPassword(),
-                user.getRoles().stream().map(Role::getRole).map(AppUserDetailsService::map).toList(),
+                user.getRoles().stream().map(Role::getName).map(AppUserDetailsService::map).toList(),
                 user.getFirstName(),
                 user.getLastName()
                 );

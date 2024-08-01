@@ -14,7 +14,7 @@ public class Role {
     @NotNull
     @Column(unique = true)
     @Enumerated(EnumType.STRING)
-    private UserRoleEnum role;
+    private UserRoleEnum name;
 
     public Long getId() {
         return id;
@@ -25,12 +25,12 @@ public class Role {
         return this;
     }
 
-    public UserRoleEnum getRole() {
-        return role;
+    public UserRoleEnum getName() {
+        return name;
     }
 
-    public Role setRole(UserRoleEnum role) {
-        this.role = role;
+    public Role setName(UserRoleEnum name) {
+        this.name = name;
         return this;
     }
 
