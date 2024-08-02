@@ -2,15 +2,13 @@ package web;
 
 import bg.softuni.ElevatorRegister.ElevatorRegisterApplication;
 import bg.softuni.ElevatorRegister.model.entity.User;
-import org.springframework.context.annotation.Import;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import bg.softuni.ElevatorRegister.repository.UserRepository;
 
@@ -37,8 +35,6 @@ public class RegistrationControllerIT {
     @Test
     void testRegistration() throws Exception {
 
-        userRepository.deleteAll();
-
         mockMvc.perform(post("/users/register")
                         .param("email", "gosho@gosho.com")
                         .param("firstName", "Gosho")
@@ -61,6 +57,5 @@ public class RegistrationControllerIT {
 
         Assertions.assertTrue(passwordEncoder.matches("123123", user.getPassword()));
 
-        userRepository.deleteAll();
     }
 }
