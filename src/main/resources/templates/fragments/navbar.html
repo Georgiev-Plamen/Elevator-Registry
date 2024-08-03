@@ -5,22 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+    <link rel="stylesheet" href="/css/responsive.css">
 </head>
 
 <body>
 
-    <div th:fragment="navbar(activeLink)">
+<div th:fragment="navbar(activeLink)">
     <div class="container">
         <div class="navbar">
-            <a href="/" >Home</a>
-            <a  sec:authorize="!isAuthenticated()" href="/users/register" th:text="#{nav_bar_register}">Register</a>
+            <a href="/">Home</a>
+            <a sec:authorize="!isAuthenticated()" href="/users/register" th:text="#{nav_bar_register}">Register</a>
             <a sec:authorize="!isAuthenticated()" href="/users/login" th:text="#{nav_bar_login}">>Login</a>
             <a sec:authorize="isAuthenticated()" href="/users/all" th:text="#{nav_bar_userControl}">User Management</a>
-            <a sec:authorize="isAuthenticated()" href="/elevator/allElevators" th:text="#{nav_bar_allElevator}">All Elevators</a>
-            <a sec:authorize="isAuthenticated()" href="/customer/allCustomers" th:text="#{nav_bar_allCustomers}">All Customers</a>
-            <a sec:authorize="isAuthenticated()" href="/gas/allGasInstallations" th:text="#{nav_bar_allGasInstallations}">All Gas Installations</a>
-            <a sec:authorize="isAuthenticated()" href="/inspection/allInspections" th:text="#{nav_bar_allInspections}">All Inspections</a>
-<!--            <a sec:authorize="isAuthenticated()" href="/elevator/addElevator" th:text="#{nav_bar_addElevator}">Add Elevator</a>-->
+            <a sec:authorize="isAuthenticated()" href="/elevator/allElevators" th:text="#{nav_bar_allElevator}">All
+                Elevators</a>
+            <a sec:authorize="isAuthenticated()" href="/customer/allCustomers" th:text="#{nav_bar_allCustomers}">All
+                Customers</a>
+            <a sec:authorize="isAuthenticated()" href="/gas/allGasInstallations"
+               th:text="#{nav_bar_allGasInstallations}">All Gas Installations</a>
+            <a sec:authorize="isAuthenticated()" href="/inspection/allInspections" th:text="#{nav_bar_allInspections}">All
+                Inspections</a>
+            <!--            <a sec:authorize="isAuthenticated()" href="/elevator/addElevator" th:text="#{nav_bar_addElevator}">Add Elevator</a>-->
+            <div class="custom-select" style="width:auto;">
+                <form th:method="get">
+<!--                    <label class="custom-select" for="lang" th:text="#{nav_bar_language}">Language:</label>-->
+                    <select
+                            id="lang"
+                            name="lang"
+                            onchange="this.form.submit()">
+                        <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                        <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                    </select>
+                </form>
+            </div>
             <div sec:authorize="isAuthenticated()">
                 <form class="text-white"
                       th:method="post"
@@ -28,21 +45,9 @@
                     <input class="button" type="submit" value="Logout"/>
                 </form>
             </div>
-            <div class="dropdown">
-                    <form th:method="get">
-                        <label class="dropdown" for="lang" th:text="#{nav_bar_language}">Language:</label>
-                            <select
-                                    id="lang"
-                                    name="lang"
-                                    onchange="this.form.submit()">
-                                <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
-                                <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
-                            </select>
-                        </form>
-            </div>
-        </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>

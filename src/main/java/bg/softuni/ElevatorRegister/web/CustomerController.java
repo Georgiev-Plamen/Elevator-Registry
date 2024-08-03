@@ -4,7 +4,6 @@ import bg.softuni.ElevatorRegister.model.dto.CustomerDTOs.AddCustomerDTO;
 import bg.softuni.ElevatorRegister.model.dto.CustomerDTOs.CustomerDetailsDTO;
 import bg.softuni.ElevatorRegister.service.CustomerService;
 import bg.softuni.ElevatorRegister.service.ElevatorService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,7 @@ public class CustomerController {
 
     @GetMapping("/addCustomer")
     public String addCustomer() {
-        return "addCustomer";
+        return "add-customer";
     }
 
     @PostMapping("/addCustomer")
@@ -36,7 +35,7 @@ public class CustomerController {
     public String allCustomers(Model model) {
         model.addAttribute("allCustomers", customerService.getAllCustomers());
 
-        return "allCustomers";
+        return "all-customers";
     }
 
     @DeleteMapping("/{id}")
@@ -50,7 +49,7 @@ public class CustomerController {
 
         model.addAttribute("customerDetails", customerService.getCustomerDetails(id));
 
-        return "editCustomer";
+        return "edit-customer";
     }
 
     @PutMapping("/editCustomer/{id}")

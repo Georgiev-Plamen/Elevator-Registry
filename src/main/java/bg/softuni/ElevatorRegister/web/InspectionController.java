@@ -1,12 +1,10 @@
 package bg.softuni.ElevatorRegister.web;
 
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.AddInspectionDTO;
-import bg.softuni.ElevatorRegister.model.entity.Customer;
 import bg.softuni.ElevatorRegister.service.CustomerService;
 import bg.softuni.ElevatorRegister.service.ElevatorService;
 import bg.softuni.ElevatorRegister.service.InspectionService;
 import bg.softuni.ElevatorRegister.service.UserService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -35,7 +33,7 @@ public class InspectionController {
 
         model.addAttribute("allInspections", inspectionService.getAllInspections());
 
-        return "allInspections";
+        return "all-inspections";
     }
 
     @GetMapping("/addInspection/{id}")
@@ -45,7 +43,7 @@ public class InspectionController {
         model.addAttribute("customer", customerService.getCustomerById(id));
         model.addAttribute("customerElevators", elevatorService.getAllCustomerElevator(id));
 
-        return "addInspection";
+        return "add-inspection";
     }
     @PostMapping("/addInspection")
     public String addInspection (@AuthenticationPrincipal UserDetails userDetails,
@@ -71,7 +69,7 @@ public class InspectionController {
         model.addAttribute("allUser", userService.getAllUsers());
         model.addAttribute("inspectionDetails", inspectionService.getInspectionDetails(id));
 
-        return "editInspection";
+        return "edit-inspection";
     }
 
     @PutMapping("/editInspection/{id}")
@@ -97,7 +95,7 @@ public class InspectionController {
         model.addAttribute("customerElevators", elevatorService.getAllCustomerElevator(id));
         model.addAttribute("customer", customerService.getCustomerById(id));
 
-        return "customerElevators";
+        return "customer-elevators";
     }
     @PostMapping("/createMultiInspection")
     public String addToInspection (@RequestParam("options") List<String> values,
@@ -115,7 +113,7 @@ public class InspectionController {
             Model model) {
         model.addAttribute("allCustomer", customerService.getAllCustomers());
 
-        return "selectCustomer";
+        return "select-customer";
     }
 
     @PostMapping("/selectCustomer")

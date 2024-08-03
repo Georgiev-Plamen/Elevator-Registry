@@ -28,7 +28,7 @@ public class ElevatorController {
     public String allElevatorView (Model model) {
         model.addAttribute("allElevators", elevatorService.getAllElevators());
 
-        return "allElevators";
+        return "all-elevators";
     }
 
 
@@ -36,7 +36,7 @@ public class ElevatorController {
     public String addElevatorView(Model model) {
         model.addAttribute("allCustomers", customerService.getAllCustomers());
 
-        return "addElevator";
+        return "add-elevator";
     }
 
     @PostMapping("/addElevator")
@@ -61,7 +61,7 @@ public class ElevatorController {
         model.addAttribute("allCustomers", customerService.getAllCustomers());
         model.addAttribute("allUser", userService.getAllUsers());
 
-        return "editElevator";
+        return "edit-elevator";
     }
 
     @PutMapping("/editElevator/{id}")

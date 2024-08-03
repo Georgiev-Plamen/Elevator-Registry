@@ -25,7 +25,7 @@ public class GasInstallationController {
                                       Model model) {
         model.addAttribute("gasInstallationDetails", gasInstallationService.getGasInstallationDetails(id));
 
-        return "editGasInstallation";
+        return "edit-gas-installation";
     }
 
     @PutMapping("/editGasInstallation/{id}")
@@ -38,14 +38,14 @@ public class GasInstallationController {
     public String allGasInstallations (Model model) {
         model.addAttribute("allGasInstallations", gasInstallationService.getAllGasInstallation());
 
-        return "allGasInstallations";
+        return "all-gas-installations";
     }
 
     @GetMapping("/addGasInstallation")
         public String addGasInstallation (Model model) {
         model.addAttribute("allCustomers", customerService.getAllCustomers());
 
-        return "addGasInstallation";
+        return "add-gas-installation";
     }
 
     @PostMapping("/addGasInstallation")
