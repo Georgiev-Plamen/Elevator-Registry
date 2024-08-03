@@ -42,7 +42,7 @@ public class InspectionControllerIT {
         mockMvc.perform(get("/inspection/allInspections")
                 .with(csrf()))
                 .andExpect(status().isOk())
-                .andExpect(view().name("allInspections"));
+                .andExpect(view().name("all-inspections"));
     }
 
     @Test

@@ -52,7 +52,7 @@ public class ElevatorControllerIT {
 
         mockMvc.perform(get("/elevator/addElevator"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("addElevator"));
+                .andExpect(view().name("add-elevator"));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class ElevatorControllerIT {
         mockMvc.perform(get("/elevator/allElevators")
                     .with(csrf()))
                 .andExpect(status().isOk())
-                .andExpect(view().name("allElevators"));
+                .andExpect(view().name("all-elevators"));
     }
 
     @Test

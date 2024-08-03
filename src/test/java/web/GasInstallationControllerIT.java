@@ -52,7 +52,7 @@ public class GasInstallationControllerIT {
 
         mockMvc.perform(get("/gas/allGasInstallations"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("allGasInstallations"))
+                .andExpect(view().name("all-gas-installations"))
                 .andExpect(model().attribute("allGasInstallations", gasInstallations));
     }
 
