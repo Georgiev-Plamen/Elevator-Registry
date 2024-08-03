@@ -11,7 +11,7 @@
 <body>
 
 <div th:fragment="navbar(activeLink)">
-    <div class="container">
+    <div class="home-navbar ">
         <div class="navbar">
             <a href="/">Home</a>
             <a sec:authorize="!isAuthenticated()" href="/users/register" th:text="#{nav_bar_register}">Register</a>
@@ -28,7 +28,7 @@
             <!--            <a sec:authorize="isAuthenticated()" href="/elevator/addElevator" th:text="#{nav_bar_addElevator}">Add Elevator</a>-->
             <div class="custom-select" style="width:auto;">
                 <form th:method="get">
-<!--                    <label class="custom-select" for="lang" th:text="#{nav_bar_language}">Language:</label>-->
+                    <!--                    <label class="custom-select" for="lang" th:text="#{nav_bar_language}">Language:</label>-->
                     <select
                             id="lang"
                             name="lang"
@@ -42,7 +42,7 @@
                 <form class="text-white"
                       th:method="post"
                       th:action="@{/users/logout}">
-                    <input class="button" type="submit" value="Logout"/>
+                    <input class="button-4" type="submit" value="Logout"/>
                 </form>
             </div>
         </div>

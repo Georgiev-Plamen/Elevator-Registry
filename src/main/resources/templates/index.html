@@ -20,39 +20,82 @@
 <!--    </script>-->
 </head>
 <body>
-<nav>
-    <div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
-</nav>
+<div>
+    <div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"/>
+</div>
 
 
-<div class="container">
+<div class="home-container">
     <h1 th:text="#{index_welcome}">Welcome to Elevator Registry!</h1>
-<!--    <div sec:authorize="isAuthenticated()">Welcome : <span th:text="${userData}"></span></div>-->
+    <!--    <div sec:authorize="isAuthenticated()">Welcome : <span th:text="${userData}"></span></div>-->
     <div>Welcome : <span th:text="${userData}"></span></div>
 
-    <p sec:authorize="!isAuthenticated()"><a href="/users/register" th:text="#{index_registry}">Register</a></p>
-    <p sec:authorize="!isAuthenticated()"><a href="/users/login" th:text="#{index_login}">Login</a></p>
-<!--    <p sec:authorize="isAuthenticated()"><a href="/users/all">Users management</a></p><br><br><br>-->
-    <p sec:authorize="hasRole('ADMIN')"><a href="/users/all">Users management</a></p><br><br><br>
+    <div class="section-container">
+        <div class="max-width-container">
 
-    <p sec:authorize="isAuthenticated()"><a href="/customer/addCustomer">Add new customer</a></p>
-    <p sec:authorize="isAuthenticated()"><a href="/customer/allCustomers">All customers</a></p>
-    <br>
-    <p sec:authorize="isAuthenticated()"><a href="/gas/addGasInstallation">Add new gas installation</a></p>
-    <p sec:authorize="isAuthenticated()"><a href="/gas/allGasInstallations">All gas installation</a></p>
-    <br>
-    <p sec:authorize="isAuthenticated()"><a href="/inspection/selectCustomer">Add inspection</a></p>
-<!--    <button onclick="openCustomerPopup()">Select Add inspection</button>-->
-    <p sec:authorize="isAuthenticated()"><a href="/inspection/allInspections">All inspections</a></p>
-    <br>
-    <p sec:authorize="isAuthenticated()"><a href="/elevator/addElevator">Add new elevator</a></p>
-    <p sec:authorize="isAuthenticated()"><a href="/elevator/allElevators">Elevator registry</a></p>
-
-    <div class="btn" sec:authorize="isAuthenticated()">
-            <form th:method="post"
-                  th:action="@{/users/logout}">
-                <input type="submit" value="Logout"/>
-            </form>
+            <div class="home-container08">
+                <!--                <div class="blog-post-card-blog-post-card blog-post-card-root-class-name">-->
+                <!--Users:-->
+                <div sec:authorize="!isAuthenticated()" class="blog-post-card-blog-post-card">
+                    <img class="blog-post-card-image" src="/images/login.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-card-container">
+                            <span class="blog-post-card-text">
+                            <span>User:</span>
+                            </span>
+                        <a href="/users/register" th:text="#{index_registry}">Register</a>
+                        <a href="/users/login" th:text="#{index_login}">Login</a>
+                        <p sec:authorize="hasRole('ADMIN')"><a href="/users/all">Users management</a></p>
+                    </div>
+                </div>
+                <!--Customers-->
+                <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">
+                    <img class="blog-post-card-image" src="/images/customers.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-card-container">
+                        <h3>Users: </h3>
+                        <a href="/customer/addCustomer">Add new customer</a>
+                        <a href="/customer/allCustomers">All customers</a>
+                    </div>
+                </div>
+                <!--Inspections-->
+                <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">
+                    <img class="blog-post-card-image" src="/images/gas.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-card-container">
+                        <h3>Inspections: </h3>
+                        <a href="/inspections/allInspection">Add new inspection</a></p>
+                        <a href="/inspections/allInspection">All inspection</a></p>
+                    </div>
+                </div>
+                <!--GAS-->
+                <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">
+                    <img class="blog-post-card-image" src="/images/inspections.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-card-container">
+                        <h3>Gas installation: </h3>
+                        <a href="/gas/addGasInstallation">Add new gas installation</a>
+                        <a href="/gas/allGasInstallations">All gas installation</a>
+                        <br>
+                        <a href="/inspection/selectCustomer">Add inspection</a>
+                    </div>
+                </div>
+                <!--Elevators-->
+                <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">
+                    <img class="blog-post-card-image" src="/images/elevator.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-card-container">
+                        <h3>Elevators: </h3>
+                        <a href="/elevator/addElevator">Add new elevator</a>
+                        <a href="/elevator/allElevators">Elevator registry</a>
+                        <br>
+                        <a href="/inspection/selectCustomer">Add inspection</a>
+                    </div>
+                </div>
+                <!--Log Out-->
+                <!--                    <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">-->
+                <!--                        <form th:method="post"-->
+                <!--                              th:action="@{/users/logout}">-->
+                <!--                            <input type="submit" value="Logout"/>-->
+                <!--                        </form>-->
+                <!--                    </div>-->
+            </div>
+        </div>
     </div>
 </div>
 </body>
