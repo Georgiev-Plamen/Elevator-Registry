@@ -23,7 +23,7 @@ public class SecurityConfig {
                                         // all static resources to "common locations" (css, images, js) are available to anyone
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                         // some more resources for all users
-                                        .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
+                                        .requestMatchers("/", "/users/login", "/users/register", "/error-page").permitAll()
                                         // all other URL-s should be authenticated.
                                         .anyRequest()
                                         .authenticated()
@@ -39,7 +39,7 @@ public class SecurityConfig {
                                 // What will happen if the login is successful
                                 .defaultSuccessUrl("/", true)
                                 // What will happen if the login fails
-                                .failureUrl("/users/login-error")
+                                .failureUrl("/error-page")
                 )
                 .logout(
                         logout ->

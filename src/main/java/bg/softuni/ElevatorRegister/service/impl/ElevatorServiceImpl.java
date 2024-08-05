@@ -9,6 +9,7 @@ import bg.softuni.ElevatorRegister.repository.ElevatorRepository;
 import bg.softuni.ElevatorRegister.repository.UserRepository;
 import bg.softuni.ElevatorRegister.service.AppUserDetailsService;
 import bg.softuni.ElevatorRegister.service.ElevatorService;
+import bg.softuni.ElevatorRegister.service.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +23,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class ElevatorServiceImpl implements ElevatorService {
@@ -72,7 +75,8 @@ public class ElevatorServiceImpl implements ElevatorService {
 
     @Override
     public ElevatorDetailsDTO getElevatorDetails(Long id) {
-        return modelMapper.map(elevatorRepository.getReferenceById(id), ElevatorDetailsDTO.class);
+        return modelMapper
+                .map(elevatorRepository.getReferenceById(id), ElevatorDetailsDTO.class);
     }
 
 
@@ -103,7 +107,7 @@ public class ElevatorServiceImpl implements ElevatorService {
     }
 
     @Override
-    public List<CustomerElevatorDTO> getAllCustomerElevator(Long id) {
+    public List<CustomerElevatorDTO> getAllCustomerElevator(Long id) throws ObjectNotFoundException {
         return elevatorRepository
                 .findAllByOwnerId(id)
                 .stream()
@@ -151,5 +155,6 @@ public class ElevatorServiceImpl implements ElevatorService {
                 .limit(5)
                 .collect(Collectors.toList());
     }
+
 
 }

@@ -1,37 +1,48 @@
+/*body {*/
+/*    font-family: Arial, sans-serif;*/
+/*    background-color: #f4f4f4;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+* {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+}
+
+@import url(https://fonts.googleapis.com/css2?family=Kalam);
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Kalam';
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    text-transform: none;
+    /*letter-spacing: 0.02;*/
+    line-height: 1.55;
+    color: #000000;
+    background-color: #f0f0f1;
     margin: 0;
-    padding: 0;
 }
-
-.container {
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(141, 141, 141, 0.1);
-    border-radius: 8px;
-    text-align: center;
-}
-
 
 .navbar {
-    background-color: #b6b6b6;
+    background-color: white;
     justify-content: space-between;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     overflow: hidden;
     display: flex;
     width: 100%;
     padding-left: 1em;
     padding-right: 1em;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
-
-
 
 .navbar a, .dropdown .dropbtn {
     display: inline-block;
-    color: #f2f2f2;
+    color: #000000;
     text-align: center;
     padding: 14px 20px;
+    font-size:18px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -72,12 +83,14 @@ body {
 }
 .container {
     width: 100%;
-    max-width: 80%;
-    margin: 50px auto;
+    max-width: 90%;
+    margin: 100px auto;
+    /*margin-top: 100px;*/
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    text-align: center;
 }
 button.done {
      background-color: #499900;
@@ -97,6 +110,10 @@ form {
 
 table, th, td {
     border: 1px solid #ddd;
+    width: auto;
+    text-align: left;
+    border-collapse: collapse;
+    position: relative;
 }
 
 th, td {
@@ -115,6 +132,7 @@ label {
 
 input {
     margin-bottom: 15px;
+    margin-right: 15px;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -169,24 +187,7 @@ select {
 .select-selected {
     background-color: DodgerBlue;
 }
-@import url(https://fonts.googleapis.com/css2?family=Kalam);
-body {
-  font-family: 'Kalam';
-  font-weight: 400;
-  font-style: normal;
-  text-decoration: none;
-  text-transform: none;
-  letter-spacing: 0.02;
-  line-height: 1.55;
-  color: #000000;
-  background-color: #ffffff;
-  margin: 0;
-}
-* {
-  box-sizing: border-box;
-  border-width: 0;
-  border-style: solid;
-}
+
 .section-heading-section-heading {
   display: flex;
   position: relative;
@@ -352,20 +353,7 @@ body {
   border-color: transparent;
   flex-direction: column;
 }
-.home-text23 {
-  color: #000000cc;
-  width: 100%;
-  height: auto;
-  font-size: 16px;
-  align-self: auto;
-  font-style: normal;
-  text-align: center;
-  font-weight: 400px;
-  line-height: 175%;
-  font-stretch: normal;
-  margin-bottom: 48px;
-  text-decoration: none;
-}
+
 .home-full-width-banner {
   width: 100%;
   display: flex;
@@ -393,32 +381,6 @@ body {
   border-color: transparent;
   flex-direction: column;
 }
-.home-text29 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  margin: 0 0 16px 0;
-  font-size: 28px;
-  align-self: auto;
-  font-style: normal;
-  text-align: left;
-  font-weight: 500px;
-  line-height: 20px;
-  font-stretch: normal;
-  text-decoration: none;
-}
-.home-text30 {
-  color: rgba(0, 0, 0, 0.6000000238418579);
-  width: 267px;
-  height: auto;
-  font-size: 16px;
-  align-self: auto;
-  font-style: normal;
-  text-align: center;
-  font-weight: 400px;
-  line-height: 24px;
-  font-stretch: normal;
-  text-decoration: none;
-}
 .home-btn {
   cursor: pointer;
   display: flex;
@@ -432,18 +394,6 @@ body {
   border-style: solid;
   border-width: 1px;
   background-color: #caf0f8;
-}
-.home-text31 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 16px;
-  align-self: auto;
-  font-style: normal;
-  text-align: left;
-  font-weight: 500px;
-  line-height: 14px;
-  font-stretch: normal;
-  text-decoration: none;
 }
 .home-image6 {
   width: 60%;
@@ -538,9 +488,6 @@ body {
   flex-direction: column;
   justify-content: flex-start;
 }
-<!-- HTML !-->
-<button class="button-4" role="button">Button 4</button>
-
 /* CSS */
 .button-4 {
   appearance: none;
@@ -595,7 +542,7 @@ body {
   display: none;
 }
 
-.button-4:-webkit-details-marker {
+.button-4-webkit-details-marker {
   display: none;
 }
 .section-container {
@@ -631,7 +578,7 @@ body {
 .Content {
   font-size: 16px;
   font-weight: 400;
-  letter-spacing: 0.02;
+  letter-spacing: 0.02em;
   text-transform: none;
   text-decoration: none;
 }

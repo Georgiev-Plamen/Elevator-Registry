@@ -44,14 +44,22 @@
                             </span>
                         <a href="/users/register" th:text="#{index_registry}">Register</a>
                         <a href="/users/login" th:text="#{index_login}">Login</a>
-                        <p sec:authorize="hasRole('ADMIN')"><a href="/users/all">Users management</a></p>
+                    </div>
+                </div>
+                <div sec:authorize="hasRole('ADMIN')" class="blog-post-card-blog-post-card">
+                    <img class="blog-post-card-image" src="/images/login.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-card-container">
+                            <span class="blog-post-card-text">
+                            <span>Users control:</span>
+                            </span>
+                        <a href="/users/all">Users management</a>
                     </div>
                 </div>
                 <!--Customers-->
                 <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">
                     <img class="blog-post-card-image" src="/images/customers.jpg" alt="login" style="width:100%">
                     <div class="blog-post-card-container">
-                        <h3>Users: </h3>
+                        <h3>Customers: </h3>
                         <a href="/customer/addCustomer">Add new customer</a>
                         <a href="/customer/allCustomers">All customers</a>
                     </div>
@@ -61,8 +69,8 @@
                     <img class="blog-post-card-image" src="/images/gas.jpg" alt="login" style="width:100%">
                     <div class="blog-post-card-container">
                         <h3>Inspections: </h3>
-                        <a href="/inspections/allInspection">Add new inspection</a></p>
-                        <a href="/inspections/allInspection">All inspection</a></p>
+                        <a href="/inspections/allInspection">Add new inspection</a>
+                        <a href="/inspections/allInspection">All inspection</a>
                     </div>
                 </div>
                 <!--GAS-->
@@ -72,8 +80,6 @@
                         <h3>Gas installation: </h3>
                         <a href="/gas/addGasInstallation">Add new gas installation</a>
                         <a href="/gas/allGasInstallations">All gas installation</a>
-                        <br>
-                        <a href="/inspection/selectCustomer">Add inspection</a>
                     </div>
                 </div>
                 <!--Elevators-->
@@ -87,13 +93,6 @@
                         <a href="/inspection/selectCustomer">Add inspection</a>
                     </div>
                 </div>
-                <!--Log Out-->
-                <!--                    <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">-->
-                <!--                        <form th:method="post"-->
-                <!--                              th:action="@{/users/logout}">-->
-                <!--                            <input type="submit" value="Logout"/>-->
-                <!--                        </form>-->
-                <!--                    </div>-->
             </div>
         </div>
     </div>

@@ -5,11 +5,13 @@ import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.ElevatorDetailsDTO;
 import bg.softuni.ElevatorRegister.service.CustomerService;
 import bg.softuni.ElevatorRegister.service.ElevatorService;
 import bg.softuni.ElevatorRegister.service.UserService;
+import bg.softuni.ElevatorRegister.service.exception.ObjectNotFoundException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/elevator")
@@ -62,6 +64,14 @@ public class ElevatorController {
         model.addAttribute("allUser", userService.getAllUsers());
 
         return "edit-elevator";
+    }
+
+    @ExceptionHandler(ObjectNotFoundException.class)
+    public ModelAndView handleObjectNotFound(ObjectNotFoundException onfe) {
+        ModelAndView modelAndView = new ModelAndView("elevator-not-found");
+        modelAndView.addObject("id", onfe.getId());
+
+        return modelAndView;
     }
 
     @PutMapping("/editElevator/{id}")
