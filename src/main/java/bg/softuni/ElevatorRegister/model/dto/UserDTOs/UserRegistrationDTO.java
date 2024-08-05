@@ -21,6 +21,7 @@ public class UserRegistrationDTO {
     private String lastName;
 
     @NotEmpty
+    @Size(min=5)
     private String password;
 
     @NotEmpty

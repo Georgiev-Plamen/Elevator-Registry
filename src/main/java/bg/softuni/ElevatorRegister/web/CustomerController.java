@@ -4,9 +4,12 @@ import bg.softuni.ElevatorRegister.model.dto.CustomerDTOs.AddCustomerDTO;
 import bg.softuni.ElevatorRegister.model.dto.CustomerDTOs.CustomerDetailsDTO;
 import bg.softuni.ElevatorRegister.service.CustomerService;
 import bg.softuni.ElevatorRegister.service.ElevatorService;
+import jakarta.validation.Valid;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/customer")
@@ -20,13 +23,26 @@ public class CustomerController {
     }
 
     @GetMapping("/addCustomer")
-    public String addCustomer() {
+    public String addCustomer(Model model) {
+
+        if(!model.containsAttribute("addCustomerDTO")){
+            model.addAttribute("addCustomerDTO", AddCustomerDTO.empty());
+        }
         return "add-customer";
     }
 
     @PostMapping("/addCustomer")
-    public String addCustomer(AddCustomerDTO addCustomerDTO) {
+    public String addCustomer(@Valid AddCustomerDTO addCustomerDTO,
+                              BindingResult bindingResult,
+                              RedirectAttributes rAtt) {
+        if(bindingResult.hasErrors()) {
+            rAtt.addFlashAttribute("addCustomerDTO", addCustomerDTO);
+            rAtt.addFlashAttribute("org.springframework.validation.BindingResult.addOfferDTO", bindingResult);
+            return "redirect:/customer/addCustomer";
+        }
+
         customerService.addNewCustomer(addCustomerDTO);
+
 
         return "redirect:/customer/allCustomers";
     }

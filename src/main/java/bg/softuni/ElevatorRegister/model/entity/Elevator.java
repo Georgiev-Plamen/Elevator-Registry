@@ -1,6 +1,9 @@
 package bg.softuni.ElevatorRegister.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
@@ -10,13 +13,23 @@ public class Elevator extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private ElevatorType type;
+
+    @NotEmpty
     private String manufacturer;
+    @NotEmpty
     private String manufacturerNumber;
+
+    @NotEmpty
     private String yearOfManufacture;
+
+    @NotNull
     private int speed;
+    @NotNull
     private int numberOfStops;
     private String city;
+    @NotEmpty
     private String address;
+    @NotNull
     private LocalDate registerDate;
     private LocalDate lastInspection;
     private LocalDate nextInspection;

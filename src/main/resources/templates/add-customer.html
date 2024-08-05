@@ -11,19 +11,57 @@
 <div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
 <div class="container">
     <h1>Add Customer</h1>
-    <form th:action="@{/customer/addCustomer}" th:method="post">
-        <label for="name">Company name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="vat">Company VAT number:</label>
-        <input type="text" id="vat" name="vat" required>
-        <label for="address">Company Address:</label>
-        <input type="text" id="address" name="address" required>
-        <label for="contactPerson">Contact person name:</label>
-        <input type="text" id="contactPerson" name="contactPerson" required>
-        <label for="telNumber">Telephone number:</label>
-        <input type="text" id="telNumber" name="telNumber" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+    <form th:action="@{/customer/addCustomer}"
+          th:method="post"
+          th:object="${addCustomerDTO}">
+
+        <label th:for="name">Company name:</label>
+        <input  th:errorclass="is-invalid"
+                th:field="*{name}"
+                type="text"
+                required>
+<!--        <p class="errors alert alert-danger">-->
+<!--            Company name is required.-->
+<!--        </p>-->
+
+        <label th:for="vat">Company VAT number:</label>
+        <input th:errorclass="is-invalid"
+               th:field="*{vat}"
+               type="text"
+               required>
+<!--        <p class="errors alert alert-danger">-->
+<!--            Company VAT number is required.-->
+<!--        </p>-->
+
+        <label th:for="address">Company Address:</label>
+        <input th:errorclass="is-invalid"
+               th:field="*{address}"
+               type="text"
+               required>
+
+        <label th:for="contactPerson">Contact person name:</label>
+        <input th:errorclass="is-invalid"
+               th:field="*{contactPerson}"
+               type="text"
+               required>
+<!--        <p class="errors alert alert-danger">-->
+<!--            Contact person is required.-->
+<!--        </p>-->
+
+        <label th:for="telNumber">Telephone number:</label>
+        <input th:errorclass="is-invalid"
+               th:field="*{telNumber}"
+               type="text"
+               required>
+<!--        <p class="errors alert alert-danger">-->
+<!--            Contact person phone number is required.-->
+<!--        </p>-->
+
+        <label th:for="email">Email:</label>
+        <input th:errorclass="is-invalid"
+               th:field="*{email}"
+               type="text"
+               required>
 
         <button type="submit">Add customer</button>
     </form>

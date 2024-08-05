@@ -1,6 +1,7 @@
 package bg.softuni.ElevatorRegister.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +19,10 @@ public class Inspection extends BaseEntity{
         private List<Elevator> elevators;
         @ManyToOne
         private User user;
+
+        @NotEmpty
         private String address;
+
         private Double price;
         private LocalDate inspectionDate;
         @ManyToOne(fetch = FetchType.EAGER)

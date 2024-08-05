@@ -2,19 +2,37 @@ package bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs;
 
 import bg.softuni.ElevatorRegister.model.entity.Customer;
 import bg.softuni.ElevatorRegister.model.entity.ElevatorType;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import org.springframework.security.core.userdetails.User;
 
 import java.time.LocalDate;
 
 public class AddElevatorDTO {
+
     private ElevatorType type;
+
     private Customer owner;
+
+    @NotEmpty
+    @Size(min=2)
     private String manufacturer;
+
+    @NotEmpty
     private String manufacturerNumber;
+
+    @NotEmpty
+    @Size(min=4)
     private String yearOfManufacture;
+
+    @Positive
     private int speed;
+    @NotNull
     private int numberOfStops;
     private String city;
+    @NotEmpty
     private String address;
     private LocalDate registerDate;
     private LocalDate lastInspection;
@@ -23,6 +41,14 @@ public class AddElevatorDTO {
 
     public AddElevatorDTO() {
     }
+
+    public AddElevatorDTO(ElevatorType type, Customer owner, String manufacturer, String manufacturerNumber, String yearOfManufacture, int speed, int numberOfStops, String city, String address, LocalDate registerDate, LocalDate lastInspection, LocalDate nextInspection, User author) {
+    }
+
+    public static AddElevatorDTO empty() {
+        return new AddElevatorDTO(null,null,null,null,null,0,0,null, null, null, null,null,null);
+    }
+
 
     public ElevatorType getType() {
         return type;

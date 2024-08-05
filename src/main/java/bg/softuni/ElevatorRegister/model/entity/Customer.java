@@ -3,6 +3,7 @@ package bg.softuni.ElevatorRegister.model.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +11,16 @@ import java.util.List;
 @Entity
 @Table(name="customers")
 public class Customer extends BaseEntity{
+
+    @NotEmpty
     private String name;
+
+    @NotEmpty
     private String vat;
     private String address;
+    @NotEmpty
     private String contactPerson;
+    @NotEmpty
     private String telNumber;
     private String email;
 
