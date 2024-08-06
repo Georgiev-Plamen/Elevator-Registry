@@ -39,7 +39,7 @@ public class InspectionController {
     @GetMapping("/addSingleInspection")
     public String addInspectionView(Model model) {
 
-        model.addAttribute("customers", customerService.getAllCustomers());
+//        model.addAttribute("customers", customerService.getAllCustomers());
         model.addAttribute("elevators", elevatorService.getAllElevators());
 
         return "add-single-inspection";
@@ -57,6 +57,7 @@ public class InspectionController {
     @PostMapping("/addInspection")
     public String addInspection (@AuthenticationPrincipal UserDetails userDetails,
                                  AddInspectionDTO addInspectionDTO) {
+
         inspectionService.addNewInspection(addInspectionDTO, userDetails);
 
         return "redirect:/inspection/allInspections";

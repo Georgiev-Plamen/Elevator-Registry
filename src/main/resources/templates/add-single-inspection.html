@@ -25,8 +25,13 @@
 
 
             const manufacturerNumberField = document.getElementById('manufacturerNumber');
-            const manufacturerNumber = selectedOption.getAttribute('data-manufacturerNumber');
-            manufacturerNumberField.value = manNumber ? manNumber : '';
+            const manufacturerNumber = selectedOption.getAttribute('data-manufacturer-number');
+            manufacturerNumberField.value = manufacturerNumber ? manufacturerNumber : '';
+
+            const customerField = document.getElementById('customer');
+            const customer = selectedOption.getAttribute('data-customer-id');
+            customerField.value = customer ? customer : '';
+
         }
 
         window.addEventListener('DOMContentLoaded', (event) => {
@@ -60,9 +65,14 @@
                     th:text="|${elevator.manufacturer()} - ${elevator.manufacturerNumber()} - ${elevator.address()}|"
                     th:data-last-inspection="${elevator.lastInspection()}"
                     th:data-next-inspection="${elevator.nextInspection()}"
+                    th:data-manufacturer-number="${elevator.manufacturerNumber()}"
                     th:data-address="${elevator.address()}"
+                    th:data-customer-id="${elevator.owner().id}"
                     required>elevator</option>
         </select>
+
+
+        <input type="hidden" id="customer" name="customer" required><br><br>
 
         <label for="lastInspection">Last inspection:</label>
         <input type="date" id="lastInspection" name="lastInspection" required><br><br>
