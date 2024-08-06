@@ -18,6 +18,7 @@
         <label for="username">Username:</label>
         <input type="text" id="username" name="username"
                th:value="${userDetails.username}"
+               minlength="4" maxlength="20"
                required><br><br>
 
         <label for="email">Email:</label>
@@ -26,11 +27,11 @@
 
         <label for="username">First name:</label>
         <input type="text" id="firstName" name="firstName"
-               th:value="${userDetails.firstName}" required><br><br>
+               th:value="${userDetails.firstName}" minlength="3" maxlength="20" required><br><br>
 
         <label for="username">Last name:</label>
         <input type="text" id="lastName" name="lastName"
-               th:value="${userDetails.lastName}" required><br><br>
+               th:value="${userDetails.lastName}" minlength="3" maxlength="20" required><br><br>
 
 <!--        <label for="password">Password:</label>-->
 <!--        <input type="password" id="password" name="password" required><br><br>-->

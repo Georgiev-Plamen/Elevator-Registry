@@ -17,7 +17,7 @@ public class AddElevatorDTO {
     private Customer owner;
 
     @NotEmpty
-    @Size(min=2)
+    @Size(min=5)
     private String manufacturer;
 
     @NotEmpty

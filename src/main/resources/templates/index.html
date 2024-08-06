@@ -37,60 +37,77 @@
                 <!--                <div class="blog-post-card-blog-post-card blog-post-card-root-class-name">-->
                 <!--Users:-->
                 <div sec:authorize="!isAuthenticated()" class="blog-post-card-blog-post-card">
-                    <img class="blog-post-card-image" src="/images/login.jpg" alt="login" style="width:100%">
-                    <div class="blog-post-card-container">
+                    <div class="blog-post-header">
                             <span class="blog-post-card-text">
-                            <span>User:</span>
+                            <span><h3>User:</h3></span>
                             </span>
+                    </div>
+                    <div class="blog-post-card-container">
                         <a href="/users/register" th:text="#{index_registry}">Register</a>
                         <a href="/users/login" th:text="#{index_login}">Login</a>
                     </div>
                 </div>
+
                 <div sec:authorize="hasRole('ADMIN')" class="blog-post-card-blog-post-card">
-                    <img class="blog-post-card-image" src="/images/login.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-header">
+                        <span class="blog-post-card-text">
+                            <h3>Users control:</h3>
+                        </span>
+                    </div>
                     <div class="blog-post-card-container">
-                            <span class="blog-post-card-text">
-                            <span>Users control:</span>
-                            </span>
                         <a href="/users/all">Users management</a>
+
                     </div>
                 </div>
                 <!--Customers-->
                 <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">
-                    <img class="blog-post-card-image" src="/images/customers.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-header">
+                        <span class="blog-post-card-text">
+                            <span><h3>Customers:</h3></span>
+                        </span>
+                    </div>
                     <div class="blog-post-card-container">
-                        <h3>Customers: </h3>
                         <a href="/customer/addCustomer">Add new customer</a>
                         <a href="/customer/allCustomers">All customers</a>
                     </div>
                 </div>
                 <!--Inspections-->
                 <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">
-                    <img class="blog-post-card-image" src="/images/gas.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-header">
+                        <span class="blog-post-card-text">
+                            <span><h3>Inspections:</h3></span>
+                        </span>
+                    </div>
                     <div class="blog-post-card-container">
-                        <h3>Inspections: </h3>
                         <a href="/inspections/allInspection">Add new inspection</a>
                         <a href="/inspections/allInspection">All inspection</a>
                     </div>
                 </div>
                 <!--GAS-->
                 <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">
-                    <img class="blog-post-card-image" src="/images/inspections.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-header">
+                        <span class="blog-post-card-text">
+                            <span><h3>Gas installation:</h3></span>
+                        </span>
+                    </div>
                     <div class="blog-post-card-container">
-                        <h3>Gas installation: </h3>
                         <a href="/gas/addGasInstallation">Add new gas installation</a>
                         <a href="/gas/allGasInstallations">All gas installation</a>
+                        <br>
                     </div>
                 </div>
                 <!--Elevators-->
                 <div sec:authorize="isAuthenticated()" class="blog-post-card-blog-post-card">
-                    <img class="blog-post-card-image" src="/images/elevator.jpg" alt="login" style="width:100%">
+                    <div class="blog-post-header">
+                        <span class="blog-post-card-text">
+                            <span><h3>Elevators:</h3></span>
+                        </span>
+                    </div>
                     <div class="blog-post-card-container">
-                        <h3>Elevators: </h3>
                         <a href="/elevator/addElevator">Add new elevator</a>
                         <a href="/elevator/allElevators">Elevator registry</a>
                         <br>
-                        <a href="/inspection/selectCustomer">Add inspection</a>
+                        <a href="/inspection/selectCustomer">Add inspection by customer</a>
                     </div>
                 </div>
             </div>

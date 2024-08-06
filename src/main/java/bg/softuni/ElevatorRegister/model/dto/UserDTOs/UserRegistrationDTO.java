@@ -17,11 +17,11 @@ public class UserRegistrationDTO {
     private String firstName;
 
     @NotEmpty
-    @Size(min=4, max=20)
+    @Size(min=3, max=20)
     private String lastName;
 
     @NotEmpty
-    @Size(min=5)
+    @Size(min=5, max=50)
     private String password;
 
     @NotEmpty

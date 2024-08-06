@@ -4,6 +4,9 @@ import bg.softuni.ElevatorRegister.model.entity.Customer;
 import bg.softuni.ElevatorRegister.model.entity.Elevator;
 import bg.softuni.ElevatorRegister.model.entity.InspectionsStatus;
 import bg.softuni.ElevatorRegister.model.entity.User;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,7 +17,12 @@ public class InspectionDetailDTO {
     private User user;
     private LocalDate lastInspection;
     private LocalDate nextInspection;
+
+    @NotEmpty
+    @Size(min=5, max=50)
     private String address;
+
+    @Positive
     private Double price;
     private Customer customer;
     private InspectionsStatus status;

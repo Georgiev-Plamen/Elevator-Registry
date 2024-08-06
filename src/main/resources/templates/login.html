@@ -5,18 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/responsive.css">
+<!--    <link rel="stylesheet" href="/css/bootstrap.min.css"/>-->
 </head>
 <body>
     <div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
 <div class="container">
     <h1>Login</h1>
-    <form th:action="@{/users/login}" th:method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+    <form th:action="@{/users/login}"
+          th:method="post"
+          th:object="${loginData}">
+
+        <label th:for="username">Username:</label>
+        <input type="text" th:field="*{username}"
+               id="username" name="username" required>
 <!--        <div th:text="${loginData.}">-->
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+
+        <label th:for="password">Password:</label>
+        <input th:field="*{password}"
+                type="password" required>
+
+        <br>
+        <div class="bg-danger" th:if="${showErrorMessage}" th:text="'Invalid username or password'"></div>
+        <br>
+
         <button type="submit">Login</button>
     </form>
     <p><a href="/">Back to Home</a></p>
