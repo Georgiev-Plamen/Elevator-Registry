@@ -1,29 +1,23 @@
 package bg.softuni.ElevatorRegister.service.impl;
 
 import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.ElevatorDetailsDTO;
-import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.ElevatorListDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.AddInspectionDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.InspectionDetailDTO;
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.InspectionListDTO;
-import bg.softuni.ElevatorRegister.model.entity.Elevator;
 import bg.softuni.ElevatorRegister.model.entity.Inspection;
 import bg.softuni.ElevatorRegister.model.entity.InspectionsStatus;
-import bg.softuni.ElevatorRegister.model.user.AppUserDetails;
 import bg.softuni.ElevatorRegister.repository.CustomerRepository;
 import bg.softuni.ElevatorRegister.repository.ElevatorRepository;
 import bg.softuni.ElevatorRegister.repository.InspectionRepository;
 import bg.softuni.ElevatorRegister.repository.UserRepository;
 import bg.softuni.ElevatorRegister.service.InspectionService;
 import org.modelmapper.ModelMapper;
-import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Service

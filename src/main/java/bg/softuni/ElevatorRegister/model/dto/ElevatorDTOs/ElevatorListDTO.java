@@ -10,6 +10,7 @@ public record ElevatorListDTO (
         Customer owner,
         ElevatorType type,
         String manufacturer,
+        String manufacturerNumber,
         String address,
         int speed,
         int numberOfStops,

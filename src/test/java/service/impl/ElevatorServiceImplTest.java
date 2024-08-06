@@ -2,16 +2,13 @@ package service.impl;
 
 import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.CustomerElevatorDTO;
 import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.ElevatorDetailsDTO;
-import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.ElevatorListDTO;
 import bg.softuni.ElevatorRegister.model.entity.Elevator;
 import bg.softuni.ElevatorRegister.model.entity.ElevatorType;
-import bg.softuni.ElevatorRegister.model.entity.Inspection;
 import bg.softuni.ElevatorRegister.model.entity.User;
 import bg.softuni.ElevatorRegister.repository.ElevatorRepository;
 import bg.softuni.ElevatorRegister.service.impl.ElevatorServiceImpl;
 import org.junit.jupiter.api.Assertions;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

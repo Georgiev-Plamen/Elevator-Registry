@@ -138,6 +138,7 @@ public class ElevatorServiceImpl implements ElevatorService {
                 elevator.getOwner(),
                 elevator.getType(),
                 elevator.getManufacturer(),
+                elevator.getManufacturerNumber(),
                 elevator.getAddress(),
                 elevator.getSpeed(),
                 elevator.getNumberOfStops(),
