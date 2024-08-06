@@ -36,6 +36,14 @@ public class InspectionController {
         return "all-inspections";
     }
 
+    @GetMapping("/addInspection")
+    public String addInspectionView(Model model) {
+
+        model.addAttribute("customer", customerService.getAllCustomers());
+
+        return "add-inspection";
+    }
+
     @GetMapping("/addInspection/{id}")
     public String addInspection(Model model,
                                 @PathVariable("id") Long id) {

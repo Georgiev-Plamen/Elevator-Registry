@@ -2,6 +2,7 @@ package bg.softuni.ElevatorRegister.model.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.*;
 
@@ -15,11 +16,11 @@ public class User extends BaseEntity{
     @Column(unique = true)
     @NotEmpty
     private String email;
-    @NotEmpty
+//    @NotNull
     private String firstName;
-    @NotEmpty
+//    @NotNull
     private String lastName;
-    @NotEmpty
+    @NotNull
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)

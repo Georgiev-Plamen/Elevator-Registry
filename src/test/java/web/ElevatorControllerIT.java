@@ -67,7 +67,7 @@ public class ElevatorControllerIT {
                 .param("registerDate", "2024-05-05")
                 .with(csrf()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/elevator/allElevators"));
+                .andExpect(view().name("redirect:/elevator/addElevator"));
     }
 
     @Test
@@ -76,7 +76,7 @@ public class ElevatorControllerIT {
         mockMvc.perform(delete("/elevator/{id}", 1l)
                 .with(csrf()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/elevator/allElevator"));
+                .andExpect(view().name("redirect:/elevator/allElevators"));
     }
 
     @Test
@@ -94,10 +94,12 @@ public class ElevatorControllerIT {
         ElevatorDetailsDTO elevatorDetailsDTO = new ElevatorDetailsDTO();
         elevatorDetailsDTO.setType(ElevatorType.ПХАС);
         elevatorDetailsDTO.setManufacturer("AS Sofia AD");
+        elevatorDetailsDTO.setManufacturerNumber("AS1");
         elevatorDetailsDTO.setSpeed(1);
         elevatorDetailsDTO.setCity("Burgas");
         elevatorDetailsDTO.setAddress("burgaska");
         elevatorDetailsDTO.setNumberOfStops(2);
+        elevatorDetailsDTO.setYearOfManufacture("2022");
         elevatorDetailsDTO.setRegisterDate(LocalDate.of(2024,05,05));
         elevatorDetailsDTO.setAuthor("plamen");
 
@@ -112,6 +114,8 @@ public class ElevatorControllerIT {
                         .param("city", "Burgas")
                         .param("address", "burgaskata")
                         .param("numberOfStops", "2")
+                        .param("manufacturerNumber", "AS2")
+                        .param("yearOfManufacture", "2023")
                         .param("registerDate", "2024-06-05")
                         .param("author", "plamen")
                         .with(csrf()))

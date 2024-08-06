@@ -2,24 +2,25 @@ package bg.softuni.ElevatorRegister.model.dto.CustomerDTOs;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class AddCustomerDTO {
 
-    @NotEmpty
+    @NotNull(message = "Name may not be null")
     @Size(min=3, max=50)
     private String name;
 
-    @NotEmpty
-    @Size(min=9, max=15)
+    @NotNull
+    @Size(min=6, max=15)
     private String vat;
 
-    @Size(min=5)
+    @Size(min=3, max=30)
     private String address;
-    @NotEmpty
+    @NotNull
     @Size(min=5)
     private String contactPerson;
-    @NotEmpty
+    @NotNull
     @Size(min = 5)
     private String telNumber;
 

@@ -44,7 +44,7 @@ public class RegistrationControllerIT {
                         .param("username", "gosho")
                         .with(csrf())
                 ).andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/"));
+                .andExpect(redirectedUrl("/users/login"));
 
         Optional<User> userEntityOpt = userRepository.findByEmail("gosho@gosho.com");
 

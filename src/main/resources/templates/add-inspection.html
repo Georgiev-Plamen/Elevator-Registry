@@ -38,7 +38,7 @@
     <h1>Add Inspection</h1>
     <form th:action="@{/inspection/addInspection}" th:method="POST">
 
-        <div>Customer : <span th:text="${customer.name}"></span></div><br>
+        <div>Customer : <span th:text="${customer.name()}"></span></div><br>
         <input type="hidden" name="customer" id="customer" th:value="${customer.id}">
 
         <label for="elevators">Elevators:</label>
