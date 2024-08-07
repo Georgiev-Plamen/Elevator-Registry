@@ -25,6 +25,7 @@ public class SecurityConfig {
                                         // some more resources for all users
                                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error","/error-page").permitAll()
                                         // all other URL-s should be authenticated.
+                                        .requestMatchers("/users/all", "/users/editUser/**").hasRole("ADMIN")
                                         .anyRequest()
                                         .authenticated()
                 )
