@@ -16,33 +16,42 @@
           th:method="POST">
 
         <label for="username">Username:</label>
+        <small
+                th:each="error: ${#fields.errors('username')}"
+                th:text="${error}"
+                class="invalid-feedback text-danger"
+        >Username error message
+        </small>
         <input th:field="*{username}"
-               th:errorclass="is-invalid"
-               aria-describedby="usernameUniqueError"
+               th:errorclass="'is-invalid alert-danger'"
                required minlength="4" maxlength="20"
                type="text" id="username" name="username">
-                <small th:errors="*{username}" id="usernameUniqueError"
-                       class="bg-danger text-white rounded">Username is already occupied</small>
+
+<!--                <small th:errors="*{username}" id="usernameUniqueError"-->
+<!--                       class="bg-danger text-white rounded">Username is already occupied</small>-->
 
         <label for="email">Email:</label>
-        <input
-                th:field="*{email}"
-                th:errorclass="is-invalid"
-                aria-describedby="emailError"
-                type="email" id="email" name="email" required>
-        <small th:errors="*{email}" id="emailError" class="invalid-feedback form-text bg-danger text-white rounded">
-            Must be valid email</small>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</small>
+        <input th:field="*{email}" type="email" id="email" name="email" required>
+
+
+<!--        <small th:errors="*{email}" id="emailError" class="invalid-feedback form-text bg-danger text-white rounded">-->
+<!--            Must be valid email</small>-->
 
         <label for="username">First name:</label>
-        <input aria-describedby="firstNameError" th:field="*{firstName}"
-               type="text" id="firstName" name="firstName" minlength="3" maxlength="20" required>
-        <small th:errors="*{firstName}" id="firstNameError" class="invalid-feedback form-text bg-danger text-white rounded">
-            First name must be more than 3 and less than 20 characters</small>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</small>
+        <input aria-describedby="firstNameError" th:field="*{firstName}" type="text" id="firstName" name="firstName" minlength="3" maxlength="20" required>
+
+
+<!--        <small th:errors="*{firstName}" id="firstNameError" class="invalid-feedback form-text bg-danger text-white rounded">-->
+<!--            First name must be more than 3 and less than 20 characters</small>-->
 
         <label for="lastName">Last name:</label>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name Error</small>
         <input th:field="*{lastName}" type="text" id="lastName" name="lastName" minlength="3" maxlength="20" required>
 
         <label for="password">Password:</label>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</small>
         <input type="password" id="password" name="password" minlength="5" maxlength="50" required>
 
         <label for="password">Confirm password:</label>

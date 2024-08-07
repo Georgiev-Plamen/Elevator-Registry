@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 public class AddCustomerDTO {
 
-    @NotNull(message = "Name may not be null")
+    @NotNull
     @Size(min=3, max=50)
     private String name;
 
@@ -18,10 +18,10 @@ public class AddCustomerDTO {
     @Size(min=3, max=30)
     private String address;
     @NotNull
-    @Size(min=5)
+    @Size(min=5, max=100)
     private String contactPerson;
     @NotNull
-    @Size(min = 5)
+    @Size(min = 5, max=30)
     private String telNumber;
 
     @Email

@@ -23,6 +23,11 @@ public class ElevatorController {
     private final UserService userService;
     private final CustomerService customerService;
 
+    @ModelAttribute("addElevatorDTO")
+    public AddElevatorDTO addElevatorDTO() {
+        return AddElevatorDTO.empty();
+    }
+
     public ElevatorController(ElevatorService elevatorService, UserService userService, CustomerService customerService) {
         this.elevatorService = elevatorService;
         this.userService = userService;
@@ -40,10 +45,6 @@ public class ElevatorController {
 
     @GetMapping("/addElevator")
     public String addElevatorView(Model model) {
-
-        if(!model.containsAttribute("addElevatorDTO")) {
-            model.addAttribute("addElevatorDTO", AddElevatorDTO.empty());
-        }
 
         model.addAttribute("allCustomers", customerService.getAllCustomers());
 

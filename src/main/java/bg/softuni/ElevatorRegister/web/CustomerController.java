@@ -2,6 +2,7 @@ package bg.softuni.ElevatorRegister.web;
 
 import bg.softuni.ElevatorRegister.model.dto.CustomerDTOs.AddCustomerDTO;
 import bg.softuni.ElevatorRegister.model.dto.CustomerDTOs.CustomerDetailsDTO;
+import bg.softuni.ElevatorRegister.model.dto.UserDTOs.UserRegistrationDTO;
 import bg.softuni.ElevatorRegister.service.CustomerService;
 import bg.softuni.ElevatorRegister.service.ElevatorService;
 import jakarta.validation.Valid;
@@ -17,6 +18,11 @@ public class CustomerController {
     private final CustomerService customerService;
     private final ElevatorService elevatorService;
 
+    @ModelAttribute("addCustomerDTO")
+    public AddCustomerDTO addCustomerDTO() {
+        return AddCustomerDTO.empty();
+    }
+
     public CustomerController(CustomerService customerService, ElevatorService elevatorService) {
         this.customerService = customerService;
         this.elevatorService = elevatorService;
@@ -25,9 +31,9 @@ public class CustomerController {
     @GetMapping("/addCustomer")
     public String addCustomer(Model model) {
 
-        if(!model.containsAttribute("addCustomerDTO")){
-            model.addAttribute("addCustomerDTO", AddCustomerDTO.empty());
-        }
+//        if(!model.containsAttribute("addCustomerDTO")){
+//            model.addAttribute("addCustomerDTO", AddCustomerDTO.empty());
+//        }
         return "add-customer";
     }
 
@@ -35,9 +41,10 @@ public class CustomerController {
     public String addCustomer(@Valid AddCustomerDTO addCustomerDTO,
                               BindingResult bindingResult,
                               RedirectAttributes rAtt) {
+
         if(bindingResult.hasErrors()) {
             rAtt.addFlashAttribute("addCustomerDTO", addCustomerDTO);
-            rAtt.addFlashAttribute("org.springframework.validation.BindingResult.addOfferDTO", bindingResult);
+            rAtt.addFlashAttribute("org.springframework.validation.BindingResult.addCustomerDTO", bindingResult);
             return "redirect:/customer/addCustomer";
         }
 

@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.time.LocalDate;
 
@@ -17,14 +18,14 @@ public class AddElevatorDTO {
     private Customer owner;
 
     @NotEmpty
-    @Size(min=5)
+    @Size(min=2, max=50)
     private String manufacturer;
 
     @NotEmpty
     private String manufacturerNumber;
 
     @NotEmpty
-    @Size(min=4)
+    @Size(min=1, max=10)
     private String yearOfManufacture;
 
     @Positive
@@ -33,6 +34,7 @@ public class AddElevatorDTO {
     private int numberOfStops;
     private String city;
     @NotEmpty
+    @Size(min=5, max=100)
     private String address;
     private LocalDate registerDate;
     private LocalDate lastInspection;

@@ -11,9 +11,10 @@
 <div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
 <div class="container">
     <h1>Add Gas Installation</h1>
-    <form th:action="@{/gas/addGasInstallation}" th:method="post">
+    <form th:action="@{/gas/addGasInstallation}" th:method="post" th:object="${gasData}">
 
         <label for="damtnNumber">DAMTN Number:</label>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('damtnNumber')}" th:errors="*{damtnNumber}">DAMTN number Error</small>
         <input type="text" id="damtnNumber" name="damtnNumber" required><br><br>
 
         <label for="damtnDate">DAMTN date:</label>
@@ -23,18 +24,23 @@
         <input type="date" id="registrationData" name="registrationData" required><br><br>
 
         <label for="type">Type:</label>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Type Error</small>
         <input type="text" id="type" name="type" required><br><br>
 
         <label for="manufacturer">Manufacturer:</label>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}">Manufacturer Error</small>
         <input type="text" id="manufacturer" name="manufacturer" required><br><br>
 
         <label for="model">Model:</label>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('model')}" th:errors="*{model}">model Error</small>
         <input type="text" id="model" name="model" required><br><br>
 
         <label for="pressure">Pressure:</label>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('pressure')}" th:errors="*{pressure}">Pressure Error</small>
         <input type="text" id="pressure" name="pressure" required><br><br>
 
         <label for="power">Power:</label>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('power')}" th:errors="*{power}">Power Error</small>
         <input type="text" id="power" name="power" required><br><br>
 
         <select id="owner" name="owner">

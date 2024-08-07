@@ -16,6 +16,7 @@
           th:object="${addCustomerDTO}">
 
         <label th:for="name">Company name:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</small>
         <input  th:errorclass="is-invalid"
                 th:field="*{name}"
                 type="text"
@@ -25,6 +26,7 @@
 <!--        </p>-->
 
         <label th:for="vat">Company VAT number:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('vat')}" th:errors="*{vat}">Vat Error</small>
         <input th:errorclass="is-invalid"
                th:field="*{vat}"
                type="text"
@@ -34,12 +36,14 @@
 <!--        </p>-->
 
         <label th:for="address">Company Address:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</small>
         <input th:errorclass="is-invalid"
                th:field="*{address}"
                type="text"
                required>
 
         <label th:for="contactPerson">Contact person name:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('contactPerson')}" th:errors="*{contactPerson}">Contact person Error</small>
         <input th:errorclass="is-invalid"
                th:field="*{contactPerson}"
                type="text"
@@ -49,6 +53,7 @@
 <!--        </p>-->
 
         <label th:for="telNumber">Telephone number:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('telNumber')}" th:errors="*{telNumber}">Phone number Error</small>
         <input th:errorclass="is-invalid"
                th:field="*{telNumber}"
                type="text"
@@ -58,6 +63,7 @@
 <!--        </p>-->
 
         <label th:for="email">Email:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</small>
         <input th:errorclass="is-invalid"
                th:field="*{email}"
                type="text"

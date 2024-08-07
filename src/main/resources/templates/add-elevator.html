@@ -30,41 +30,49 @@
         </select>
 
         <label th:for="manufacturer">Manufacturer:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}">Manufacturer Error</small>
         <input type="text"
                th:errorclass="is-invalid"
-               th:field="*{manufacturer}" required><br><br>
+               th:field="*{manufacturer}" minlength="2" maxlength="50" required><br><br>
 
         <label th:for="manufacturerNumber">Manufacturer Number:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('manufacturerNumber')}" th:errors="*{manufacturerNumber}">Manufacturer number Error</small>
         <input type="text"
                th:errorclass="is-invalid"
-               th:field="*{manufacturerNumber}" required><br><br>
+               th:field="*{manufacturerNumber}" minlength="1" maxlength="10" required><br><br>
 
         <label th:for="yearOfManufacture">Year of Manufacture:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('yearOfManufacture')}" th:errors="*{yearOfManufacture}">Year of manufacture Error</small>
         <input type="text"
                th:errorclass="is-invalid"
-               th:field="*{yearOfManufacture}" required><br><br>
+               th:field="*{yearOfManufacture}" minlength="1" maxlength="8" required><br><br>
 
         <label th:for="speed">Speed (m/s):</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('speed')}" th:errors="*{speed}">Speed Error</small>
         <input type="number"
                th:errorclass="is-invalid"
-               th:field="*{speed}" required><br><br>
+               th:field="*{speed}" minlength="1" maxlength="3" required><br><br>
 
         <label th:for="numberOfStops">Number of Stops:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('numberOfStops')}" th:errors="*{numberOfStops}">Number of stops Error</small>
         <input type="number"
                th:errorclass="is-invalid"
-               th:field="*{numberOfStops}" required><br><br>
+               th:field="*{numberOfStops}" minlength="1" maxlength="3" required><br><br>
 
         <label th:for="city">City:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City Error</small>
         <input type="text"
                th:errorclass="is-invalid"
-               th:field="*{city}" required><br><br>
+               th:field="*{city}"><br><br>
 
         <label th:for="address">Address:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</small>
         <input type="text"
                th:errorclass="is-invalid"
-               th:field="*{address}" required><br><br>
+               th:field="*{address}" minlength="5" maxlength="100" required><br><br>
 
         <label th:for="registerDate">Registration date:</label>
+        <small class="text-danger" th:if="${#fields.hasErrors('registerDate')}" th:errors="*{registerDate}">Register date Error</small>
         <input type="date"
                th:errorclass="is-invalid"
                th:field="*{registerDate}" required><br><br>
