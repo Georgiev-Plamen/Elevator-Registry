@@ -3,9 +3,13 @@ package bg.softuni.ElevatorRegister.service.impl;
 import bg.softuni.ElevatorRegister.model.dto.CustomerDTOs.AddCustomerDTO;
 import bg.softuni.ElevatorRegister.model.dto.CustomerDTOs.CustomerDetailsDTO;
 import bg.softuni.ElevatorRegister.model.dto.CustomerDTOs.CustomerListDTO;
+import bg.softuni.ElevatorRegister.model.dto.ElevatorDTOs.CustomerElevatorDTO;
 import bg.softuni.ElevatorRegister.model.entity.Customer;
 import bg.softuni.ElevatorRegister.repository.CustomerRepository;
+import bg.softuni.ElevatorRegister.repository.ElevatorRepository;
+import bg.softuni.ElevatorRegister.repository.RoleRepository;
 import bg.softuni.ElevatorRegister.service.CustomerService;
+import bg.softuni.ElevatorRegister.service.ElevatorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +19,13 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final ElevatorRepository elevatorRepository;
+    private final ElevatorService elevatorService;
     private final ModelMapper modelMapper;
-    public CustomerServiceImpl(CustomerRepository customerRepository, ModelMapper modelMapper) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, ElevatorRepository elevatorRepository, ElevatorService elevatorService, ModelMapper modelMapper) {
         this.customerRepository = customerRepository;
+        this.elevatorRepository = elevatorRepository;
+        this.elevatorService = elevatorService;
         this.modelMapper = modelMapper;
     }
 
@@ -38,6 +46,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomer(Long id) {
+        List<CustomerElevatorDTO> list = elevatorService.getAllCustomerElevator(id);
+        elevatorRepository.deleteAllById(list.stream().map(e -> e.id()).toList());
         customerRepository.deleteById(id);
     }
 

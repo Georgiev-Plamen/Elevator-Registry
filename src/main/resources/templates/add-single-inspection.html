@@ -98,7 +98,9 @@
         <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('inspectionDate')}" th:errors="*{inspectionDate}">Email Error</small>
         <input type="date" th:field="*{inspectionDate}" id="inspectionDate" name="inspectionDate" required><br><br>
 
+        <div>
         <button type="submit">Add inspection</button>
+        </div>
     </form>
 </div>
 </body>

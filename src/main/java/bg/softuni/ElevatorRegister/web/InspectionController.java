@@ -94,7 +94,7 @@ public class InspectionController {
 
 //        model.addAttribute("customers", inspectionService.getInspectionDetails(id).getCustomer());
 //        model.addAttribute("allElevators", inspectionService.getAllElevatorsOfInspection(id));
-        model.addAttribute("allUser", userService.getAllUsers());
+//        model.addAttribute("allUser", userService.getAllUsers());
         model.addAttribute("inspectionDetails", inspectionService.getInspectionDetails(id));
 
         return "edit-inspection";

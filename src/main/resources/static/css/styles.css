@@ -142,6 +142,7 @@ input {
 }
 
 button {
+    max-width: 200px;
     padding: 10px;
     margin: 2px;
     font-size: 16px;
@@ -606,4 +607,9 @@ select {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+.inspection-text {
+    font-weight: lighter;
+    color: #545b62;
 }
