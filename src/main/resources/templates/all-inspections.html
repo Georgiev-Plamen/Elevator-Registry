@@ -11,6 +11,12 @@
 <div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
 <div class="container">
     <h1>Inspections</h1>
+
+    <form th:method="get" th:action="@{/inspection/add-single-inspection}">
+        <button type="submit">Add new gas installation</button>
+    </form><br>
+
+
         <table>
             <thead>
             <tr>

@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Error page !</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Page</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    Opps ! Something went wrong.
-    Please navigate to the <a th:href="@{/}">home page!</a>
+<div class="container">
+    <h1>Oops! Something went wrong.</h1>
+    <p>We couldn't find the page you were looking for.</p>
+    <p>Please go back to the homepage.</p>
+    <button onclick="window.location.href='/'">Go to Homepage</button>
+</div>
 </body>
 </html>

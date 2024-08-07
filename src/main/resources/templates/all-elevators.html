@@ -11,6 +11,11 @@
     <div th:replace="~{fragments/navbar::navbar(activeLink=${'home'})}"></div>
 <div class="container">
     <h1>Elevator Management</h1>
+
+    <form th:method="get" th:action="@{/elevator/addElevator}">
+        <button type="submit">Add new elevator</button>
+    </form><br>
+
     <table>
         <thead>
         <tr class="table-data">

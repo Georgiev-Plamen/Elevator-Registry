@@ -38,8 +38,8 @@ public class GasInstallationServiceImpl implements GasInstallationService {
                 .uri("http://localhost:8081/gas")
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .body(new ParameterizedTypeReference<>() {
-                });
+                .body(new ParameterizedTypeReference<List<GasInstallationDTO>>() {});
+
     }
 
     @Override
