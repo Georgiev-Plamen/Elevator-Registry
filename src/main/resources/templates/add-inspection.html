@@ -36,7 +36,7 @@
 
 <div class="container">
     <h1>Add Inspection</h1>
-    <form th:action="@{/inspection/addInspection}" th:method="POST">
+    <form th:action="@{/inspection/addInspection}" th:method="POST" th:object="${inspectionData}">
 
         <div>Customer : <span th:text="${customer.name}"></span></div><br>
         <input type="hidden" name="customer" id="customer" th:value="${customer.id}">
@@ -54,6 +54,7 @@
         </select>
 
         <label for="lastInspection">Last inspection:</label>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('lastInspection')}" th:errors="*{lastInspection}">Email Error</small>
         <input type="date" id="lastInspection" name="lastInspection" required><br><br>
 
         <label for="nextInspection">Next inspection:</label>
@@ -63,6 +64,7 @@
         <input type="text" id="address" name="address" minlength="5" maxlength="50" required><br><br>
 
         <label for="price">Price:</label>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Email Error</small>
         <input type="number" id="price" name="price" minlength="1" maxlength="50" required><br><br>
 
         <label for="inspectionDate">Inspection date:</label>

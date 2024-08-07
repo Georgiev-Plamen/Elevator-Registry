@@ -32,12 +32,14 @@ public class GasInstallationController {
     public String editGasInstallation(@PathVariable("id") Long id,
                                       Model model) {
         model.addAttribute("gasInstallationDetails", gasInstallationService.getGasInstallationDetails(id));
+        model.addAttribute("customers", customerService.getAllCustomers());
 
         return "edit-gas-installation";
     }
 
     @PutMapping("/editGasInstallation/{id}")
     public String editGasInstallation(@PathVariable("id") Long id, GasInstallationDTO gasInstallationDTO) {
+
         gasInstallationService.editGasInstallation(id, gasInstallationDTO);
 
         return "redirect:/gas/allGasInstallations";

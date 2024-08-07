@@ -1,15 +1,19 @@
 package bg.softuni.ElevatorRegister.web;
 
 import bg.softuni.ElevatorRegister.model.dto.InspectionDTOs.AddInspectionDTO;
+import bg.softuni.ElevatorRegister.model.dto.UserDTOs.UserRegistrationDTO;
 import bg.softuni.ElevatorRegister.service.CustomerService;
 import bg.softuni.ElevatorRegister.service.ElevatorService;
 import bg.softuni.ElevatorRegister.service.InspectionService;
 import bg.softuni.ElevatorRegister.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -28,6 +32,11 @@ public class InspectionController {
         this.userService = userService;
     }
 
+    @ModelAttribute("inspectionData")
+    public AddInspectionDTO addInspectionDTO() {
+        return new AddInspectionDTO();
+    }
+
     @GetMapping("/allInspections")
     public String allInspections (Model model) {
 
@@ -36,7 +45,7 @@ public class InspectionController {
         return "all-inspections";
     }
 
-    @GetMapping("/addSingleInspection")
+    @GetMapping("/add-single-inspection")
     public String addInspectionView(Model model) {
 
 //        model.addAttribute("customers", customerService.getAllCustomers());
@@ -56,7 +65,16 @@ public class InspectionController {
     }
     @PostMapping("/addInspection")
     public String addInspection (@AuthenticationPrincipal UserDetails userDetails,
-                                 AddInspectionDTO addInspectionDTO) {
+                                 @Valid AddInspectionDTO addInspectionDTO,
+                                 BindingResult bindingResult,
+                                 RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("inspectionData", addInspectionDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.inspectionData", bindingResult);
+
+            return "redirect:/inspection/add-single-inspection";
+        }
 
         inspectionService.addNewInspection(addInspectionDTO, userDetails);
 

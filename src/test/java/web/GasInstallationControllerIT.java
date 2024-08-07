@@ -40,11 +40,11 @@ public class GasInstallationControllerIT {
     public void testAllGasInstallations() throws Exception {
         GasInstallationDTO gasInstallation1 = new GasInstallationDTO(
                 1L, "1234", LocalDate.of(2023, 1, 1), LocalDate.of(2023, 1, 1),
-                "gas", "Manufacturer1", "Model1", "Pressure1", "Power1", 1L);
+                "gas", "Manufacturer1", "Model1", "Pressure1", "Power1",  1l);
 
         GasInstallationDTO gasInstallation2 = new GasInstallationDTO(
                 2L, "5678", LocalDate.of(2023, 2, 1), LocalDate.of(2023, 2, 1),
-                "gas", "Manufacturer2", "Model2", "Pressure2", "Power2", 2L);
+                "gas", "Manufacturer2", "Model2", "Pressure2", "Power2",2L);
 
         List<GasInstallationDTO> gasInstallations = Arrays.asList(gasInstallation1, gasInstallation2);
 

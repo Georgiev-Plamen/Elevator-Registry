@@ -39,8 +39,8 @@
         <label for="power">Power:</label>
         <input type="text" id="power" name="power" th:value="*{power}" required><br><br>
 
-        <select id="owner" name="owner">
-            <option th:each="customer : ${allCustomers}"
+        <select id="ownerId" name="ownerId">
+            <option th:each="customer : ${customers}"
                     th:value="${customer.id()}"
                     th:text="${customer.name()}"
                     required>owner</option>

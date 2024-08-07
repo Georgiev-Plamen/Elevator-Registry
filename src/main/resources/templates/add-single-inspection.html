@@ -46,7 +46,7 @@
 
 <div class="container">
     <h1>Add Inspection</h1>
-    <form th:action="@{/inspection/addInspection}" th:method="POST">
+    <form th:action="@{/inspection/addInspection}" th:method="POST" th:object="${inspectionData}">
 
 <!--        <label for="customers">Customer:</label>-->
 <!--        <select id="customers" name="customers" onchange="updateInspectionDates()">-->
@@ -75,22 +75,28 @@
         <input type="hidden" id="customer" name="customer" required><br><br>
 
         <label for="lastInspection">Last inspection:</label>
-        <input type="date" id="lastInspection" name="lastInspection" required><br><br>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('lastInspection')}" th:errors="*{lastInspection}">Email Error</small>
+        <input type="date" th:field="*{lastInspection}" id="lastInspection" name="lastInspection" required><br><br>
 
         <label for="nextInspection">Next inspection:</label>
-        <input type="date" id="nextInspection" name="nextInspection" required><br><br>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('nextInspection')}" th:errors="*{nextInspection}">Email Error</small>
+        <input type="date" th:field="*{nextInspection}" id="nextInspection" name="nextInspection" required><br><br>
+
         <!--//TODO:-->
         <label for="manufacturerNumber">Manufacturer number:</label>
         <input type="text" id="manufacturerNumber" name="manufacturerNumber" required><br><br>
 
         <label for="address">Address:</label>
-        <input type="text" id="address" name="address" required><br><br>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Email Error</small>
+        <input type="text" th:field="*{address}" id="address" name="address" required><br><br>
 
         <label for="price">Price:</label>
-        <input type="number" id="price" name="price" required><br><br>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Email Error</small>
+        <input type="number" th:field="*{price}" id="price" name="price" required><br><br>
 
         <label for="inspectionDate">Inspection date:</label>
-        <input type="date" id="inspectionDate" name="inspectionDate" required><br><br>
+        <small class="invalid-feedback text-danger" th:if="${#fields.hasErrors('inspectionDate')}" th:errors="*{inspectionDate}">Email Error</small>
+        <input type="date" th:field="*{inspectionDate}" id="inspectionDate" name="inspectionDate" required><br><br>
 
         <button type="submit">Add inspection</button>
     </form>

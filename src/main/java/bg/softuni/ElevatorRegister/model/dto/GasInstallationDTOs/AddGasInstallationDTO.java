@@ -31,7 +31,7 @@ public record AddGasInstallationDTO (
         @NotBlank
         @Size(min=1, max=30)
         String power,
-        Long customerId
+        Long ownerId
 ) {
 //   public AddGasInstallationDTO() {
 //           this(null, null, null, null, null, null, null, null, null);
